@@ -24,8 +24,10 @@ require("./routes/utente.js")(app);
 require("./routes/lettura.js")(app);
 require("./routes/ordine.js")(app);
 require("./routes/stats.js")(app);
+require("./routes/prodotto.js")(app);
 
-require("./models/wa.js");
+//BOT WhatsApp
+//require("./models/wa.js");
 
 //Avvio server
 app.listen(port,()=>{
