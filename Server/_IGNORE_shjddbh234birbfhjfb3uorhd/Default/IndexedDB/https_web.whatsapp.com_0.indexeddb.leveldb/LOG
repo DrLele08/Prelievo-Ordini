@@ -1,151 +1,32 @@
-2022/05/02-23:15:21.562 2784 Reusing MANIFEST C:\Users\saisr\Desktop\Tesi\Server\_IGNORE_shjddbh234birbfhjfb3uorhd\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
-2022/05/02-23:15:21.567 2784 Recovering log #7091
-2022/05/02-23:15:21.596 2784 Reusing old log C:\Users\saisr\Desktop\Tesi\Server\_IGNORE_shjddbh234birbfhjfb3uorhd\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/007091.log 
-2022/05/02-23:15:21.993 2784 Compacting 1@2 + 2@3 files
-2022/05/02-23:15:22.051 2784 Generated table #7119@2: 34232 keys, 2256408 bytes
-2022/05/02-23:15:22.092 2784 Generated table #7120@2: 38132 keys, 1772370 bytes
-2022/05/02-23:15:22.092 2784 Compacted 1@2 + 2@3 files => 4028778 bytes
-2022/05/02-23:15:22.093 2784 compacted to: files[ 0 0 1 75 0 0 0 ]
-2022/05/02-23:15:22.094 2784 Delete type=2 #7089
-2022/05/02-23:15:22.094 2784 Delete type=2 #7090
-2022/05/02-23:15:22.094 2784 Delete type=2 #7093
-2022/05/02-23:15:37.159 8d8 Level-0 table #7122: started
-2022/05/02-23:15:37.177 8d8 Level-0 table #7122: 1062258 bytes OK
-2022/05/02-23:15:37.178 8d8 Delete type=0 #7091
-2022/05/02-23:15:37.185 2784 Compacting 1@1 + 1@2 files
-2022/05/02-23:15:37.211 2784 Generated table #7123@1: 15899 keys, 705380 bytes
-2022/05/02-23:15:37.213 2784 Generated table #7124@1: 12 keys, 3194 bytes
-2022/05/02-23:15:37.217 2784 Generated table #7125@1: 1099 keys, 43159 bytes
-2022/05/02-23:15:37.220 2784 Generated table #7126@1: 2148 keys, 41880 bytes
-2022/05/02-23:15:37.220 2784 Compacted 1@1 + 1@2 files => 793613 bytes
-2022/05/02-23:15:37.225 2784 compacted to: files[ 0 0 4 75 0 0 0 ]
-2022/05/02-23:15:37.234 2784 Compacting 1@2 + 3@3 files
-2022/05/02-23:15:37.289 2784 Generated table #7127@2: 31976 keys, 2244114 bytes
-2022/05/02-23:15:37.345 2784 Generated table #7128@2: 46321 keys, 2273898 bytes
-2022/05/02-23:15:37.348 2784 Generated table #7129@2: 209 keys, 133806 bytes
-2022/05/02-23:15:37.348 2784 Compacted 1@2 + 3@3 files => 4651818 bytes
-2022/05/02-23:15:37.349 2784 compacted to: files[ 0 0 3 75 0 0 0 ]
-2022/05/02-23:15:37.349 2784 Delete type=2 #7094
-2022/05/02-23:15:37.349 2784 Delete type=2 #7122
-2022/05/02-23:15:37.974 150c Compacting 1@2 + 11@3 files
-2022/05/02-23:15:38.055 150c Generated table #7130@2: 103152 keys, 2253329 bytes
-2022/05/02-23:15:38.140 150c Generated table #7131@2: 106807 keys, 2256900 bytes
-2022/05/02-23:15:38.222 150c Generated table #7132@2: 104201 keys, 2254412 bytes
-2022/05/02-23:15:38.309 150c Generated table #7133@2: 107405 keys, 2257828 bytes
-2022/05/02-23:15:38.388 150c Generated table #7134@2: 102184 keys, 2252000 bytes
-2022/05/02-23:15:38.470 150c Generated table #7135@2: 104780 keys, 2255039 bytes
-2022/05/02-23:15:38.555 150c Generated table #7136@2: 108438 keys, 2258457 bytes
-2022/05/02-23:15:38.637 150c Generated table #7137@2: 104862 keys, 2254484 bytes
-2022/05/02-23:15:38.720 150c Generated table #7138@2: 107335 keys, 2258036 bytes
-2022/05/02-23:15:38.763 150c Generated table #7139@2: 54065 keys, 1193719 bytes
-2022/05/02-23:15:38.763 150c Compacted 1@2 + 11@3 files => 21494204 bytes
-2022/05/02-23:15:38.764 150c compacted to: files[ 0 0 2 74 0 0 0 ]
-2022/05/02-23:15:38.764 150c Delete type=2 #7032
-2022/05/02-23:15:38.765 150c Delete type=2 #7107
-2022/05/02-23:15:38.765 150c Delete type=2 #7108
-2022/05/02-23:15:38.765 150c Delete type=2 #7109
-2022/05/02-23:15:38.765 150c Delete type=2 #7110
-2022/05/02-23:15:38.765 150c Delete type=2 #7111
-2022/05/02-23:15:38.765 150c Delete type=2 #7112
-2022/05/02-23:15:38.765 150c Delete type=2 #7113
-2022/05/02-23:15:38.765 150c Delete type=2 #7114
-2022/05/02-23:15:38.765 150c Delete type=2 #7115
-2022/05/02-23:15:38.765 150c Delete type=2 #7116
-2022/05/02-23:15:38.765 150c Delete type=2 #7117
-2022/05/02-23:15:38.765 150c Delete type=2 #7119
-2022/05/02-23:15:38.765 150c Delete type=2 #7120
-2022/05/02-23:15:38.765 150c Delete type=2 #7123
-2022/05/02-23:15:38.765 150c Delete type=2 #7126
-2022/05/02-23:15:39.015 38dc Compacting 1@2 + 10@3 files
-2022/05/02-23:15:39.073 38dc Level-0 table #7142: started
-2022/05/02-23:15:39.091 38dc Level-0 table #7142: 991533 bytes OK
-2022/05/02-23:15:39.093 38dc Delete type=0 #7121
-2022/05/02-23:15:39.117 38dc Generated table #7140@2: 81422 keys, 2281350 bytes
-2022/05/02-23:15:39.151 38dc Generated table #7143@2: 29963 keys, 2159815 bytes
-2022/05/02-23:15:39.179 38dc Generated table #7144@2: 11304 keys, 2135704 bytes
-2022/05/02-23:15:39.207 38dc Generated table #7145@2: 11390 keys, 2135643 bytes
-2022/05/02-23:15:39.236 38dc Generated table #7146@2: 10153 keys, 2133551 bytes
-2022/05/02-23:15:39.264 38dc Generated table #7147@2: 11480 keys, 2135680 bytes
-2022/05/02-23:15:39.297 38dc Generated table #7148@2: 11258 keys, 2136907 bytes
-2022/05/02-23:15:39.376 38dc Generated table #7149@2: 116721 keys, 2270376 bytes
-2022/05/02-23:15:39.461 38dc Generated table #7150@2: 111405 keys, 2264246 bytes
-2022/05/02-23:15:39.543 38dc Generated table #7151@2: 106554 keys, 2256623 bytes
-2022/05/02-23:15:39.547 38dc Generated table #7152@2: 1977 keys, 43274 bytes
-2022/05/02-23:15:39.547 38dc Compacted 1@2 + 10@3 files => 21953169 bytes
-2022/05/02-23:15:39.548 38dc compacted to: files[ 0 1 1 75 0 0 0 ]
-2022/05/02-23:15:39.549 38dc Delete type=2 #7097
-2022/05/02-23:15:39.549 38dc Delete type=2 #7098
-2022/05/02-23:15:39.549 38dc Delete type=2 #7099
-2022/05/02-23:15:39.549 38dc Delete type=2 #7100
-2022/05/02-23:15:39.549 38dc Delete type=2 #7101
-2022/05/02-23:15:39.549 38dc Delete type=2 #7102
-2022/05/02-23:15:39.549 38dc Delete type=2 #7103
-2022/05/02-23:15:39.549 38dc Delete type=2 #7104
-2022/05/02-23:15:39.549 38dc Delete type=2 #7105
-2022/05/02-23:15:39.549 38dc Delete type=2 #7106
-2022/05/02-23:15:39.549 38dc Delete type=2 #7125
-2022/05/02-23:15:40.088 38dc Compacting 1@1 + 1@2 files
-2022/05/02-23:15:40.110 38dc Generated table #7153@1: 13252 keys, 466510 bytes
-2022/05/02-23:15:40.113 38dc Generated table #7154@1: 12 keys, 3194 bytes
-2022/05/02-23:15:40.115 38dc Generated table #7155@1: 319 keys, 13873 bytes
-2022/05/02-23:15:40.118 38dc Generated table #7156@1: 592 keys, 11935 bytes
-2022/05/02-23:15:40.118 38dc Compacted 1@1 + 1@2 files => 495512 bytes
-2022/05/02-23:15:40.120 38dc compacted to: files[ 0 0 4 75 0 0 0 ]
-2022/05/02-23:15:40.120 38dc Delete type=2 #7124
-2022/05/02-23:15:40.120 38dc Delete type=2 #7142
-2022/05/02-23:15:41.140 2784 Compacting 1@2 + 9@3 files
-2022/05/02-23:15:41.242 2784 Generated table #7157@2: 106779 keys, 2257099 bytes
-2022/05/02-23:15:41.323 2784 Generated table #7158@2: 104220 keys, 2254137 bytes
-2022/05/02-23:15:41.405 2784 Generated table #7159@2: 107550 keys, 2259197 bytes
-2022/05/02-23:15:41.482 2784 Generated table #7160@2: 102141 keys, 2252255 bytes
-2022/05/02-23:15:41.562 2784 Generated table #7161@2: 104742 keys, 2255576 bytes
-2022/05/02-23:15:41.647 2784 Generated table #7162@2: 108450 keys, 2258220 bytes
-2022/05/02-23:15:41.730 2784 Generated table #7163@2: 104857 keys, 2254193 bytes
-2022/05/02-23:15:41.812 2784 Generated table #7164@2: 107340 keys, 2258117 bytes
-2022/05/02-23:15:41.858 2784 Generated table #7165@2: 54590 keys, 1205342 bytes
-2022/05/02-23:15:41.858 2784 Compacted 1@2 + 9@3 files => 19254136 bytes
-2022/05/02-23:15:41.859 2784 compacted to: files[ 0 0 3 75 0 0 0 ]
-2022/05/02-23:15:41.859 2784 Delete type=2 #7131
-2022/05/02-23:15:41.859 2784 Delete type=2 #7132
-2022/05/02-23:15:41.859 2784 Delete type=2 #7133
-2022/05/02-23:15:41.859 2784 Delete type=2 #7134
-2022/05/02-23:15:41.859 2784 Delete type=2 #7135
-2022/05/02-23:15:41.859 2784 Delete type=2 #7136
-2022/05/02-23:15:41.859 2784 Delete type=2 #7137
-2022/05/02-23:15:41.859 2784 Delete type=2 #7138
-2022/05/02-23:15:41.859 2784 Delete type=2 #7139
-2022/05/02-23:15:41.859 2784 Delete type=2 #7156
-2022/05/02-23:15:42.225 150c Compacting 1@2 + 11@3 files
-2022/05/02-23:15:42.264 150c Generated table #7166@2: 29963 keys, 2159815 bytes
-2022/05/02-23:15:42.293 150c Generated table #7167@2: 11304 keys, 2135704 bytes
-2022/05/02-23:15:42.320 150c Generated table #7168@2: 11390 keys, 2135643 bytes
-2022/05/02-23:15:42.346 150c Generated table #7169@2: 10153 keys, 2133551 bytes
-2022/05/02-23:15:42.372 150c Generated table #7170@2: 11480 keys, 2135680 bytes
-2022/05/02-23:15:42.399 150c Generated table #7171@2: 11258 keys, 2136907 bytes
-2022/05/02-23:15:42.476 150c Generated table #7172@2: 116383 keys, 2270859 bytes
-2022/05/02-23:15:42.564 150c Generated table #7173@2: 111473 keys, 2263822 bytes
-2022/05/02-23:15:42.647 150c Generated table #7174@2: 106569 keys, 2257353 bytes
-2022/05/02-23:15:42.725 150c Generated table #7175@2: 103193 keys, 2253874 bytes
-2022/05/02-23:15:42.729 150c Generated table #7176@2: 2508 keys, 55908 bytes
-2022/05/02-23:15:42.729 150c Compacted 1@2 + 11@3 files => 21939116 bytes
-2022/05/02-23:15:42.730 150c compacted to: files[ 0 0 2 75 0 0 0 ]
-2022/05/02-23:15:42.730 150c Delete type=2 #7130
-2022/05/02-23:15:42.730 150c Delete type=2 #7143
-2022/05/02-23:15:42.730 150c Delete type=2 #7144
-2022/05/02-23:15:42.730 150c Delete type=2 #7145
-2022/05/02-23:15:42.730 150c Delete type=2 #7146
-2022/05/02-23:15:42.730 150c Delete type=2 #7147
-2022/05/02-23:15:42.730 150c Delete type=2 #7148
-2022/05/02-23:15:42.730 150c Delete type=2 #7149
-2022/05/02-23:15:42.730 150c Delete type=2 #7150
-2022/05/02-23:15:42.730 150c Delete type=2 #7151
-2022/05/02-23:15:42.730 150c Delete type=2 #7152
-2022/05/02-23:15:42.730 150c Delete type=2 #7155
-2022/05/02-23:15:46.517 2784 Compacting 1@2 + 2@3 files
-2022/05/02-23:15:46.579 2784 Generated table #7177@2: 33159 keys, 2257532 bytes
-2022/05/02-23:15:46.634 2784 Generated table #7178@2: 43857 keys, 2029847 bytes
-2022/05/02-23:15:46.634 2784 Compacted 1@2 + 2@3 files => 4287379 bytes
-2022/05/02-23:15:46.635 2784 compacted to: files[ 0 0 1 75 0 0 0 ]
-2022/05/02-23:15:46.635 2784 Delete type=2 #7127
-2022/05/02-23:15:46.636 2784 Delete type=2 #7128
-2022/05/02-23:15:46.636 2784 Delete type=2 #7153
+2022/05/04-15:52:38.698 112c Reusing MANIFEST C:\Users\saisr\Desktop\Tesi\Server\_IGNORE_shjddbh234birbfhjfb3uorhd\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-010754
+2022/05/04-15:52:38.698 112c Recovering log #10917
+2022/05/04-15:52:38.715 112c Reusing old log C:\Users\saisr\Desktop\Tesi\Server\_IGNORE_shjddbh234birbfhjfb3uorhd\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/010917.log 
+2022/05/04-15:52:54.567 39e4 Level-0 table #10926: started
+2022/05/04-15:52:54.584 39e4 Level-0 table #10926: 1040772 bytes OK
+2022/05/04-15:52:54.585 39e4 Delete type=0 #10917
+2022/05/04-15:52:54.593 39e4 Compacting 1@1 + 2@2 files
+2022/05/04-15:52:54.623 39e4 Generated table #10927@1: 20033 keys, 727952 bytes
+2022/05/04-15:52:54.627 39e4 Generated table #10928@1: 320 keys, 154836 bytes
+2022/05/04-15:52:54.631 39e4 Generated table #10929@1: 11 keys, 1092 bytes
+2022/05/04-15:52:54.631 39e4 Compacted 1@1 + 2@2 files => 883880 bytes
+2022/05/04-15:52:54.632 39e4 compacted to: files[ 0 0 6 89 0 0 0 ]
+2022/05/04-15:52:54.641 2b9c Compacting 1@2 + 5@3 files
+2022/05/04-15:52:54.709 2b9c Generated table #10930@2: 46064 keys, 2258168 bytes
+2022/05/04-15:52:54.770 2b9c Generated table #10931@2: 35373 keys, 2277598 bytes
+2022/05/04-15:52:54.835 2b9c Generated table #10932@2: 45124 keys, 2262138 bytes
+2022/05/04-15:52:54.897 2b9c Generated table #10933@2: 76361 keys, 2284798 bytes
+2022/05/04-15:52:54.920 2b9c Generated table #10934@2: 14170 keys, 1048909 bytes
+2022/05/04-15:52:54.920 2b9c Compacted 1@2 + 5@3 files => 10131611 bytes
+2022/05/04-15:52:54.921 2b9c compacted to: files[ 0 0 5 89 0 0 0 ]
+2022/05/04-15:52:54.922 2b9c Delete type=2 #10910
+2022/05/04-15:52:54.922 2b9c Delete type=2 #10911
+2022/05/04-15:52:54.922 2b9c Delete type=2 #10926
+2022/05/04-15:52:55.552 39e4 Level-0 table #10936: started
+2022/05/04-15:52:55.567 39e4 Level-0 table #10936: 1024862 bytes OK
+2022/05/04-15:52:55.569 39e4 Delete type=2 #10919
+2022/05/04-15:52:55.569 39e4 Delete type=2 #10920
+2022/05/04-15:52:55.569 39e4 Delete type=2 #10921
+2022/05/04-15:52:55.569 39e4 Delete type=2 #10922
+2022/05/04-15:52:55.569 39e4 Delete type=2 #10923
+2022/05/04-15:52:55.569 39e4 Delete type=0 #10925
+2022/05/04-15:52:55.569 39e4 Delete type=2 #10927
