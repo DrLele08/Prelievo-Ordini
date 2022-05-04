@@ -1,12 +1,12 @@
 -- Inserimento reparti
-INSERT INTO Reparto (Nome) VALUES ("Alimentari (Corsia 1)");
-INSERT INTO Reparto (Nome) VALUES ("Carta & Monouso (Corsia 2)");
-INSERT INTO Reparto (Nome) VALUES ("Casalinghi (Corsia 3)");
-INSERT INTO Reparto (Nome) VALUES ("Cosmetica (Corsia 4)");
-INSERT INTO Reparto (Nome) VALUES ("Detersivi (Corsia 5)");
-INSERT INTO Reparto (Nome) VALUES ("Eventi (Corsia 6)");
-INSERT INTO Reparto (Nome) VALUES ("Giochi (Corsia 7)");
-INSERT INTO Reparto (Nome) VALUES ("Scuola & Ufficio (Corsia 8)");
+INSERT INTO Reparto (Nome) VALUES ("Alimentari");
+INSERT INTO Reparto (Nome) VALUES ("Carta & Monouso");
+INSERT INTO Reparto (Nome) VALUES ("Casalinghi");
+INSERT INTO Reparto (Nome) VALUES ("Cosmetica");
+INSERT INTO Reparto (Nome) VALUES ("Detersivi");
+INSERT INTO Reparto (Nome) VALUES ("Eventi");
+INSERT INTO Reparto (Nome) VALUES ("Giochi");
+INSERT INTO Reparto (Nome) VALUES ("Scuola & Ufficio");
 
 -- Inserimento codici iva
 INSERT INTO CodiceIva(Iva) VALUES(0);

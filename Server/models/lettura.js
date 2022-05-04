@@ -16,4 +16,11 @@ Lettura.getLettureInevase=(result)=>{
     });
 };
 
+Lettura.countLettureByTipo=(idUtente,result)=>{
+    let query="SELECT tipoevento.Evento,COUNT(*) AS Valore FROM eventolettura,operatorilettura,utente,tipoevento WHERE tipoevento.idTipoEvento=eventolettura.ksEvento AND eventolettura.ksOperatore=operatorilettura.idOperatoriLettura AND operatorilettura.ksUtente=utente.idUtente AND utente.idUtente=? GROUP BY ksEvento;";
+    sql.query(query,[idUtente],(errQ,risQ)=>{
+        result(risQ);
+    });
+};
+
 module.exports=Lettura;

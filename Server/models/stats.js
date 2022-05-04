@@ -1,13 +1,45 @@
 const sql=require("./database.js");
+const Lettura=require("./lettura.js");
+
 const Stats=new Object();
 
 Stats.statsById=(idUtente,result)=>{
     let json=new Object();
-    result(json);
+    json.Ris=1;
+    json.Mess="Fatto";
+    let stat=new Array();
     //Lettura aperta
-    //Letture totali
-    //Letture corrette
-    //Letture errate
+    let query="SELECT COUNT(*) AS N FROM operatorilettura WHERE ksUtente=?";
+    sql.query(query,[idUtente],(errQ,risQ)=>{
+        if(risQ.length)
+        {
+            let lettAp=new Object();
+            lettAp.Nome="Letture aperte";
+            lettAp.Valore=risQ[0].N;
+            stat.push(lettAp);
+        }
+        json.Stat=stat;
+        //Letture totali
+        let queryTotale="SELECT COUNT(*) AS N FROM eventolettura,operatorilettura,utente WHERE eventolettura.ksOperatore=operatorilettura.idOperatoriLettura AND operatorilettura.ksUtente=utente.idUtente AND utente.idUtente=? AND ksEvento IN(1,2);";
+        sql.query(queryTotale,[idUtente],(errTot,risTot)=>{
+            if(risTot.length)
+            {
+                let lettAp=new Object();
+                lettAp.Nome="Letture totali";
+                lettAp.Valore=risTot[0].N;
+                stat.push(lettAp);
+            }
+            //Letture corrette
+            //Letture errate
+            Lettura.countLettureByTipo(idUtente,(risStat)=>{
+                if(risStat)
+                {
+                    json.Dettagli=risStat
+                }
+                result(json);
+            });
+        });
+    });
 };
 
 Stats.statsGeneric=(result)=>{
@@ -32,6 +64,7 @@ Stats.statsGeneric=(result)=>{
                 let obj=new Object();
                 obj.Nome=risQ[i].Nome;
                 obj.Letture=risQ[i].numLetture;
+                vett.push(obj);
             }
             json.MostLetture=vett;
 
