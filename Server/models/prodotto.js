@@ -1,4 +1,5 @@
 const sql=require("./database.js");
+const Categoria=require("./categoria.js");
 const Prodotto=new Object();
 
 const PROD_PAGINA=8;
@@ -35,11 +36,14 @@ function getFiltro(filtro,isPreOrder)
     }
 }
 
-Prodotto.getProdotti=(pagina,filtro,desc,result)=>{
-    let query="SELECT articolo.idArticolo,articolo.Descrizione,articolo.QntDisponibile,articolo.PrezzoIvato,articolo.PrezzoConsigliato,Lunghezza,Altezza,Profondita,Volume,Peso FROM articolo ORDER BY "+getFiltro(filtro)+" LIMIT ? OFFSET ?";
+Prodotto.getProdotti=(pagina,filtro,desc,categoria,result)=>{
+    let sqlCat="";
+    if(categoria>0)
+        sqlCat=" AND ksRepartoPreferito="+sql.escape(categoria)+" ";
+    let query="SELECT articolo.idArticolo,articolo.Descrizione,articolo.QntDisponibile,articolo.PrezzoIvato,articolo.PrezzoConsigliato,Lunghezza,Altezza,Profondita,Volume,Peso FROM articolo WHERE QntDisponibile>0 "+sqlCat+" ORDER BY "+getFiltro(filtro)+" LIMIT ? OFFSET ?";
     if(desc != "")
-        query="SELECT articolo.idArticolo,articolo.Descrizione,articolo.QntDisponibile,articolo.PrezzoIvato,articolo.PrezzoConsigliato,Lunghezza,Altezza,Profondita,Volume,Peso FROM articolo WHERE Descrizione LIKE "+sql.escape("%"+desc+"%")+" ORDER BY "+getFiltro(filtro)+" LIMIT ? OFFSET ?";
-    sql.query(query,[PROD_PAGINA,PROD_PAGINA*pagina],(errQ,risQ)=>{
+        query="SELECT articolo.idArticolo,articolo.Descrizione,articolo.QntDisponibile,articolo.PrezzoIvato,articolo.PrezzoConsigliato,Lunghezza,Altezza,Profondita,Volume,Peso FROM articolo,EAN WHERE EAN.ksArticolo=Articolo.idArticolo AND QntDisponibile>0 AND (Descrizione LIKE "+sql.escape("%"+desc+"%")+" OR EAN="+sql.escape(desc)+") "+sqlCat+" ORDER BY "+getFiltro(filtro)+" LIMIT ? OFFSET ?";
+        sql.query(query,[PROD_PAGINA,PROD_PAGINA*pagina],(errQ,risQ)=>{
         if(errQ)
         {
             result(null);
@@ -51,11 +55,14 @@ Prodotto.getProdotti=(pagina,filtro,desc,result)=>{
     });
 };
 
-Prodotto.getProdottiPreOrder=(pagina,filtro,desc,result)=>{
-    let query="SELECT articolo.idArticolo,articolo.Descrizione,articolo.QntDisponibile,articolo.PrezzoPreOrder,articolo.PrezzoConsigliato,Lunghezza,Altezza,Profondita,Volume,Peso FROM articolo WHERE PrezzoPreOrder IS NOT NULL ORDER BY "+getFiltro(filtro)+" LIMIT ? OFFSET ?";
+Prodotto.getProdottiPreOrder=(pagina,filtro,desc,categoria,result)=>{
+    let sqlCat="";
+    if(categoria>0)
+        sqlCat=" AND ksRepartoPreferito="+sql.escape(categoria)+" ";
+    let query="SELECT articolo.idArticolo,articolo.Descrizione,articolo.QntDisponibile,articolo.PrezzoPreOrder,articolo.PrezzoConsigliato,Lunghezza,Altezza,Profondita,Volume,Peso FROM articolo WHERE PrezzoPreOrder IS NOT NULL "+sqlCat+" ORDER BY "+getFiltro(filtro)+" LIMIT ? OFFSET ?";
     if(desc != "")
-        query="SELECT articolo.idArticolo,articolo.Descrizione,articolo.QntDisponibile,articolo.PrezzoPreOrder,articolo.PrezzoConsigliato,Lunghezza,Altezza,Profondita,Volume,Peso FROM articolo WHERE PrezzoPreOrder IS NOT NULL AND Descrizione LIKE "+sql.escape("%"+desc+"%")+" ORDER BY "+getFiltro(filtro)+" LIMIT ? OFFSET ?";
-    sql.query(query,[PROD_PAGINA,PROD_PAGINA*pagina],(errQ,risQ)=>{
+        query="SELECT articolo.idArticolo,articolo.Descrizione,articolo.QntDisponibile,articolo.PrezzoPreOrder,articolo.PrezzoConsigliato,Lunghezza,Altezza,Profondita,Volume,Peso FROM articolo,ean WHERE ean.ksArticolo=idArticolo AND PrezzoPreOrder IS NOT NULL "+sqlCat+" AND (Descrizione LIKE "+sql.escape("%"+desc+"%")+" OR EAN="+sql.escape(desc)+") ORDER BY "+getFiltro(filtro)+" LIMIT ? OFFSET ?";
+        sql.query(query,[PROD_PAGINA,PROD_PAGINA*pagina],(errQ,risQ)=>{
         if(errQ)
         {
             result(null);
@@ -68,7 +75,20 @@ Prodotto.getProdottiPreOrder=(pagina,filtro,desc,result)=>{
 };
 
 Prodotto.getProdottoByEAN=(ean,result)=>{
+    let query="SELECT articolo.idArticolo,articolo.Descrizione,articolo.QntDisponibile,articolo.PrezzoIvato,articolo.PrezzoConsigliato,Lunghezza,Altezza,Profondita,Volume,Peso FROM articolo,ean WHERE EAN.ksArticolo=articolo.idArticolo AND EAN.EAN=?;";
+    sql.query(query,[ean],(errQ,risQ)=>{
+        result(risQ);
+    });
+};
 
+Prodotto.hasProductById=(idProd,result)=>{
+    let query="SELECT * FROM Articolo WHERE idArticolo=?";
+    sql.query(query,[idProd],(errQ,risQ)=>{
+        if(errQ)
+            result(errQ,null);
+        else
+            result(null,risQ.length>0);
+    });
 };
 
 module.exports=Prodotto;

@@ -4,5 +4,7 @@ module.exports=app=>{
     router.get("/loginByEmail",utente.findByEmailAndPwd);
     router.get("/loginById",utente.findByIdAndAuth);
     router.post("/signUp",utente.doRegistrazione);
+    router.get("/utenti",utente.getUtenti);
+    router.get("/utenteById",utente.getUtenteById);
     app.use("/api/utente",router);
 };

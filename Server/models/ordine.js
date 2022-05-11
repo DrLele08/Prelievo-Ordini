@@ -81,5 +81,20 @@ Ordine.ordersByCell=(cell,result)=>{
     });
 };
 
+Ordine.doOrdine=(idUtente,result)=>{
+    result(null,true);
+};
+
+Ordine.seeOrdini=(pagina,stato,result)=>{
+    result(null,true);
+};
+
+Ordine.detailOrdine=(idOrdine,result)=>{
+    result(null,true);
+};
+
+Ordine.statoOrdine=(idOrdine,newStato,result)=>{
+    result(null,true);
+};
 
 module.exports=Ordine;

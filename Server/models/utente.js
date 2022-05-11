@@ -130,4 +130,29 @@ Utente.getNomeByCell=(cell,result)=>{
     });
 }
 
+Utente.getUtenti=(result)=>{
+    let query="SELECT utente.idUtente,utente.Nome,utente.ksTipo AS Ruolo FROM utente";
+    sql.query(query,(errQ,risQ)=>{
+        if(errQ)
+            result(errQ,null);
+        else
+            result(null,risQ);
+    });
+};
+
+Utente.getUtenteById=(idUtente,result)=>{
+    let query="SELECT idUtente,ksTipo,Nome,Email,Identificativo,Cellulare,DATE_FORMAT(DataCreazione,'%d-%m-%Y %H:%i') AS DataCreazione FROM utente WHERE idUtente=?;";
+    sql.query(query,[idUtente],(errQ,risQ)=>{
+        if(errQ)
+            result(true,null);
+        else
+        {
+            if(risQ.length>0)
+                result(null,risQ);
+            else
+                result(true,null);
+        }
+    });
+};
+
 module.exports=Utente;

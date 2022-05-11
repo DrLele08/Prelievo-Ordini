@@ -117,3 +117,90 @@ exports.findByIdAndAuth=(req,ris)=>{
         }
     });
 };
+
+exports.getUtenti=(req,ris)=>{
+    let json=new Object();
+    Utils.checkTokenAndParameter(req.query,["idUtente","TokenAuth"],(risCheck)=>{
+        if(risCheck)
+        {
+            let idUtente=req.query.idUtente;
+            let tokenAuth=req.query.TokenAuth;
+            Utente.getTipoUtente(idUtente,tokenAuth,(tipo)=>{
+                if(tipo==1)
+                {
+                    Utente.getUtenti((errU,risU)=>{
+                        if(errU)
+                        {
+                            json.Ris=0;
+                            json.Mess="Errore DB";
+                            ris.json(json);
+                        }
+                        else
+                        {
+                            json.Ris=1;
+                            json.Mess="Fatto";
+                            json.Vett=risU;
+                            ris.json(json);
+                        }
+                    });
+                }
+                else
+                {
+                    json.Ris=0;
+                    json.Mess="Non hai i permessi";
+                    ris.json(json);
+                }
+            });
+        }
+        else
+        {
+            json.Ris=-1;
+            json.Mess="Parametri errati";
+            ris.json(json);
+        }
+    });
+};
+
+exports.getUtenteById=(req,ris)=>{
+    let json=new Object();
+    Utils.checkTokenAndParameter(req.query,["idUtente","TokenAuth","Utente"],(risCheck)=>{
+        if(risCheck)
+        {
+            let idUtente=req.query.idUtente;
+            let tokenAuth=req.query.TokenAuth;
+            Utente.getTipoUtente(idUtente,tokenAuth,(tipo)=>{
+                if(tipo==1)
+                {
+                    let ksUtente=req.query.Utente;
+                    Utente.getUtenteById(ksUtente,(errU,risU)=>{
+                        if(errU)
+                        {
+                            json.Ris=0;
+                            json.Mess="Errore DB";
+                            ris.json(json);
+                        }
+                        else
+                        {
+                            json.Ris=1;
+                            json.Mess="Fatto";
+                            json.Utente=risU;
+                            ris.json(json);
+                        }
+                    });
+                }
+                else
+                {
+                    json.Ris=0;
+                    json.Mess="Non hai i permessi";
+                    ris.json(json);
+                }
+            });
+        }
+        else
+        {
+            json.Ris=-1;
+            json.Mess="Parametri errati";
+            ris.json(json);
+        }
+    });
+};

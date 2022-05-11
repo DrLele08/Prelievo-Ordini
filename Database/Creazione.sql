@@ -130,3 +130,21 @@ CREATE TABLE PostoArticolo(
 	FOREIGN KEY (ksPosto) REFERENCES PostoScaffale(idPosto),
 	FOREIGN KEY (ksArticolo) REFERENCES Articolo(idArticolo)
 );
+
+CREATE TABLE Carrello(
+	idCarrello INT PRIMARY KEY AUTO_INCREMENT,
+	ksUtente INT NOT NULL UNIQUE,
+	DataCreazione DATETIME NOT NULL,
+	DataModifica DATETIME NOT NULL,
+	FOREIGN KEY (ksUtente) REFERENCES Utente(idUtente)
+);
+
+CREATE TABLE ProdottoCarrello(
+	idProdottoCarrello INT PRIMARY KEY AUTO_INCREMENT,
+	ksCarrello INT NOT NULL,
+	ksArticolo INT NOT NULL,
+	Qnt INT NOT NULL,
+	DataInserimento DATETIME NOT NULL,
+	FOREIGN KEY (ksCarrello) REFERENCES Carrello(idCarrello),
+	FOREIGN KEY (ksArticolo) REFERENCES Articolo(idArticolo)
+);

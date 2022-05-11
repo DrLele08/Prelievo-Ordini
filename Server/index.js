@@ -25,6 +25,8 @@ require("./routes/lettura.js")(app);
 require("./routes/ordine.js")(app);
 require("./routes/stats.js")(app);
 require("./routes/prodotto.js")(app);
+require("./routes/categoria.js")(app);
+require("./routes/cart.js")(app);
 
 //BOT WhatsApp
 //require("./models/wa.js");

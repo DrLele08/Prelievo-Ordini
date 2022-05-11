@@ -4,7 +4,7 @@ const Utils=require("../models/utils.js");
 
 exports.showProdotti=(req,ris)=>{
     let json=new Object();
-    Utils.checkTokenAndParameter(req.query,["idUtente","TokenAuth","Pagina","Filtro"],(risCon)=>{
+    Utils.checkTokenAndParameter(req.query,["idUtente","TokenAuth","Pagina","Filtro","Categoria"],(risCon)=>{
         if(risCon)
         {
             let idUtente=req.query.idUtente;
@@ -18,10 +18,11 @@ exports.showProdotti=(req,ris)=>{
                     let pagina=req.query.Pagina;
                     let filtro=req.query.Filtro;
                     let descrizione=req.query.Descrizione;
+                    let cate=req.query.Categoria;
                     let filtroNome="";
                     if(descrizione !== undefined)
                         filtroNome=descrizione;
-                    Prodotto.getProdotti(pagina,filtro,filtroNome,(result)=>{
+                    Prodotto.getProdotti(pagina,filtro,filtroNome,cate,(result)=>{
                         if(result)
                         {
                             json.Ris=1;
@@ -57,7 +58,7 @@ exports.showProdotti=(req,ris)=>{
 
 exports.showPreOrdine=(req,ris)=>{
     let json=new Object();
-    Utils.checkTokenAndParameter(req.query,["idUtente","TokenAuth","Pagina","Filtro"],(risCon)=>{
+    Utils.checkTokenAndParameter(req.query,["idUtente","TokenAuth","Pagina","Filtro","Categoria"],(risCon)=>{
         if(risCon)
         {
             let idUtente=req.query.idUtente;
@@ -71,10 +72,11 @@ exports.showPreOrdine=(req,ris)=>{
                     let pagina=req.query.Pagina;
                     let filtro=req.query.Filtro;
                     let descrizione=req.query.Descrizione;
+                    let cate=req.query.Categoria;
                     let filtroNome="";
                     if(descrizione !== undefined)
                         filtroNome=descrizione;
-                    Prodotto.getProdottiPreOrder(pagina,filtro,filtroNome,(result)=>{
+                    Prodotto.getProdottiPreOrder(pagina,filtro,filtroNome,cate,(result)=>{
                         if(result)
                         {
                             json.Ris=1;
@@ -110,4 +112,44 @@ exports.showPreOrdine=(req,ris)=>{
 
 exports.prodByEan=(req,ris)=>{
     let json=new Object();
+    Utils.checkTokenAndParameter(req.query,["idUtente","TokenAuth","EAN"],(esistono)=>{
+        if(esistono)
+        {
+            let idUtente=req.query.idUtente;
+            let tokenAuth=req.query.TokenAuth;
+            Utente.getTipoUtente(idUtente,tokenAuth,(tipo)=>{
+                if(tipo != 4)
+                {
+                    let EAN=req.query.EAN;
+                    Prodotto.getProdottoByEAN(EAN,(prodotto)=>{
+                        if(prodotto)
+                        {
+                            json.Ris=1;
+                            json.Mess="Fatto";
+                            json.Prodotto=prodotto;
+                            ris.json(json);
+                        }
+                        else
+                        {
+                            json.Ris=0;
+                            json.Mess="Prodotto non trovato";
+                            ris.json(json);
+                        }
+                    })
+                }
+                else
+                {
+                    json.Ris=0;
+                    json.Mess="L'account è stato bannato";
+                    ris.json(json);
+                }
+            });
+        }
+        else
+        {
+            json.Ris=0;
+            json.Mess="Inserisci tutti i parametri";
+            ris.json(json);
+        }
+    })
 };
