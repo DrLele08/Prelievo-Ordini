@@ -53,7 +53,22 @@ async function getIdCartByUser(idUtente)
     });
 }
 
-
+async function updateDataCart(idCarrello)
+{
+    return new Promise((resolve,reject)=>{
+        let query="UPDATE Carrello SET DataModifica=NOW() WHERE idCarrello=?";
+        sql.query(query,[idCarrello],(errQ,risQ)=>{
+            if(errQ)
+            {
+                resolve(false);
+            }
+            else
+            {
+                resolve(false);
+            }
+        });
+    });
+}
 
 Cart.seeCart=async(idUtente,result)=>{
     let exist=await hasCart(idUtente);
@@ -102,13 +117,14 @@ Cart.addItem=async(idUtente,idProdotto,qnt,result)=>{
                         let qntOld=parseInt(risF[0].Qnt);
                         let newQnt=qntOld+parseInt(qnt);
                         let query="UPDATE ProdottoCarrello SET Qnt=? WHERE idProdottoCarrello=?";
-                        sql.query(query,[newQnt,idP],(errQ,risQ)=>{
+                        sql.query(query,[newQnt,idP],async(errQ,risQ)=>{
                             if(errQ)
                             {
                                 result(errQ,null);
                             }
                             else
                             {
+                                await updateDataCart(idCart);
                                 result(null,risQ);
                             }
                         });
@@ -151,13 +167,14 @@ Cart.removeItem=async(idUtente,idProdotto,result)=>{
         if(idCart != -1)
         {
             let query="DELETE FROM ProdottoCarrello WHERE ksCarrello=? AND ksArticolo=?";
-            sql.query(query,[idCart,idProdotto],(errQ,risQ)=>{
+            sql.query(query,[idCart,idProdotto],async(errQ,risQ)=>{
                 if(errQ)
                 {
                     result(errQ,null);
                 }
                 else
                 {
+                    await updateDataCart(idCart);
                     result(null,risQ);
                 }
             });

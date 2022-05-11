@@ -1,4 +1,5 @@
 const sql=require("./database.js");
+const Cart=require("./cart.js");
 
 const Ordine=new Object();
 
@@ -82,10 +83,52 @@ Ordine.ordersByCell=(cell,result)=>{
 };
 
 Ordine.doOrdine=(idUtente,result)=>{
-    result(null,true);
+    Cart.seeCart(idUtente,(errC,risC)=>{
+        if(errC)
+        {
+            result(errC,null);
+        }
+        else
+        {
+            console.log(risC);
+            result(null,risC);
+        }
+    });
 };
 
 Ordine.seeOrdini=(pagina,stato,result)=>{
+    const qntPage=parseInt(process.env.ORDINE_PAGINA);
+    if(stato>0)
+    {
+        const offset=pagina*qntPage;
+        let query="SELECT * FROM ordine,statoordine,utente WHERE ordine.ksUtente=utente.idUtente AND statoordine.idStato=ordine.ksStato AND ksStato=? LIMIT ? OFFSET ?;";
+        sql.query(query,[stato,qntPage,offset],(errQ,risQ)=>{
+            if(errQ)
+            {
+                result(errQ,null);
+            }
+            else
+            {
+                result(null,risQ);
+            }
+        });
+    }
+    else
+    {
+        const offset=pagina*qntPage;
+        let query="SELECT * FROM ordine,statoordine,utente WHERE ordine.ksUtente=utente.idUtente AND statoordine.idStato=ordine.ksStato LIMIT ? OFFSET ?;";
+        sql.query(query,[qntPage,offset],(errQ,risQ)=>{
+            if(errQ)
+            {
+                result(errQ,null);
+            }
+            else
+            {
+                result(null,risQ);
+            }
+        });
+    }
+    
     result(null,true);
 };
 
@@ -94,7 +137,17 @@ Ordine.detailOrdine=(idOrdine,result)=>{
 };
 
 Ordine.statoOrdine=(idOrdine,newStato,result)=>{
-    result(null,true);
+    let query="UPDATE Ordine SET ksStato=? WHERE idOrdine=?";
+    sql.query(query,[newStato,idOrdine],(errQ,risQ)=>{
+        if(errQ)
+        {
+            result(errQ,null);
+        }
+        else
+        {
+            result(null,risQ);
+        }
+    });
 };
 
 module.exports=Ordine;

@@ -1,8 +1,6 @@
 const sql=require("./database.js");
-const Categoria=require("./categoria.js");
 const Prodotto=new Object();
 
-const PROD_PAGINA=8;
 
 function getFiltro(filtro,isPreOrder)
 {
@@ -37,6 +35,7 @@ function getFiltro(filtro,isPreOrder)
 }
 
 Prodotto.getProdotti=(pagina,filtro,desc,categoria,result)=>{
+    const PROD_PAGINA=parseInt(process.env.PROD_PAGINA);
     let sqlCat="";
     if(categoria>0)
         sqlCat=" AND ksRepartoPreferito="+sql.escape(categoria)+" ";
@@ -56,6 +55,7 @@ Prodotto.getProdotti=(pagina,filtro,desc,categoria,result)=>{
 };
 
 Prodotto.getProdottiPreOrder=(pagina,filtro,desc,categoria,result)=>{
+    const PROD_PAGINA=parseInt(process.env.PROD_PAGINA);
     let sqlCat="";
     if(categoria>0)
         sqlCat=" AND ksRepartoPreferito="+sql.escape(categoria)+" ";
