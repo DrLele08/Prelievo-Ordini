@@ -1,4 +1,4 @@
-const e = require("cors");
+const Prodotto=require("./prodotto");
 const sql=require("./database.js");
 
 const Cart=new Object();
@@ -104,45 +104,58 @@ Cart.addItem=async(idUtente,idProdotto,qnt,result)=>{
         if(idCart != -1)
         {
             let queryFind="SELECT idProdottoCarrello,Qnt FROM ProdottoCarrello WHERE ksCarrello=? AND ksArticolo=?";
-            sql.query(queryFind,[idCart,idProdotto],(errF,risF)=>{
+            sql.query(queryFind,[idCart,idProdotto],async(errF,risF)=>{
                 if(errF)
                 {
                     result(errF,null);
                 }
                 else
                 {
-                    if(risF.length>0)
-                    {
-                        let idP=risF[0].idProdottoCarrello;
-                        let qntOld=parseInt(risF[0].Qnt);
-                        let newQnt=qntOld+parseInt(qnt);
-                        let query="UPDATE ProdottoCarrello SET Qnt=? WHERE idProdottoCarrello=?";
-                        sql.query(query,[newQnt,idP],async(errQ,risQ)=>{
-                            if(errQ)
+                    Prodotto.getQntDisponibileById(idProdotto,(errQnt,maxQnt)=>{
+                        if(errQnt)
+                        {
+                            result(errQnt,null);
+                        }
+                        else
+                        {
+                            if(risF.length>0)
                             {
-                                result(errQ,null);
+                                let idP=risF[0].idProdottoCarrello;
+                                let qntOld=parseInt(risF[0].Qnt);
+                                let newQnt=qntOld+parseInt(qnt);
+                                if(newQnt>maxQnt)
+                                    newQnt=maxQnt;
+                                let query="UPDATE ProdottoCarrello SET Qnt=? WHERE idProdottoCarrello=?";
+                                sql.query(query,[newQnt,idP],async(errQ,risQ)=>{
+                                    if(errQ)
+                                    {
+                                        result(errQ,null);
+                                    }
+                                    else
+                                    {
+                                        await updateDataCart(idCart);
+                                        result(null,risQ);
+                                    }
+                                });
                             }
                             else
                             {
-                                await updateDataCart(idCart);
-                                result(null,risQ);
+                                if(qnt>maxQnt)
+                                    qnt=maxQnt;
+                                let query="INSERT INTO ProdottoCarrello(ksCarrello,ksArticolo,Qnt,DataInserimento) VALUES(?,?,?,NOW())";
+                                sql.query(query,[idCart,idProdotto,qnt],(errQ,risQ)=>{
+                                    if(errQ)
+                                    {
+                                        result(errQ,null);
+                                    }
+                                    else
+                                    {
+                                        result(null,risQ);
+                                    }
+                                });
                             }
-                        });
-                    }
-                    else
-                    {
-                        let query="INSERT INTO ProdottoCarrello(ksCarrello,ksArticolo,Qnt,DataInserimento) VALUES(?,?,?,NOW())";
-                        sql.query(query,[idCart,idProdotto,qnt],(errQ,risQ)=>{
-                            if(errQ)
-                            {
-                                result(errQ,null);
-                            }
-                            else
-                            {
-                                result(null,risQ);
-                            }
-                        });
-                    }
+                        }
+                    });
                 }
             });
         }

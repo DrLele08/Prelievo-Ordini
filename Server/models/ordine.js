@@ -82,7 +82,7 @@ Ordine.ordersByCell=(cell,result)=>{
     });
 };
 
-Ordine.doOrdine=(idUtente,result)=>{
+Ordine.doOrdine=(idUtente,note,result)=>{
     Cart.seeCart(idUtente,(errC,risC)=>{
         if(errC)
         {
@@ -101,7 +101,7 @@ Ordine.seeOrdini=(pagina,stato,result)=>{
     if(stato>0)
     {
         const offset=pagina*qntPage;
-        let query="SELECT * FROM ordine,statoordine,utente WHERE ordine.ksUtente=utente.idUtente AND statoordine.idStato=ordine.ksStato AND ksStato=? LIMIT ? OFFSET ?;";
+        let query="SELECT idOrdine,statoordine.Stato,utente.Nome,IFNULL(NoteExtra,'') AS NoteExtra,DATE_FORMAT(Ordine.Data,'%e-%m-%Y %H:%i') AS Data FROM ordine,statoordine,utente WHERE ordine.ksUtente=utente.idUtente AND statoordine.idStato=ordine.ksStato AND ksStato=? ORDER BY Data DESC LIMIT ? OFFSET ?";
         sql.query(query,[stato,qntPage,offset],(errQ,risQ)=>{
             if(errQ)
             {
@@ -116,7 +116,7 @@ Ordine.seeOrdini=(pagina,stato,result)=>{
     else
     {
         const offset=pagina*qntPage;
-        let query="SELECT * FROM ordine,statoordine,utente WHERE ordine.ksUtente=utente.idUtente AND statoordine.idStato=ordine.ksStato LIMIT ? OFFSET ?;";
+        let query="SELECT idOrdine,statoordine.Stato,utente.Nome,IFNULL(NoteExtra,'') AS NoteExtra,DATE_FORMAT(Ordine.Data,'%e-%m-%Y %H:%i') AS Data FROM ordine,statoordine,utente WHERE ordine.ksUtente=utente.idUtente AND statoordine.idStato=ordine.ksStato ORDER BY Data DESC LIMIT ? OFFSET ?";
         sql.query(query,[qntPage,offset],(errQ,risQ)=>{
             if(errQ)
             {
@@ -127,13 +127,21 @@ Ordine.seeOrdini=(pagina,stato,result)=>{
                 result(null,risQ);
             }
         });
-    }
-    
-    result(null,true);
+    }    
 };
 
 Ordine.detailOrdine=(idOrdine,result)=>{
-    result(null,true);
+    let query="SELECT idRigaOrdine,idArticolo,Descrizione,Prezzo AS PrezzoAcquisto,PrezzoIvato AS PrezzoAttuale,Qnt AS QntOrdine,QntEvasa FROM rigaordine,articolo WHERE rigaordine.ksArticolo=articolo.idArticolo AND rigaordine.ksOrdine=?;";
+    sql.query(query,[idOrdine],(errQ,risQ)=>{
+        if(errQ)
+        {
+            result(errQ,null);
+        }
+        else
+        {
+            result(null,risQ);
+        }
+    });
 };
 
 Ordine.statoOrdine=(idOrdine,newStato,result)=>{

@@ -95,9 +95,9 @@ Utente.getTipoUtente=(idUtente,tokenAuth,result)=>{
     });
 };
 
-Utente.registrazione=(nome,email,password,tokenAuth,result)=>{
-    let query="INSERT INTO Utente(ksTipo,Nome,Email,Password,TokenAuth) VALUES(3,?,?,?,?)";
-    sql.query(query,[nome,email,password,tokenAuth],(errQ,risQ)=>{
+Utente.registrazione=(nome,email,password,tokenAuth,ide,cell,result)=>{
+    let query="INSERT INTO Utente(ksTipo,Nome,Email,Password,TokenAuth,Identificativo,Cellulare) VALUES(3,?,?,?,?,?,?)";
+    sql.query(query,[nome,email,password,tokenAuth,ide,cell],(errQ,risQ)=>{
         if(errQ)
         {
             result(errQ,null);
@@ -141,8 +141,9 @@ Utente.getUtenti=(result)=>{
 };
 
 Utente.getUtenteById=(idUtente,result)=>{
-    let query="SELECT idUtente,ksTipo,Nome,Email,Identificativo,Cellulare,DATE_FORMAT(DataCreazione,'%d-%m-%Y %H:%i') AS DataCreazione FROM utente WHERE idUtente=?;";
+    let query="SELECT idUtente,ksTipo,Nome,Email,Identificativo,Cellulare FROM utente WHERE idUtente=?;";
     sql.query(query,[idUtente],(errQ,risQ)=>{
+        console.log(errQ);
         if(errQ)
             result(true,null);
         else

@@ -47,7 +47,7 @@ exports.detailDueIn=(req,ris)=>{
 
 exports.doOrdine=(req,ris)=>{
     let json=new Object();
-    Utils.checkTokenAndParameter(req.body,["idUtente","TokenAuth"],(risCheck)=>{
+    Utils.checkTokenAndParameter(req.body,["idUtente","TokenAuth","Note"],(risCheck)=>{
         if(risCheck)
         {
             let idUtente=req.body.idUtente;
@@ -55,7 +55,8 @@ exports.doOrdine=(req,ris)=>{
             Utente.getTipoUtente(idUtente,tokenAuth,(tipo)=>{
                 if(tipo==1)
                 {
-                    Ordine.doOrdine(idUtente,(errO,risO)=>{
+                    let note=req.body.Note;
+                    Ordine.doOrdine(idUtente,note,(errO,risO)=>{
                         if(errO)
                         {
                             json.Ris=0;
@@ -163,7 +164,7 @@ exports.detailOrdine=(req,ris)=>{
                         {
                             json.Ris=1;
                             json.Mess="Fatto";
-                            json.Vett=risO;
+                            json.Ordine=risO;
                             ris.json(json);
                         }
                     });

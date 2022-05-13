@@ -35,7 +35,7 @@ exports.findByEmailAndPwd=(req,ris)=>{
 
 exports.doRegistrazione=(req,ris)=>{
     let json=new Object();
-    Utils.checkTokenAndParameter(req.body,["Nome","Email","Password"],(risCheck)=>{
+    Utils.checkTokenAndParameter(req.body,["Nome","Email","Password","Identificativo","Cellulare"],(risCheck)=>{
         if(risCheck)
         {
             const bcrypt=require('bcrypt');
@@ -43,7 +43,9 @@ exports.doRegistrazione=(req,ris)=>{
             let nome=req.body.Nome;
             let email=req.body.Email;
             let pwd=req.body.Password;
-            if(nome.length>0 && email.length>0 && pwd.length>0)
+            let ident=req.body.Identificativo;
+            let cell=req.body.Cellulare;
+            if(nome.length>0 && email.length>0 && pwd.length>0 && ident.length>0 && cell.length>0)
             {
                 let tokenAuth=randomstring.generate(45);
                 bcrypt.hash(pwd,0,(errHash, hash)=>{
@@ -55,7 +57,7 @@ exports.doRegistrazione=(req,ris)=>{
                     }
                     else
                     {
-                        Utente.registrazione(nome,email,hash,tokenAuth,(errReg,risReg)=>{
+                        Utente.registrazione(nome,email,hash,tokenAuth,ident,cell,(errReg,risReg)=>{
                             if(errReg)
                             {
                                 json.Ris=0;
