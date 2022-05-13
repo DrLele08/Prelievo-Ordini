@@ -101,4 +101,16 @@ Prodotto.getQntDisponibileById=(idProd,result)=>{
     });
 };
 
+Prodotto.getQntDisponibileById=(idProd)=>{
+    return new Promise((resolve,reject)=>{
+        let query="SELECT QntDisponibile FROM Articolo WHERE idArticolo=?";
+        sql.query(query,[idProd],(errQ,risQ)=>{
+            if(errQ || risQ.length==0)
+                resolve(-1);
+            else
+                resolve(risQ[0].QntDisponibile);
+        });
+    });
+};
+
 module.exports=Prodotto;

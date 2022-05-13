@@ -1,5 +1,7 @@
 const sql=require("./database.js");
 const Cart=require("./cart.js");
+const Prodotto=require("./prodotto.js");
+const SqlString = require("mysql/lib/protocol/SqlString");
 
 const Ordine=new Object();
 
@@ -83,15 +85,66 @@ Ordine.ordersByCell=(cell,result)=>{
 };
 
 Ordine.doOrdine=(idUtente,note,result)=>{
-    Cart.seeCart(idUtente,(errC,risC)=>{
+    Cart.seeCart(idUtente,async(errC,risC)=>{
         if(errC)
         {
             result(errC,null);
         }
         else
         {
-            console.log(risC);
-            result(null,risC);
+            let vettProd=new Array();
+            for(let i=0;i<risC.length;i++)
+            {
+                let obj=new Object();
+                let tmp=risC[i];
+                obj.idProdotto=tmp.idArticolo;
+                obj.Prezzo=tmp.PrezzoIvato;
+                let maxQnt=await Prodotto.getQntDisponibileById(tmp.idArticolo);
+                if(tmp.QntCart>maxQnt)
+                    tmp.QntCart=maxQnt;
+                obj.Qnt=tmp.QntCart;
+                vettProd.push(obj);
+            }
+            sql.beginTransaction((errT)=>{
+                if(errT)
+                    result(errT,null);
+                else
+                {
+                    let query="INSERT INTO Ordine(ksUtente,ksStato,Data,NoteExtra) VALUES(?,1,NOW(),?)";
+                    sql.query(query,[idUtente,note],(errQ,risQ)=>{
+                        if(errQ)
+                        {
+                            sql.rollback();
+                            result(errQ,null);
+                        }
+                        else
+                        {
+                            let idOrdine=risQ.insertId;
+                            let queryRiga="INSERT INTO RigaOrdine(ksOrdine,ksArticolo,Prezzo,Qnt) VALUES("+sql.escape(idOrdine)+",?,?,?)";
+                            sql.query(queryRiga,[vettProd],(errRiga,risRiga)=>{
+                                if(errRiga)
+                                {
+                                    sql.rollback();
+                                    result(errRiga,null);
+                                }
+                                else
+                                {
+                                    //Delete Cart
+                                    sql.commit((errComm)=>{
+                                        if(errComm)
+                                        {
+                                            sql.rollback();
+                                            result(errComm,null);
+                                        }
+                                        else
+                                            result(null,true);
+                                    });
+                                }
+                            });
+                        }
+                    });
+                }
+            });
         }
     });
 };

@@ -93,7 +93,7 @@ CREATE TABLE Ordine(
 	ksUtente INT NOT NULL,
 	ksStato INT NOT NULL,
 	Data DATETIME NOT NULL DEFAULT NOW(),
-	NoteExtra VARCHAR(255),
+	NoteExtra VARCHAR(255) NOT NULL DEFAULT "",
 	FOREIGN KEY (ksStato) REFERENCES StatoOrdine(idStato),
 	FOREIGN KEY (ksUtente) REFERENCES Utente(idUtente)
 );
