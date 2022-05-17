@@ -115,6 +115,7 @@ INSERT INTO TipoEvento(Evento) VALUES("Lattura errata");
 INSERT INTO TipoEvento(Evento) VALUES("Chiusura motivata");
 INSERT INTO TipoEvento(Evento) VALUES("Dispositivo scollegato");
 INSERT INTO TipoEvento(Evento) VALUES("Dispositivo collegato");
+INSERT INTO TipoEvento(Evento) VALUES("Lettura terminata");
 
 -- Inserimento Ordini
 INSERT INTO Ordine(ksUtente,ksStato,Data) VALUES(3,3,"2022-04-10 19:23:21");
@@ -143,7 +144,7 @@ INSERT INTO RigaOrdine(ksOrdine,ksArticolo,Prezzo,Qnt) VALUES(4,11,0.99,24);
 INSERT INTO RigaOrdine(ksOrdine,ksArticolo,Prezzo,Qnt) VALUES(4,17,17.99,12);
 
 -- Inserimento Operatori Lettura
-INSERT INTO OperatoriLettura(ksOrdine,ksUtente,DataInizio,DataFine,Note) VALUES(1,1,"2022-04-11 10:03:22","2022-04-11 13:24:21","Pausa pranzo");
+INSERT INTO OperatoriLettura(ksOrdine,ksUtente,DataInizio,DataFine) VALUES(1,1,"2022-04-11 10:03:22","2022-04-11 13:24:21");
 INSERT INTO OperatoriLettura(ksOrdine,ksUtente,DataInizio,DataFine) VALUES(1,2,"2022-04-11 13:10:19","2022-04-11 14:33:08");
 INSERT INTO OperatoriLettura(ksOrdine,ksUtente,DataInizio) VALUES(3,1,"2022-04-18 15:01:52");
 
@@ -154,30 +155,30 @@ INSERT INTO EventoLettura(ksEvento,ksArticolo,ksOperatore,Data) VALUES(2,2,1,"20
 INSERT INTO EventoLettura(ksEvento,ksOperatore,Data) VALUES(4,1,"2022-04-11 10:06:10");
 INSERT INTO EventoLettura(ksEvento,ksOperatore,Data) VALUES(5,1,"2022-04-11 10:06:44");
 INSERT INTO EventoLettura(ksEvento,ksArticolo,ksOperatore,Data) VALUES(1,3,1,"2022-04-11 10:07:12");
-INSERT INTO EventoLettura(ksEvento,ksArticolo,ksOperatore,Data) VALUES(3,3,1,"2022-04-11 13:24:21");
+INSERT INTO EventoLettura(ksEvento,ksArticolo,ksOperatore,Data,Note) VALUES(3,3,1,"2022-04-11 13:24:21","Pausa pranzo");
 INSERT INTO EventoLettura(ksEvento,ksArticolo,ksOperatore,Data) VALUES(1,4,2,"2022-04-11 13:12:10");
 INSERT INTO EventoLettura(ksEvento,ksArticolo,ksOperatore,Data) VALUES(1,5,2,"2022-04-11 13:15:11");
 INSERT INTO EventoLettura(ksEvento,ksArticolo,ksOperatore,Data) VALUES(1,7,3,"2022-04-18 15:02:44");
 INSERT INTO EventoLettura(ksEvento,ksArticolo,ksOperatore,Data) VALUES(1,10,3,"2022-04-18 15:03:37");
 
 -- Inserimento Posto Scaffale
-INSERT INTO PostoScaffale(ksReparto,ksArticolo,Posto,PesoMax,Altezza,Lunghezza,Profondita,Volume,Qnt) VALUES(1,1,1,300000,60,60,100,Altezza*Profondita*Lunghezza,2);
+INSERT INTO PostoScaffale(ksReparto,ksArticolo,Posto,PesoMax,Altezza,Lunghezza,Profondita,Volume,Qnt) VALUES(8,1,1,300000,60,60,100,Altezza*Profondita*Lunghezza,2);
 INSERT INTO PostoScaffale(ksReparto,ksArticolo,Posto,PesoMax,Altezza,Lunghezza,Profondita,Volume,Qnt) VALUES(1,2,2,300000,60,60,100,Altezza*Profondita*Lunghezza,4);
-INSERT INTO PostoScaffale(ksReparto,ksArticolo,Posto,PesoMax,Altezza,Lunghezza,Profondita,Volume,Qnt) VALUES(2,3,1,300000,60,60,100,Altezza*Profondita*Lunghezza,4);
-INSERT INTO PostoScaffale(ksReparto,ksArticolo,Posto,PesoMax,Altezza,Lunghezza,Profondita,Volume,Qnt) VALUES(2,4,2,300000,60,60,100,Altezza*Profondita*Lunghezza,4);
-INSERT INTO PostoScaffale(ksReparto,ksArticolo,Posto,PesoMax,Altezza,Lunghezza,Profondita,Volume,Qnt) VALUES(3,5,1,300,30,30,30,Altezza*Profondita*Lunghezza,4);
-INSERT INTO PostoScaffale(ksReparto,ksArticolo,Posto,PesoMax,Altezza,Lunghezza,Profondita,Volume,Qnt) VALUES(3,6,2,300,30,30,30,Altezza*Profondita*Lunghezza,3);
-INSERT INTO PostoScaffale(ksReparto,ksArticolo,Posto,PesoMax,Altezza,Lunghezza,Profondita,Volume,Qnt) VALUES(4,7,1,300000,60,60,100,Altezza*Profondita*Lunghezza,3);
-INSERT INTO PostoScaffale(ksReparto,ksArticolo,Posto,PesoMax,Altezza,Lunghezza,Profondita,Volume,Qnt) VALUES(4,8,2,300000,60,60,100,Altezza*Profondita*Lunghezza,3);
-INSERT INTO PostoScaffale(ksReparto,ksArticolo,Posto,PesoMax,Altezza,Lunghezza,Profondita,Volume,Qnt) VALUES(5,9,1,300000,60,60,100,Altezza*Profondita*Lunghezza,3);
-INSERT INTO PostoScaffale(ksReparto,ksArticolo,Posto,PesoMax,Altezza,Lunghezza,Profondita,Volume,Qnt) VALUES(5,10,2,300000,60,60,100,Altezza*Profondita*Lunghezza,3);
-INSERT INTO PostoScaffale(ksReparto,ksArticolo,Posto,PesoMax,Altezza,Lunghezza,Profondita,Volume,Qnt) VALUES(6,11,1,300000,60,60,100,Altezza*Profondita*Lunghezza,3);
-INSERT INTO PostoScaffale(ksReparto,ksArticolo,Posto,PesoMax,Altezza,Lunghezza,Profondita,Volume,Qnt) VALUES(6,12,2,300000,60,60,100,Altezza*Profondita*Lunghezza,3);
-INSERT INTO PostoScaffale(ksReparto,ksArticolo,Posto,PesoMax,Altezza,Lunghezza,Profondita,Volume,Qnt) VALUES(7,13,1,300000,60,60,100,Altezza*Profondita*Lunghezza,3);
+INSERT INTO PostoScaffale(ksReparto,ksArticolo,Posto,PesoMax,Altezza,Lunghezza,Profondita,Volume,Qnt) VALUES(1,3,1,300000,60,60,100,Altezza*Profondita*Lunghezza,4);
+INSERT INTO PostoScaffale(ksReparto,ksArticolo,Posto,PesoMax,Altezza,Lunghezza,Profondita,Volume,Qnt) VALUES(1,4,2,300000,60,60,100,Altezza*Profondita*Lunghezza,4);
+INSERT INTO PostoScaffale(ksReparto,ksArticolo,Posto,PesoMax,Altezza,Lunghezza,Profondita,Volume,Qnt) VALUES(1,5,1,300,30,30,30,Altezza*Profondita*Lunghezza,4);
+INSERT INTO PostoScaffale(ksReparto,ksArticolo,Posto,PesoMax,Altezza,Lunghezza,Profondita,Volume,Qnt) VALUES(2,6,2,300,30,30,30,Altezza*Profondita*Lunghezza,3);
+INSERT INTO PostoScaffale(ksReparto,ksArticolo,Posto,PesoMax,Altezza,Lunghezza,Profondita,Volume,Qnt) VALUES(2,7,1,300000,60,60,100,Altezza*Profondita*Lunghezza,3);
+INSERT INTO PostoScaffale(ksReparto,ksArticolo,Posto,PesoMax,Altezza,Lunghezza,Profondita,Volume,Qnt) VALUES(2,8,2,300000,60,60,100,Altezza*Profondita*Lunghezza,3);
+INSERT INTO PostoScaffale(ksReparto,ksArticolo,Posto,PesoMax,Altezza,Lunghezza,Profondita,Volume,Qnt) VALUES(2,9,1,300000,60,60,100,Altezza*Profondita*Lunghezza,3);
+INSERT INTO PostoScaffale(ksReparto,ksArticolo,Posto,PesoMax,Altezza,Lunghezza,Profondita,Volume,Qnt) VALUES(2,10,2,300000,60,60,100,Altezza*Profondita*Lunghezza,3);
+INSERT INTO PostoScaffale(ksReparto,ksArticolo,Posto,PesoMax,Altezza,Lunghezza,Profondita,Volume,Qnt) VALUES(2,11,1,300000,60,60,100,Altezza*Profondita*Lunghezza,3);
+INSERT INTO PostoScaffale(ksReparto,ksArticolo,Posto,PesoMax,Altezza,Lunghezza,Profondita,Volume,Qnt) VALUES(7,12,2,300000,60,60,100,Altezza*Profondita*Lunghezza,3);
+INSERT INTO PostoScaffale(ksReparto,ksArticolo,Posto,PesoMax,Altezza,Lunghezza,Profondita,Volume,Qnt) VALUES(6,13,1,300000,60,60,100,Altezza*Profondita*Lunghezza,3);
 INSERT INTO PostoScaffale(ksReparto,ksArticolo,Posto,PesoMax,Altezza,Lunghezza,Profondita,Volume,Qnt) VALUES(7,14,2,300000,60,60,100,Altezza*Profondita*Lunghezza,3);
-INSERT INTO PostoScaffale(ksReparto,ksArticolo,Posto,PesoMax,Altezza,Lunghezza,Profondita,Volume,Qnt) VALUES(8,15,1,300000,60,60,100,Altezza*Profondita*Lunghezza,3);
-INSERT INTO PostoScaffale(ksReparto,ksArticolo,Posto,PesoMax,Altezza,Lunghezza,Profondita,Volume,Qnt) VALUES(8,16,2,300000,60,60,100,Altezza*Profondita*Lunghezza,3);
-INSERT INTO PostoScaffale(ksReparto,ksArticolo,Posto,PesoMax,Altezza,Lunghezza,Profondita,Volume,Qnt) VALUES(7,17,1,300000,60,60,100,Altezza*Profondita*Lunghezza,3);
-INSERT INTO PostoScaffale(ksReparto,ksArticolo,Posto,PesoMax,Altezza,Lunghezza,Profondita,Volume,Qnt) VALUES(7,18,2,300000,60,60,100,Altezza*Profondita*Lunghezza,3);
-INSERT INTO PostoScaffale(ksReparto,ksArticolo,Posto,PesoMax,Altezza,Lunghezza,Profondita,Volume,Qnt) VALUES(8,19,1,300000,60,60,100,Altezza*Profondita*Lunghezza,3);
-INSERT INTO PostoScaffale(ksReparto,ksArticolo,Posto,PesoMax,Altezza,Lunghezza,Profondita,Volume,Qnt) VALUES(8,20,2,300000,60,60,100,Altezza*Profondita*Lunghezza,3); 
+INSERT INTO PostoScaffale(ksReparto,ksArticolo,Posto,PesoMax,Altezza,Lunghezza,Profondita,Volume,Qnt) VALUES(6,15,1,300000,60,60,100,Altezza*Profondita*Lunghezza,3);
+INSERT INTO PostoScaffale(ksReparto,ksArticolo,Posto,PesoMax,Altezza,Lunghezza,Profondita,Volume,Qnt) VALUES(6,16,2,300000,60,60,100,Altezza*Profondita*Lunghezza,3);
+INSERT INTO PostoScaffale(ksReparto,ksArticolo,Posto,PesoMax,Altezza,Lunghezza,Profondita,Volume,Qnt) VALUES(6,17,1,300000,60,60,100,Altezza*Profondita*Lunghezza,3);
+INSERT INTO PostoScaffale(ksReparto,ksArticolo,Posto,PesoMax,Altezza,Lunghezza,Profondita,Volume,Qnt) VALUES(5,18,2,300000,60,60,100,Altezza*Profondita*Lunghezza,3);
+INSERT INTO PostoScaffale(ksReparto,ksArticolo,Posto,PesoMax,Altezza,Lunghezza,Profondita,Volume,Qnt) VALUES(5,19,1,300000,60,60,100,Altezza*Profondita*Lunghezza,3);
+INSERT INTO PostoScaffale(ksReparto,ksArticolo,Posto,PesoMax,Altezza,Lunghezza,Profondita,Volume,Qnt) VALUES(5,20,2,300000,60,60,100,Altezza*Profondita*Lunghezza,3); 

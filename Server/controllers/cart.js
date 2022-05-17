@@ -11,7 +11,7 @@ exports.seeCart=(req,ris)=>{
             let idUtente=req.query.idUtente;
             let tokenAuth=req.query.TokenAuth;
             Utente.getTipoUtente(idUtente,tokenAuth,(tipo)=>{
-                if(tipo != 4)
+                if(tipo != 4 && tipo != -1)
                 {
                     Cart.seeCart(idUtente,(errC,risC)=>{
                         if(errC)
@@ -32,7 +32,7 @@ exports.seeCart=(req,ris)=>{
                 else
                 {
                     json.Ris=0;
-                    json.Mess="Account bannato";
+                    json.Mess="Impossibile effettuare l'operazione";
                     ris.json(json);
                 }
             });
@@ -54,7 +54,7 @@ exports.addCart=(req,ris)=>{
             let idUtente=req.body.idUtente;
             let tokenAuth=req.body.TokenAuth;
             Utente.getTipoUtente(idUtente,tokenAuth,(tipo)=>{
-                if(tipo != 4)
+                if(tipo != 4 && tipo != -1)
                 {
                     let idArticolo=req.body.idArticolo;
                     let qnt=req.body.Qnt;
@@ -105,7 +105,7 @@ exports.addCart=(req,ris)=>{
                 else
                 {
                     json.Ris=0;
-                    json.Mess="Account bannato";
+                    json.Mess="Impossibile effettuare l'operazione";
                     ris.json(json);
                 }
             });
@@ -128,7 +128,7 @@ exports.removeItem=(req,ris)=>{
             let idUtente=req.body.idUtente;
             let tokenAuth=req.body.TokenAuth;
             Utente.getTipoUtente(idUtente,tokenAuth,(tipo)=>{
-                if(tipo != 4)
+                if(tipo != 4 && tipo != -1)
                 {
                     let idArticolo=req.body.idArticolo;
                     Cart.removeItem(idUtente,idArticolo,(errR,risR)=>{
@@ -149,7 +149,7 @@ exports.removeItem=(req,ris)=>{
                 else
                 {
                     json.Ris=0;
-                    json.Mess="Account bannato";
+                    json.Mess="Impossibile effettuare l'operazione";
                     ris.json(json);
                 }
             });
@@ -171,7 +171,7 @@ exports.deleteCart=(req,ris)=>{
             let idUtente=req.body.idUtente;
             let tokenAuth=req.body.TokenAuth;
             Utente.getTipoUtente(idUtente,tokenAuth,(tipo)=>{
-                if(tipo != 4)
+                if(tipo != 4 && tipo != -1)
                 {
                     Cart.deleteCart(idUtente,(errD,risD)=>{
                         if(errD)
@@ -191,7 +191,7 @@ exports.deleteCart=(req,ris)=>{
                 else
                 {
                     json.Ris=0;
-                    json.Mess="Account bannato";
+                    json.Mess="Impossibile effettuare l'operazione";
                     ris.json(json);
                 }
             });

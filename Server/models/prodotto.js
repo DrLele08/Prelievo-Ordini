@@ -34,15 +34,18 @@ function getFiltro(filtro,isPreOrder)
     }
 }
 
-Prodotto.getProdotti=(pagina,filtro,desc,categoria,result)=>{
+Prodotto.getProdotti=(pagina,filtro,desc,categoria,soloInGiacenza,result)=>{
     const PROD_PAGINA=parseInt(process.env.PROD_PAGINA);
     let sqlCat="";
+    let where="WHERE QntDisponibile>=0";
+    if(soloInGiacenza)
+        where="WHERE QntDisponibile>0"
     if(categoria>0)
         sqlCat=" AND ksRepartoPreferito="+sql.escape(categoria)+" ";
-    let query="SELECT DISTINCT articolo.idArticolo,articolo.Descrizione,articolo.QntDisponibile,articolo.PrezzoIvato,articolo.PrezzoConsigliato,Lunghezza,Altezza,Profondita,Volume,Peso FROM articolo WHERE QntDisponibile>0 "+sqlCat+" ORDER BY "+getFiltro(filtro)+" LIMIT ? OFFSET ?";
+    let query="SELECT DISTINCT articolo.idArticolo,articolo.Descrizione,articolo.QntDisponibile,articolo.PrezzoIvato,articolo.PrezzoConsigliato,Lunghezza,Altezza,Profondita,Volume,Peso FROM articolo "+where+" "+sqlCat+" ORDER BY "+getFiltro(filtro)+" LIMIT ? OFFSET ?";
     if(desc != "")
-        query="SELECT DISTINCT articolo.idArticolo,articolo.Descrizione,articolo.QntDisponibile,articolo.PrezzoIvato,articolo.PrezzoConsigliato,Lunghezza,Altezza,Profondita,Volume,Peso FROM articolo,EAN WHERE EAN.ksArticolo=Articolo.idArticolo AND QntDisponibile>0 AND (Descrizione LIKE "+sql.escape("%"+desc+"%")+" OR EAN="+sql.escape(desc)+" OR Tag LIKE "+sql.escape("%"+desc+"%")+") "+sqlCat+" ORDER BY "+getFiltro(filtro)+" LIMIT ? OFFSET ?";
-        sql.query(query,[PROD_PAGINA,PROD_PAGINA*pagina],(errQ,risQ)=>{
+        query="SELECT DISTINCT articolo.idArticolo,articolo.Descrizione,articolo.QntDisponibile,articolo.PrezzoIvato,articolo.PrezzoConsigliato,Lunghezza,Altezza,Profondita,Volume,Peso FROM articolo,EAN WHERE "+where+" AND EAN.ksArticolo=Articolo.idArticolo AND (Descrizione LIKE "+sql.escape("%"+desc+"%")+" OR EAN="+sql.escape(desc)+" OR Tag LIKE "+sql.escape("%"+desc+"%")+") "+sqlCat+" ORDER BY "+getFiltro(filtro)+" LIMIT ? OFFSET ?";
+    sql.query(query,[PROD_PAGINA,PROD_PAGINA*pagina],(errQ,risQ)=>{
         if(errQ)
         {
             result(null);
@@ -88,16 +91,6 @@ Prodotto.hasProductById=(idProd,result)=>{
             result(errQ,null);
         else
             result(null,risQ.length>0);
-    });
-};
-
-Prodotto.getQntDisponibileById=(idProd,result)=>{
-    let query="SELECT QntDisponibile FROM Articolo WHERE idArticolo=?";
-    sql.query(query,[idProd],(errQ,risQ)=>{
-        if(errQ || risQ.length==0)
-            result(errQ,null);
-        else
-            result(null,risQ[0].QntDisponibile);
     });
 };
 

@@ -1,9 +1,25 @@
 const sql=require("./database.js");
 const Cart=require("./cart.js");
 const Prodotto=require("./prodotto.js");
-const SqlString = require("mysql/lib/protocol/SqlString");
 
 const Ordine=new Object();
+
+Ordine.getIdUtenteByOrdine=async(idOrdine)=>{
+    return new Promise((resolve,reject)=>{
+        let query="SELECT ksUtente FROM Ordine WHERE idOrdine=?";
+        sql.query(query,[idOrdine],(errQ,risQ)=>{
+            if(errQ)
+                resolve(-1);
+            else
+            {
+                if(risQ.length>0)
+                    resolve(risQ[0].ksUtente);
+                else
+                    resolve(-1);
+            }
+        });
+    });
+};
 
 Ordine.showDue=(result)=>{
     let vett=new Array();
@@ -90,7 +106,7 @@ Ordine.doOrdine=(idUtente,note,result)=>{
         {
             result(errC,null);
         }
-        else
+        else if(risC.length>0)
         {
             let vettProd=new Array();
             for(let i=0;i<risC.length;i++)
@@ -103,48 +119,117 @@ Ordine.doOrdine=(idUtente,note,result)=>{
                 if(tmp.QntCart>maxQnt)
                     tmp.QntCart=maxQnt;
                 obj.Qnt=tmp.QntCart;
-                vettProd.push(obj);
+                if(obj.Qnt>0)
+                    vettProd.push(obj);
             }
-            sql.beginTransaction((errT)=>{
-                if(errT)
-                    result(errT,null);
-                else
-                {
-                    let query="INSERT INTO Ordine(ksUtente,ksStato,Data,NoteExtra) VALUES(?,1,NOW(),?)";
-                    sql.query(query,[idUtente,note],(errQ,risQ)=>{
-                        if(errQ)
-                        {
-                            sql.rollback();
-                            result(errQ,null);
-                        }
-                        else
-                        {
-                            let idOrdine=risQ.insertId;
-                            let queryRiga="INSERT INTO RigaOrdine(ksOrdine,ksArticolo,Prezzo,Qnt) VALUES("+sql.escape(idOrdine)+",?,?,?)";
-                            sql.query(queryRiga,[vettProd],(errRiga,risRiga)=>{
-                                if(errRiga)
+            if(vettProd.length>0)
+            {
+                sql.beginTransaction((errT)=>{
+                    if(errT)
+                        result(errT,null);
+                    else
+                    {
+                        let query="INSERT INTO Ordine(ksUtente,ksStato,Data,NoteExtra) VALUES(?,1,NOW(),?)";
+                        sql.query(query,[idUtente,note],(errQ,risQ)=>{
+                            if(errQ)
+                            {
+                                sql.rollback();
+                                result(errQ,null);
+                            }
+                            else
+                            {
+                                let idOrdine=risQ.insertId;
+                                let vettSql=new Array();
+                                for(let i=0;i<vettProd.length;i++)
                                 {
-                                    sql.rollback();
-                                    result(errRiga,null);
+                                    let vettTmp=new Array();
+                                    let tmp=vettProd[i];
+                                    vettTmp.push(idOrdine);
+                                    vettTmp.push(tmp.idProdotto);
+                                    vettTmp.push(tmp.Prezzo);
+                                    vettTmp.push(tmp.Qnt);
+                                    vettSql.push(vettTmp);
                                 }
-                                else
-                                {
-                                    //Delete Cart
-                                    sql.commit((errComm)=>{
-                                        if(errComm)
+                                let queryRiga="INSERT INTO RigaOrdine(ksOrdine,ksArticolo,Prezzo,Qnt) VALUES ?";
+                                sql.query(queryRiga,[vettSql],(errRiga,risRiga)=>{
+                                    if(errRiga)
+                                    {
+                                        sql.rollback();
+                                        result(errRiga,null);
+                                    }
+                                    else
+                                    {
+                                        let queryGiacenze="";
+                                        for(let i=0;i<vettProd.length;i++)
                                         {
-                                            sql.rollback();
-                                            result(errComm,null);
+                                            let tmp=vettProd[i];
+                                            queryGiacenze+="UPDATE Articolo SET QntDisponibile=QntDisponibile-"+sql.escape(tmp.Qnt)+" WHERE idArticolo="+sql.escape(tmp.idProdotto)+";";
                                         }
-                                        else
-                                            result(null,true);
-                                    });
-                                }
-                            });
-                        }
-                    });
-                }
-            });
+                                        sql.query(queryGiacenze,async(errGia,risGia)=>{
+                                            if(errGia)
+                                            {
+                                                sql.rollback();
+                                                result(errGia,null);
+                                            }
+                                            else
+                                            {
+                                                //Delete Cart
+                                                let idCart=await Cart.getIdByUtente(idUtente);
+                                                if(idCart == -1)
+                                                {
+                                                    sql.rollback();
+                                                    result("Errore cart",null);
+                                                }
+                                                else
+                                                {
+                                                    let queryDelItem="DELETE FROM ProdottoCarrello WHERE ksCarrello=?";
+                                                    sql.query(queryDelItem,[idCart],(errDel,risDel)=>{
+                                                        if(errDel)
+                                                        {
+                                                            result(errDel,null);
+                                                        }
+                                                        else
+                                                        {
+                                                            let queryDelCart="DELETE FROM Carrello WHERE idCarrello=?";
+                                                            sql.query(queryDelCart,[idCart],(errCart,risCart)=>{
+                                                                if(errCart)
+                                                                {
+                                                                    sql.rollback();
+                                                                    result(errCart,null);
+                                                                }
+                                                                else
+                                                                {
+                                                                    sql.commit((errComm)=>{
+                                                                        if(errComm)
+                                                                        {
+                                                                            sql.rollback();
+                                                                            result(errComm,null);
+                                                                        }
+                                                                        else
+                                                                            result(null,true);
+                                                                    });
+                                                                }
+                                                            });
+                                                        }
+                                                    });
+                                                }
+                                            }
+                                        });
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
+            }
+            else
+            {
+                result("Carrello vuoto",null);
+            }
+        }
+        else
+        {
+            result("Carrello vuoto",null);
         }
     });
 };

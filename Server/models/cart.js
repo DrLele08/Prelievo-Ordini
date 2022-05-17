@@ -20,6 +20,40 @@ async function createCart(idUtente)
     });
 }
 
+async function clearCart(idUtente)
+{
+    return new Promise((resolve,reject)=>{
+        let query="SELECT prodottocarrello.idProdottoCarrello AS ID FROM utente,articolo,carrello,prodottocarrello WHERE carrello.idCarrello=prodottocarrello.ksCarrello AND prodottocarrello.ksArticolo=articolo.idArticolo AND articolo.QntDisponibile<=0 AND utente.idUtente=carrello.ksUtente AND carrello.ksUtente=?";
+        sql.query(query,[idUtente],(errQ,risQ)=>{
+            if(errQ)
+            {
+                resolve(false);
+            }
+            else
+            {
+                let vettEliminare=new Array();
+                for(let i=0;i<risQ.length;i++)
+                {
+                    let id=risQ[i].ID;
+                    vettEliminare.push(id);
+                }
+                if(vettEliminare.length>0)
+                {
+                    let queryDel="DELETE FROM ProdottoCarrello WHERE idProdottoCarrello=?";
+                    sql.query(queryDel,[vettEliminare],(errDel,risDel)=>{
+                        if(errDel)
+                            resolve(false);
+                        else
+                            resolve(true);
+                    });
+                }
+                else
+                    resolve(true);
+            }
+        });
+    });
+}
+
 async function hasCart(idUtente)
 {
     return new Promise((resolve,reject)=>{
@@ -70,23 +104,48 @@ async function updateDataCart(idCarrello)
     });
 }
 
+Cart.getIdByUtente=(idUtente)=>{
+    return new Promise((resolve,reject)=>{
+        let query="SELECT idCarrello FROM  Carrello WHERE ksUtente=?";
+        sql.query(query,[idUtente],(errQ,risQ)=>{
+            if(errQ)
+                resolve(-1);
+            else
+            {
+                if(risQ.length>0)
+                    resolve(risQ[0].idCarrello);
+                else
+                    resolve(-1);
+            }
+        });
+    });
+};
+
 Cart.seeCart=async(idUtente,result)=>{
     let exist=await hasCart(idUtente);
     if(!exist)
         exist=await createCart(idUtente);
     if(exist)
     {
-        let query="SELECT articolo.idArticolo,articolo.Descrizione,articolo.PrezzoIvato,articolo.Peso,articolo.Volume,prodottocarrello.Qnt AS QntCart FROM articolo,prodottocarrello,carrello,utente WHERE carrello.idCarrello=prodottocarrello.ksCarrello AND articolo.idArticolo=prodottocarrello.ksArticolo AND carrello.ksUtente=utente.idUtente AND utente.idUtente=?;";
-        sql.query(query,[idUtente],(errQ,risQ)=>{
-            if(errQ)
-            {
-                result(errQ,null);
-            }
-            else
-            {
-                result(null,risQ);
-            }
-        });
+        let clear=await clearCart(idUtente);
+        if(clear)
+        {
+            let query="SELECT articolo.idArticolo,articolo.Descrizione,articolo.PrezzoIvato,articolo.Peso,articolo.Volume,prodottocarrello.Qnt AS QntCart FROM articolo,prodottocarrello,carrello,utente WHERE carrello.idCarrello=prodottocarrello.ksCarrello AND articolo.idArticolo=prodottocarrello.ksArticolo AND carrello.ksUtente=utente.idUtente AND utente.idUtente=?;";
+            sql.query(query,[idUtente],(errQ,risQ)=>{
+                if(errQ)
+                {
+                    result(errQ,null);
+                }
+                else
+                {
+                    result(null,risQ);
+                }
+            });
+        }
+        else
+        {
+            result("Errore durante il controllo del carrello",null);
+        }
     }
     else
     {
@@ -111,51 +170,50 @@ Cart.addItem=async(idUtente,idProdotto,qnt,result)=>{
                 }
                 else
                 {
-                    Prodotto.getQntDisponibileById(idProdotto,(errQnt,maxQnt)=>{
-                        if(errQnt)
+                    maxQnt=await Prodotto.getQntDisponibileById(idProdotto);
+                    if(maxQnt>0)
+                    {
+                        if(risF.length>0)
                         {
-                            result(errQnt,null);
+                            let idP=risF[0].idProdottoCarrello;
+                            let qntOld=parseInt(risF[0].Qnt);
+                            let newQnt=qntOld+parseInt(qnt);
+                            if(newQnt>maxQnt)
+                                newQnt=maxQnt;
+                            let query="UPDATE ProdottoCarrello SET Qnt=? WHERE idProdottoCarrello=?";
+                            sql.query(query,[newQnt,idP],async(errQ,risQ)=>{
+                                if(errQ)
+                                {
+                                    result(errQ,null);
+                                }
+                                else
+                                {
+                                    await updateDataCart(idCart);
+                                    result(null,risQ);
+                                }
+                            });
                         }
                         else
                         {
-                            if(risF.length>0)
-                            {
-                                let idP=risF[0].idProdottoCarrello;
-                                let qntOld=parseInt(risF[0].Qnt);
-                                let newQnt=qntOld+parseInt(qnt);
-                                if(newQnt>maxQnt)
-                                    newQnt=maxQnt;
-                                let query="UPDATE ProdottoCarrello SET Qnt=? WHERE idProdottoCarrello=?";
-                                sql.query(query,[newQnt,idP],async(errQ,risQ)=>{
-                                    if(errQ)
-                                    {
-                                        result(errQ,null);
-                                    }
-                                    else
-                                    {
-                                        await updateDataCart(idCart);
-                                        result(null,risQ);
-                                    }
-                                });
-                            }
-                            else
-                            {
-                                if(qnt>maxQnt)
-                                    qnt=maxQnt;
-                                let query="INSERT INTO ProdottoCarrello(ksCarrello,ksArticolo,Qnt,DataInserimento) VALUES(?,?,?,NOW())";
-                                sql.query(query,[idCart,idProdotto,qnt],(errQ,risQ)=>{
-                                    if(errQ)
-                                    {
-                                        result(errQ,null);
-                                    }
-                                    else
-                                    {
-                                        result(null,risQ);
-                                    }
-                                });
-                            }
+                            if(qnt>maxQnt)
+                                qnt=maxQnt;
+                            let query="INSERT INTO ProdottoCarrello(ksCarrello,ksArticolo,Qnt,DataInserimento) VALUES(?,?,?,NOW())";
+                            sql.query(query,[idCart,idProdotto,qnt],(errQ,risQ)=>{
+                                if(errQ)
+                                {
+                                    result(errQ,null);
+                                }
+                                else
+                                {
+                                    result(null,risQ);
+                                }
+                            });
                         }
-                    });
+                    }
+                    else
+                    {
+                        result("Prodotto terminato",null);
+                    }
                 }
             });
         }

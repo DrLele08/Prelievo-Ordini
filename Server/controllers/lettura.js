@@ -10,13 +10,7 @@ exports.findInevase=(req,ris)=>{
             let idUtente=req.query.idUtente;
             let tokenAuth=req.query.TokenAuth;
             Utente.getTipoUtente(idUtente,tokenAuth,(tipo)=>{
-                if(tipo == -1)
-                {
-                    json.Ris=0;
-                    json.Mess="Credenziali non valide";
-                    ris.json(json);
-                }
-                else if(tipo==1 || tipo==2)
+                if(tipo==1 || tipo==2)
                 {
                     Lettura.getLettureInevase((errL,risL)=>{
                         if(errL)
@@ -33,6 +27,102 @@ exports.findInevase=(req,ris)=>{
                             ris.json(json);
                         }
                     });
+                }
+                else
+                {
+                    json.Ris=0;
+                    json.Mess="Non hai i permessi";
+                    ris.json(json);
+                }
+            });
+        }
+        else
+        {
+            json.Ris=-1;
+            json.Mess="Parametri errati";
+            ris.json(json);
+        }
+    });
+};
+
+exports.sceltaLettura=(req,ris)=>{
+    let json=new Object();
+    Utils.checkTokenAndParameter(req.body,["idUtente","TokenAuth","idOrdine"],(risCheck)=>{
+        if(risCheck)
+        {
+            let idUtente=req.body.idUtente;
+            let tokenAuth=req.body.TokenAuth;
+            Utente.getTipoUtente(idUtente,tokenAuth,(tipo)=>{
+                if(tipo==1 || tipo==2)
+                {
+                    let idOrdine=req.body.idOrdine;
+                    Lettura.sceltaLettura(idOrdine,(errScelta,risScelta)=>{
+                        if(errScelta)
+                        {
+                            json.Ris=0;
+                            json.Mess=errScelta;
+                            ris.json(json);
+                        }
+                        else
+                        {
+                            json.Ris=1;
+                            json.Mess="Fatto";
+                            ris.json(json);
+                        }
+                    });
+                }
+                else
+                {
+                    json.Ris=0;
+                    json.Mess="Non hai i permessi";
+                    ris.json(json);
+                }
+            });
+        }
+        else
+        {
+            json.Ris=-1;
+            json.Mess="Parametri errati";
+            ris.json(json);
+        }
+    });
+};
+
+exports.updateLettura=(req,ris)=>{
+    let json=new Object();
+    Utils.checkTokenAndParameter(req.body,["idUtente","TokenAuth","idOperatoreLettura","Letture"],(risCheck)=>{
+        if(risCheck)
+        {
+            let idUtente=req.body.idUtente;
+            let tokenAuth=req.body.TokenAuth;
+            Utente.getTipoUtente(idUtente,tokenAuth,(tipo)=>{
+                if(tipo==1 || tipo==2)
+                {
+                    let idOperatore=req.body.idOperatoreLettura
+                    let letture=req.body.Letture;
+                    if(letture.length>0 && idOperatore>0)
+                    {
+                        Lettura.updateLettura(idOperatore,letture,(errUp,risUp)=>{
+                            if(errUp)
+                            {
+                                json.Ris=0;
+                                json.Mess=errUp;
+                                ris.json(json);
+                            }
+                            else
+                            {
+                                json.Ris=1;
+                                json.Mess="Fatto";
+                                ris.json(json);
+                            }
+                        });
+                    }
+                    else
+                    {
+                        json.Ris=0;
+                        json.Mess="Eventi vuoto";
+                        ris.json(json);
+                    }
                 }
                 else
                 {

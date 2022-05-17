@@ -104,7 +104,6 @@ CREATE TABLE OperatoriLettura(
 	ksUtente INT NOT NULL,
 	DataInizio DATETIME NOT NULL,
 	DataFine DATETIME,
-	Note VARCHAR(124),
 	FOREIGN KEY (ksOrdine) REFERENCES Ordine(idOrdine),
 	FOREIGN KEY (ksUtente) REFERENCES Utente(idUtente)
 );
@@ -126,6 +125,7 @@ CREATE TABLE EventoLettura(
 	ksArticolo INT,
 	ksOperatore INT NOT NULL,
 	Data DATETIME NOT NULL DEFAULT NOW(),
+	Note VARCHAR(124),
 	FOREIGN KEY (ksEvento) REFERENCES TipoEvento(idTipoEvento),
 	FOREIGN KEY (ksArticolo) REFERENCES Articolo(idArticolo),
 	FOREIGN KEY (ksOperatore) REFERENCES OperatoriLettura(idOperatoriLettura)

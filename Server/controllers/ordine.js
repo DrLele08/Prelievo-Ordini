@@ -1,6 +1,7 @@
 const Ordine=require("../models/ordine.js");
 const Utils=require("../models/utils.js");
 const Utente=require("../models/utente.js");
+const Notifica=require("../models/notifica.js");
 
 exports.showDueIn=(req,ris)=>{
     let json=new Object();
@@ -198,7 +199,7 @@ exports.statoOrdine=(req,ris)=>{
                 {
                     let idOrdine=req.body.idOrdine;
                     let newStato=req.body.newStato;
-                    Ordine.statoOrdine(idOrdine,newStato,(errO,risO)=>{
+                    Ordine.statoOrdine(idOrdine,newStato,async(errO,risO)=>{
                         if(errO)
                         {
                             json.Ris=0;
@@ -207,6 +208,8 @@ exports.statoOrdine=(req,ris)=>{
                         }
                         else
                         {
+                            let idUtenteOrdine=await Ordine.getIdUtenteByOrdine(idOrdine);
+                            Notifica.sendNotifica(idUtenteOrdine,"Ordine #"+idOrdine,"Lo stato dell'ordine è stato aggiornato!")
                             json.Ris=1;
                             json.Mess="Fatto";
                             ris.json(json);

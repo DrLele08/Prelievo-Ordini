@@ -13,7 +13,7 @@ exports.showProdotti=(req,ris)=>{
                 let soloInGiacenza=true;
                 if(tipo==1 || tipo==2)
                     soloInGiacenza=false;
-                if(tipo!=4)
+                if(tipo != 4)
                 {
                     let pagina=req.query.Pagina;
                     let filtro=req.query.Filtro;
@@ -22,11 +22,24 @@ exports.showProdotti=(req,ris)=>{
                     let filtroNome="";
                     if(descrizione !== undefined)
                         filtroNome=descrizione;
-                    Prodotto.getProdotti(pagina,filtro,filtroNome,cate,(result)=>{
+                    Prodotto.getProdotti(pagina,filtro,filtroNome,cate,soloInGiacenza,(result)=>{
                         if(result)
                         {
                             json.Ris=1;
                             json.Mess="Fatto";
+                            if(tipo == -1)
+                            {
+                                for(let i=0;i<result.length;i++)
+                                {
+                                    delete result[i].PrezzoIvato;
+                                    delete result[i].PrezzoConsigliato;
+                                    delete result[i].Lunghezza;
+                                    delete result[i].Altezza;
+                                    delete result[i].Profondita;
+                                    delete result[i].Volume;
+                                    delete result[i].Peso;
+                                }
+                            }
                             json.Prodotti=result;
                             ris.json(json);
                         }
@@ -64,10 +77,7 @@ exports.showPreOrdine=(req,ris)=>{
             let idUtente=req.query.idUtente;
             let tokenAuth=req.query.TokenAuth;
             Utente.getTipoUtente(idUtente,tokenAuth,(tipo)=>{
-                let soloInGiacenza=true;
-                if(tipo==1 || tipo==2)
-                    soloInGiacenza=false;
-                if(tipo!=4)
+                if(tipo !=4)
                 {
                     let pagina=req.query.Pagina;
                     let filtro=req.query.Filtro;
@@ -81,6 +91,19 @@ exports.showPreOrdine=(req,ris)=>{
                         {
                             json.Ris=1;
                             json.Mess="Fatto";
+                            if(tipo == -1)
+                            {
+                                for(let i=0;i<result.length;i++)
+                                {
+                                    delete result[i].PrezzoPreOrder;
+                                    delete result[i].PrezzoConsigliato;
+                                    delete result[i].Lunghezza;
+                                    delete result[i].Altezza;
+                                    delete result[i].Profondita;
+                                    delete result[i].Volume;
+                                    delete result[i].Peso;
+                                }
+                            }
                             json.Prodotti=result;
                             ris.json(json);
                         }
@@ -122,10 +145,20 @@ exports.prodByEan=(req,ris)=>{
                 {
                     let EAN=req.query.EAN;
                     Prodotto.getProdottoByEAN(EAN,(prodotto)=>{
-                        if(prodotto)
+                        if(prodotto.length>0)
                         {
                             json.Ris=1;
                             json.Mess="Fatto";
+                            if(tipo == -1)
+                            {
+                                delete prodotto[0].PrezzoIvato;
+                                delete prodotto[0].PrezzoConsigliato;
+                                delete prodotto[0].Lunghezza;
+                                delete prodotto[0].Altezza;
+                                delete prodotto[0].Profondita;
+                                delete prodotto[0].Volume;
+                                delete prodotto[0].Peso;
+                            }
                             json.Prodotto=prodotto;
                             ris.json(json);
                         }

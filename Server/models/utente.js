@@ -143,7 +143,6 @@ Utente.getUtenti=(result)=>{
 Utente.getUtenteById=(idUtente,result)=>{
     let query="SELECT idUtente,ksTipo,Nome,Email,Identificativo,Cellulare FROM utente WHERE idUtente=?;";
     sql.query(query,[idUtente],(errQ,risQ)=>{
-        console.log(errQ);
         if(errQ)
             result(true,null);
         else
