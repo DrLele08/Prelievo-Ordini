@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".view.registrazione.RegistrazioneFragment" >
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/inputRegEmail"
+        android:layout_width="0dp"
+        android:layout_height="60sp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="24dp"
+        android:background="#1F222A"
+        android:ems="10"
+        android:hint="@string/email"
+        android:inputType="textWebEmailAddress|textPersonName"
+        android:padding="8sp"
+        android:textColor="@color/white"
+        android:textColorHint="#9E9E9E"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputRegIden" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/inputRegCell"
+        android:layout_width="0dp"
+        android:layout_height="60sp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="24dp"
+        android:background="#1F222A"
+        android:ems="10"
+        android:hint="@string/cellulare"
+        android:inputType="textPersonName|phone"
+        android:padding="8sp"
+        android:textColor="@color/white"
+        android:textColorHint="#9E9E9E"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputRegEmail" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/inputRegIden"
+        android:layout_width="0dp"
+        android:layout_height="60sp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="24dp"
+        android:background="#1F222A"
+        android:ems="10"
+        android:hint="@string/identificatico"
+        android:inputType="textPersonName"
+        android:padding="8sp"
+        android:textColor="@color/white"
+        android:textColorHint="#9E9E9E"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputRegNome" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/inputRegNome"
+        android:layout_width="0dp"
+        android:layout_height="60sp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="24dp"
+        android:background="#1F222A"
+        android:ems="10"
+        android:hint="@string/nome"
+        android:inputType="textPersonName"
+        android:padding="8sp"
+        android:textColor="@color/white"
+        android:textColorHint="#9E9E9E"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSecondSignUp"
+        android:layout_width="0dp"
+        android:layout_height="65sp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="@color/btnPrimary"
+        android:text="@string/continua"
+        android:textSize="16sp"
+        app:cornerRadius="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

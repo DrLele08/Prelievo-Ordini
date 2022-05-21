@@ -7,6 +7,35 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:713849822952:android:3e56f0077a7e86c795335d",
+        "android_client_info": {
+          "package_name": "it.drlele08.prelievoordini"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "713849822952-7c7sjrlu0l6nm4oiv7ijsof5o2t4hu69.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhZ5b4IAwMasjMaY05eWr3Rj2Wu0RjoqY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "713849822952-7c7sjrlu0l6nm4oiv7ijsof5o2t4hu69.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:713849822952:android:6b6933cb5640a63795335d",
         "android_client_info": {
           "package_name": "it.drlele08.prelivoordini"

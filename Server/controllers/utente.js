@@ -1,3 +1,5 @@
+const e = require("cors");
+const { resume } = require("../models/database.js");
 const Utente=require("../models/utente.js");
 const Utils=require("../models/utils.js");
 
@@ -12,9 +14,18 @@ exports.findByEmailAndPwd=(req,ris)=>{
             {
                 Utente.findByEmailAndPwd(email,pwd,(err,data)=>{
                     if(err)
-                        ris.json(err);
+                    {
+                        json.Ris=0;
+                        json.Mess=err;
+                        ris.json(json);
+                    }
                     else
-                        ris.json(data);
+                    {
+                        json.Ris=1;
+                        json.Mess="Fatto";
+                        json.Utente=data;
+                        ris.json(json);
+                    }
                 });
             }
             else
@@ -47,39 +58,49 @@ exports.doRegistrazione=(req,ris)=>{
             let cell=req.body.Cellulare;
             if(nome.length>0 && email.length>0 && pwd.length>0 && ident.length>0 && cell.length>0)
             {
-                let tokenAuth=randomstring.generate(45);
-                bcrypt.hash(pwd,0,(errHash, hash)=>{
-                    if(errHash)
-                    {
-                        json.Ris=0;
-                        json.Mess="Errore durante l'hash della password";
-                        ris.json(json);
-                    }
-                    else
-                    {
-                        Utente.registrazione(nome,email,hash,tokenAuth,ident,cell,(errReg,risReg)=>{
-                            if(errReg)
-                            {
-                                json.Ris=0;
-                                json.Mess="Errore: "+errReg;
-                                ris.json(json);
-                            }
-                            else
-                            {
-                                let utente=new Object();
-                                utente.idUtente=risReg;
-                                utente.ksTipo=3;
-                                utente.Nome=nome;
-                                utente.Email=email;
-                                utente.tokenAuth=tokenAuth;
-                                json.Ris=1;
-                                json.Mess="Fatto";
-                                json.Utente=utente;
-                                ris.json(json);
-                            }
-                        });
-                    }
-                });
+                let regex=/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
+                if(pwd.match(regex))
+                {
+                    let tokenAuth=randomstring.generate(45);
+                    bcrypt.hash(pwd,0,(errHash, hash)=>{
+                        if(errHash)
+                        {
+                            json.Ris=0;
+                            json.Mess="Errore durante l'hash della password";
+                            ris.json(json);
+                        }
+                        else
+                        {
+                            Utente.registrazione(nome,email,hash,tokenAuth,ident,cell,(errReg,risReg)=>{
+                                if(errReg)
+                                {
+                                    json.Ris=0;
+                                    json.Mess="Errore: "+errReg;
+                                    ris.json(json);
+                                }
+                                else
+                                {
+                                    let utente=new Object();
+                                    utente.idUtente=risReg;
+                                    utente.ksTipo=3;
+                                    utente.Nome=nome;
+                                    utente.Email=email;
+                                    utente.tokenAuth=tokenAuth;
+                                    json.Ris=1;
+                                    json.Mess="Fatto";
+                                    json.Utente=utente;
+                                    ris.json(json);
+                                }
+                            });
+                        }
+                    });
+                }
+                else
+                {
+                    json.Ris=0;
+                    json.Mess="La password non rispetta i criteri";
+                    ris.json(json);
+                }
             }
             else
             {
@@ -106,9 +127,18 @@ exports.findByIdAndAuth=(req,ris)=>{
             let tokenAuth=req.query.TokenAuth;
             Utente.findByIdAndAuth(idUtente,tokenAuth,(err,data)=>{
                 if(err)
-                    ris.json(err);
-                else
-                    ris.json(data);
+                    {
+                        json.Ris=0;
+                        json.Mess=err;
+                        ris.json(json);
+                    }
+                    else
+                    {
+                        json.Ris=1;
+                        json.Mess="Fatto";
+                        json.Utente=data;
+                        ris.json(json);
+                    }
             });
         }
         else

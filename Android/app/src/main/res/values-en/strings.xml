@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Prelievo Ordini</string>
+    <string name="title_home">Home</string>
+    <string name="title_prodotti">Products</string>
+    <string name="title_duein">Due In</string>
+    <string name="title_accedi">Login</string>
+    <string name="title_registrazione">Signup</string>
+    <string name="info_accedi">Log in you account</string>
+    <string name="text_ricordami">Remember me</string>
+    <string name="left_notAccount">Are you new?</string>
+    <string name="right_notAccount">Signup</string>
+    <string name="title_gestione">Manage</string>
+    <string name="title_impostazioni">Settings</string>
+    <string name="title_preorder">Pre Order</string>
+</resources>

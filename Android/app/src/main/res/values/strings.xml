@@ -1,3 +1,29 @@
-<resources>
-    <string name="app_name">Prelivo Ordini</string>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Prelievo Ordini</string>
+    <string name="title_home">Home</string>
+    <string name="title_prodotti">Prodotti</string>
+    <string name="title_duein">Due In</string>
+    <string name="title_accedi">Accedi</string>
+    <string name="title_registrazione">Registrazione</string>
+    <string name="title_registrazionecontinuo">Ci siamo quasi…</string>
+    <string name="continua">Continua</string>
+    <string name="info_accedi">Accedi al tuo account</string>
+    <string name="info_guest" tools:ignore="Typos">Benvenuto in PrelievoOrdini,\nAl momento non hai effettuato l\'accesso.\n\nPotrai comunque visualizzare i nostri prodotti e utilizzare alcune delle nostre funzionalità.</string>
+    <string name="text_ricordami">Ricordami</string>
+    <string name="left_notAccount">Non hai un account?</string>
+    <string name="right_notAccount">Registrati</string>
+    <string name="nome">Nome</string>
+    <string name="identificatico">Identificativo (P.Iva/CF)</string>
+    <string name="email">Email</string>
+    <string name="cellulare">Cellulare</string>
+    <string name="password">Password</string>
+    <string name="password_repeat">Ripeti la password</string>
+    <string name="title_letture">Letture</string>
+    <string name="title_gestione">Gestione</string>
+    <string name="title_areapersonale">Area Personale</string>
+    <string name="title_impostazioni">Impostazioni</string>
+    <string name="title_preorder">Pre Order</string>
+    <string name="logout">Logout</string>
+    <string name="logoutmess">Vuoi davvero uscire dall\'account?</string>
+    <string name="si">Si</string>
 </resources>

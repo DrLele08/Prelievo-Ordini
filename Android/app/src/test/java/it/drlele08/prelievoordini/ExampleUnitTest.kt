@@ -1,4 +1,4 @@
-package it.drlele08.prelivoordini
+package it.drlele08.prelievoordini
 
 import org.junit.Test
 

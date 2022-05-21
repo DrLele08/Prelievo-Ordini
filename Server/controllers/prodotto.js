@@ -144,11 +144,19 @@ exports.prodByEan=(req,ris)=>{
                 if(tipo != 4)
                 {
                     let EAN=req.query.EAN;
-                    Prodotto.getProdottoByEAN(EAN,(prodotto)=>{
-                        if(prodotto.length>0)
+                    Prodotto.getProdottoByEAN(EAN,(errE,prodotto)=>{
+                        if(errE)
+                        {
+                            json.Ris=0;
+                            json.Mess=errE;
+                            ris.json(json);
+                        }
+                        else
                         {
                             json.Ris=1;
                             json.Mess="Fatto";
+                            json.QntEan=prodotto[0].QntConfezione;
+                            delete prodotto[0].QntConfezione;
                             if(tipo == -1)
                             {
                                 delete prodotto[0].PrezzoIvato;
@@ -160,12 +168,6 @@ exports.prodByEan=(req,ris)=>{
                                 delete prodotto[0].Peso;
                             }
                             json.Prodotto=prodotto;
-                            ris.json(json);
-                        }
-                        else
-                        {
-                            json.Ris=0;
-                            json.Mess="Prodotto non trovato";
                             ris.json(json);
                         }
                     })

@@ -78,9 +78,19 @@ Prodotto.getProdottiPreOrder=(pagina,filtro,desc,categoria,result)=>{
 };
 
 Prodotto.getProdottoByEAN=(ean,result)=>{
-    let query="SELECT DISTINCT articolo.idArticolo,articolo.Descrizione,articolo.QntDisponibile,articolo.PrezzoIvato,articolo.PrezzoConsigliato,Lunghezza,Altezza,Profondita,Volume,Peso FROM articolo,ean WHERE EAN.ksArticolo=articolo.idArticolo AND EAN.EAN=?;";
+    let query="SELECT DISTINCT articolo.idArticolo,articolo.Descrizione,articolo.QntDisponibile,articolo.PrezzoIvato,articolo.PrezzoConsigliato,Lunghezza,Altezza,Profondita,Volume,Peso,ean.QntConfezione FROM articolo,ean WHERE EAN.ksArticolo=articolo.idArticolo AND EAN.EAN=?;";
     sql.query(query,[ean],(errQ,risQ)=>{
-        result(risQ);
+        if(errQ)
+        {
+            result(errQ,null);
+        }
+        else
+        {
+            if(risQ.length>0)
+                result(null,risQ);
+            else
+                result("Non trovato",null);
+        }
     });
 };
 

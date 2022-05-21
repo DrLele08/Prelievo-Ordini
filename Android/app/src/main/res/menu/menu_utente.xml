@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/viewProdotti"
+        android:icon="@drawable/prodotti"
+        android:title="@string/title_prodotti"
+        android:visible="true" />
+
+    <item
+        android:id="@+id/viewDueIn"
+        android:icon="@drawable/duein"
+        android:title="@string/title_duein" />
+
+    <item
+        android:id="@+id/viewPreOrder"
+        android:icon="@drawable/preorder"
+        android:title="@string/title_preorder" />
+
+    <item
+        android:id="@+id/viewImpostazioni"
+        android:icon="@drawable/user"
+        android:title="@string/title_areapersonale" />
+
+</menu>

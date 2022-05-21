@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/viewHome">
+
+    <fragment
+        android:id="@+id/viewHome"
+        android:name="it.drlele08.prelievoordini.view.GuestFragment"
+        android:label="@string/title_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_loginFragment"
+            app:destination="@id/viewLogin" />
+        <action
+            android:id="@+id/action_viewGuest_to_registrazioneFragment"
+            app:destination="@id/viewRegistrazione" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/viewProdotti"
+        android:name="it.drlele08.prelievoordini.view.ProdottiFragment"
+        android:label="@string/title_prodotti"
+        tools:layout="@layout/fragment_prodotti" />
+
+    <fragment
+        android:id="@+id/viewDueIn"
+        android:name="it.drlele08.prelievoordini.view.DueInFragment"
+        android:label="@string/title_duein"
+        tools:layout="@layout/fragment_duein" />
+    <fragment
+        android:id="@+id/viewLogin"
+        android:name="it.drlele08.prelievoordini.view.LoginFragment"
+        android:label="Login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_viewLogin_to_registrazioneFragment"
+            app:destination="@id/viewRegistrazione" />
+    </fragment>
+    <fragment
+        android:id="@+id/viewRegistrazione"
+        android:name="it.drlele08.prelievoordini.view.registrazione.RegistrazioneFragment"
+        android:label="@string/title_registrazione"
+        tools:layout="@layout/fragment_registrazione" >
+        <action
+            android:id="@+id/action_viewRegistrazione_to_registrazioneContinuoFragment"
+            app:destination="@id/registrazioneContinuoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/viewLetture"
+        android:name="it.drlele08.prelievoordini.view.LettureFragment"
+        android:label="@string/title_letture"
+        tools:layout="@layout/fragment_letture" />
+    <fragment
+        android:id="@+id/viewGestione"
+        android:name="it.drlele08.prelievoordini.view.GestioneFragment"
+        android:label="@string/title_gestione"
+        tools:layout="@layout/fragment_gestione" />
+    <fragment
+        android:id="@+id/viewImpostazioni"
+        android:name="it.drlele08.prelievoordini.view.AreaUtenteFragment"
+        android:label="@string/title_areapersonale"
+        tools:layout="@layout/fragment_areautente" />
+    <fragment
+        android:id="@+id/viewPreOrder"
+        android:name="it.drlele08.prelievoordini.view.PreOrderFragment"
+        android:label="@string/title_preorder"
+        tools:layout="@layout/fragment_pre_order" />
+    <fragment
+        android:id="@+id/registrazioneContinuoFragment"
+        android:name="it.drlele08.prelievoordini.view.registrazione.RegistrazioneContinuoFragment"
+        android:label="@string/title_registrazionecontinuo"
+        tools:layout="@layout/fragment_registrazione_continuo" >
+        <argument
+            android:name="nome"
+            app:argType="string" />
+        <argument
+            android:name="identificativo"
+            app:argType="string" />
+        <argument
+            android:name="email"
+            app:argType="string" />
+        <argument
+            android:name="cell"
+            app:argType="string" />
+    </fragment>
+</navigation>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/viewLetture"
+        android:icon="@drawable/letture"
+        android:title="@string/title_letture" />
+
+    <item
+        android:id="@+id/viewProdotti"
+        android:icon="@drawable/prodotti"
+        android:title="@string/title_prodotti"
+        android:visible="true" />
+
+    <item
+        android:id="@+id/viewGestione"
+        android:icon="@drawable/gestione"
+        android:title="@string/title_gestione" />
+
+    <item
+        android:id="@+id/viewImpostazioni"
+        android:icon="@drawable/user"
+        android:title="@string/title_areapersonale" />
+
+</menu>
