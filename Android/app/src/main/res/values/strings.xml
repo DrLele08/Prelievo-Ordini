@@ -19,11 +19,15 @@
     <string name="password">Password</string>
     <string name="password_repeat">Ripeti la password</string>
     <string name="title_letture">Letture</string>
-    <string name="title_gestione">Gestione</string>
-    <string name="title_areapersonale">Area Personale</string>
+    <string name="title_gestione">Statistiche</string>
+    <string name="title_areapersonale">Area Utente</string>
     <string name="title_impostazioni">Impostazioni</string>
     <string name="title_preorder">Pre Order</string>
     <string name="logout">Logout</string>
     <string name="logoutmess">Vuoi davvero uscire dall\'account?</string>
     <string name="si">Si</string>
+    <string name="title_cart">Carrello</string>
+    <string name="acquista">Acquista</string>
+    <string name="elimina_carrello">Svuota carrello</string>
+    <string name="totale_cart">Totale: %.2f€</string>
 </resources>

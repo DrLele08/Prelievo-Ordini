@@ -1,4 +1,4 @@
-package it.drlele08.prelievoordini.view
+package it.drlele08.prelievoordini.view.prodotto
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,12 +8,13 @@ import android.view.ViewGroup
 import it.drlele08.prelievoordini.R
 
 
-class GestioneFragment : Fragment()
+class PreOrderFragment : Fragment()
 {
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
     {
-        return inflater.inflate(R.layout.fragment_gestione, container, false)
+        return inflater.inflate(R.layout.fragment_pre_order, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?)

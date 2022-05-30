@@ -1,11 +1,10 @@
-package it.drlele08.prelievoordini.controller
+package it.drlele08.prelievoordini.controller.carrello
 
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.JsonObjectRequest
 import it.drlele08.prelievoordini.Utilita
 import it.drlele08.prelievoordini.model.ProdottoCarrello
-import it.drlele08.prelievoordini.model.Utente
 import org.json.JSONObject
 import java.util.ArrayList
 
@@ -109,7 +108,7 @@ class CarrelloController
 
     fun clearCart(idUtente: Int,token: String,queue: RequestQueue,onSuccess: () -> Unit,onError: (mess: String) -> Unit)
     {
-        val url="${Utilita.host}/api/cart/removeItemCart"
+        val url="${Utilita.host}/api/cart/removeCart"
         val json=JSONObject()
         json.put("Token",Utilita.token)
         json.put("idUtente",idUtente)

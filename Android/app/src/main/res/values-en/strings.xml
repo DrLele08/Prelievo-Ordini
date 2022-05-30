@@ -10,7 +10,7 @@
     <string name="text_ricordami">Remember me</string>
     <string name="left_notAccount">Are you new?</string>
     <string name="right_notAccount">Signup</string>
-    <string name="title_gestione">Manage</string>
+    <string name="title_gestione">Stats</string>
     <string name="title_impostazioni">Settings</string>
     <string name="title_preorder">Pre Order</string>
 </resources>

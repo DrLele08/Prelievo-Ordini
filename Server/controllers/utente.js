@@ -58,49 +58,69 @@ exports.doRegistrazione=(req,ris)=>{
             let cell=req.body.Cellulare;
             if(nome.length>0 && email.length>0 && pwd.length>0 && ident.length>0 && cell.length>0)
             {
-                let regex=/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
-                if(pwd.match(regex))
-                {
-                    let tokenAuth=randomstring.generate(45);
-                    bcrypt.hash(pwd,0,(errHash, hash)=>{
-                        if(errHash)
+                Utente.esisteByEmail(email,(errEsi,risEsi)=>{
+                    if(errEsi)
+                    {
+                        json.Ris=0;
+                        json.Mess=errEsi;
+                        ris.json(json);
+                    }
+                    else
+                    {
+                        if(risEsi)
                         {
                             json.Ris=0;
-                            json.Mess="Errore durante l'hash della password";
+                            json.Mess="Esiste gia un utente con questa email";
                             ris.json(json);
                         }
                         else
                         {
-                            Utente.registrazione(nome,email,hash,tokenAuth,ident,cell,(errReg,risReg)=>{
-                                if(errReg)
-                                {
-                                    json.Ris=0;
-                                    json.Mess="Errore: "+errReg;
-                                    ris.json(json);
-                                }
-                                else
-                                {
-                                    let utente=new Object();
-                                    utente.idUtente=risReg;
-                                    utente.ksTipo=3;
-                                    utente.Nome=nome;
-                                    utente.Email=email;
-                                    utente.tokenAuth=tokenAuth;
-                                    json.Ris=1;
-                                    json.Mess="Fatto";
-                                    json.Utente=utente;
-                                    ris.json(json);
-                                }
-                            });
+                            let regex=/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
+                            if(pwd.match(regex))
+                            {
+                                let tokenAuth=randomstring.generate(45);
+                                bcrypt.hash(pwd,0,(errHash, hash)=>{
+                                    if(errHash)
+                                    {
+                                        json.Ris=0;
+                                        json.Mess="Errore durante l'hash della password";
+                                        ris.json(json);
+                                    }
+                                    else
+                                    {
+                                        Utente.registrazione(nome,email,hash,tokenAuth,ident,cell,(errReg,risReg)=>{
+                                            if(errReg)
+                                            {
+                                                json.Ris=0;
+                                                json.Mess="Errore: "+errReg;
+                                                ris.json(json);
+                                            }
+                                            else
+                                            {
+                                                let utente=new Object();
+                                                utente.idUtente=risReg;
+                                                utente.ksTipo=3;
+                                                utente.Nome=nome;
+                                                utente.Email=email;
+                                                utente.tokenAuth=tokenAuth;
+                                                json.Ris=1;
+                                                json.Mess="Fatto";
+                                                json.Utente=utente;
+                                                ris.json(json);
+                                            }
+                                        });
+                                    }
+                                });
+                            }
+                            else
+                            {
+                                json.Ris=0;
+                                json.Mess="La password non rispetta i criteri";
+                                ris.json(json);
+                            }
                         }
-                    });
-                }
-                else
-                {
-                    json.Ris=0;
-                    json.Mess="La password non rispetta i criteri";
-                    ris.json(json);
-                }
+                    }
+                });
             }
             else
             {

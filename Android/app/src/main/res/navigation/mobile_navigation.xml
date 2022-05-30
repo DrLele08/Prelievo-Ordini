@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/viewHome"
         android:name="it.drlele08.prelievoordini.view.GuestFragment"
-        android:label="@string/title_home" >
+        android:label="@string/title_home">
         <action
             android:id="@+id/action_navigation_home_to_loginFragment"
             app:destination="@id/viewLogin" />
@@ -19,13 +19,17 @@
 
     <fragment
         android:id="@+id/viewProdotti"
-        android:name="it.drlele08.prelievoordini.view.ProdottiFragment"
+        android:name="it.drlele08.prelievoordini.view.prodotto.ProdottiFragment"
         android:label="@string/title_prodotti"
-        tools:layout="@layout/fragment_prodotti" />
+        tools:layout="@layout/fragment_prodotti" >
+        <action
+            android:id="@+id/action_viewProdotti_to_detailProdottoFragment"
+            app:destination="@id/detailProdottoFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/viewDueIn"
-        android:name="it.drlele08.prelievoordini.view.DueInFragment"
+        android:name="it.drlele08.prelievoordini.view.prodotto.DueInFragment"
         android:label="@string/title_duein"
         tools:layout="@layout/fragment_duein" />
     <fragment
@@ -53,9 +57,9 @@
         tools:layout="@layout/fragment_letture" />
     <fragment
         android:id="@+id/viewGestione"
-        android:name="it.drlele08.prelievoordini.view.GestioneFragment"
+        android:name="it.drlele08.prelievoordini.view.StatisticheFragment"
         android:label="@string/title_gestione"
-        tools:layout="@layout/fragment_gestione" />
+        tools:layout="@layout/fragment_statistiche" />
     <fragment
         android:id="@+id/viewImpostazioni"
         android:name="it.drlele08.prelievoordini.view.AreaUtenteFragment"
@@ -63,7 +67,7 @@
         tools:layout="@layout/fragment_areautente" />
     <fragment
         android:id="@+id/viewPreOrder"
-        android:name="it.drlele08.prelievoordini.view.PreOrderFragment"
+        android:name="it.drlele08.prelievoordini.view.prodotto.PreOrderFragment"
         android:label="@string/title_preorder"
         tools:layout="@layout/fragment_pre_order" />
     <fragment
@@ -83,5 +87,24 @@
         <argument
             android:name="cell"
             app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/viewCart"
+        android:name="it.drlele08.prelievoordini.view.CarrelloFragment"
+        android:label="@string/title_cart"
+        tools:layout="@layout/fragment_carrello" >
+        <action
+            android:id="@+id/action_viewCart_to_detailProdottoFragment"
+            app:destination="@id/detailProdottoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailProdottoFragment"
+        android:name="it.drlele08.prelievoordini.view.prodotto.DetailProdottoFragment"
+        android:label="Prodotto"
+        tools:layout="@layout/fragment_detail_prodotto">
+        <argument
+            android:name="idArticolo"
+            android:defaultValue="-1"
+            app:argType="integer" />
     </fragment>
 </navigation>

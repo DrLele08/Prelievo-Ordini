@@ -24,7 +24,8 @@ class UtenteController
                     val ksTipo=obj.getInt("ksTipo")
                     val nome=obj.getString("Nome")
                     val tokenAuth=obj.getString("tokenAuth")
-                    val utente=Utente(idUtente,ksTipo,nome,email,tokenAuth)
+                    val cell=obj.getString("Cellulare")
+                    val utente=Utente(idUtente,ksTipo,nome,email,tokenAuth, cellulare = cell)
                     onSuccess(utente)
                 }
                 else
@@ -54,7 +55,8 @@ class UtenteController
                     val ksTipo=obj.getInt("ksTipo")
                     val nome=obj.getString("Nome")
                     val tokenAuth=obj.getString("tokenAuth")
-                    val utente=Utente(idUtente,ksTipo,nome,email,tokenAuth)
+                    val cell=obj.getString("Cellulare")
+                    val utente=Utente(idUtente,ksTipo,nome,email,tokenAuth, cellulare = cell)
                     onSuccess(utente)
                 }
                 else

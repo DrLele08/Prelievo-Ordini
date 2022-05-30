@@ -54,7 +54,7 @@ exports.doOrdine=(req,ris)=>{
             let idUtente=req.body.idUtente;
             let tokenAuth=req.body.TokenAuth;
             Utente.getTipoUtente(idUtente,tokenAuth,(tipo)=>{
-                if(tipo==1)
+                if(tipo!=4)
                 {
                     let note=req.body.Note;
                     Ordine.doOrdine(idUtente,note,(errO,risO)=>{

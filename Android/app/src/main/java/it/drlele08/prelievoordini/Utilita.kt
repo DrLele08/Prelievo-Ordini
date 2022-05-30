@@ -19,6 +19,9 @@ class Utilita
         Toast: https://github.com/Spikeysanju/MotionToast
         Dialog: https://github.com/afollestad/material-dialogs
         Animation: https://github.com/airbnb/lottie-android
+        Image Download: https://github.com/square/picasso
+        Image Picker: https://github.com/Drjacky/ImagePicker
+        Text Recognition: https://developers.google.com/ml-kit/vision/text-recognition/android
      */
     companion object
     {

@@ -6,6 +6,11 @@
         android:icon="@drawable/prodotti"
         android:title="@string/title_prodotti"
         android:visible="true" />
+    <item
+        android:id="@+id/viewCart"
+        android:icon="@drawable/cart"
+        android:title="@string/title_cart"
+        android:visible="true" />
 
     <item
         android:id="@+id/viewDueIn"

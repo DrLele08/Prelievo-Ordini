@@ -8,12 +8,91 @@
     android:background="@color/background"
     tools:context=".view.AreaUtenteFragment" >
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Esci"
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/textUtenteNome"
+        android:layout_width="0dp"
+        android:layout_height="60sp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:background="#1F222A"
+        android:editable="false"
+        android:ems="10"
+        android:inputType="none"
+        android:padding="8sp"
+        android:textColor="@color/white"
+        android:textColorHint="#9E9E9E"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/animationView" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/textUtenteIden"
+        android:layout_width="0dp"
+        android:layout_height="60sp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="24dp"
+        android:background="#1F222A"
+        android:editable="false"
+        android:ems="10"
+        android:inputType="none"
+        android:padding="8sp"
+        android:textColor="@color/white"
+        android:textColorHint="#9E9E9E"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textUtenteNome" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animationView"
+        android:layout_width="0dp"
+        android:layout_height="160dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="647dp" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="false"
+        app:lottie_rawRes="@raw/user" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/textUtenteEmail"
+        android:layout_width="0dp"
+        android:layout_height="60sp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="24dp"
+        android:background="#1F222A"
+        android:editable="false"
+        android:ems="10"
+        android:inputType="none"
+        android:padding="8sp"
+        android:textColor="@color/white"
+        android:textColorHint="#9E9E9E"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textUtenteIden" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnUtenteEsce"
+        android:layout_width="0dp"
+        android:layout_height="65sp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="#35383F"
+        android:text="Esci"
+        android:textSize="16sp"
+        app:cornerRadius="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

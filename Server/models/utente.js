@@ -6,7 +6,7 @@ const Utente=new Object();
 //Login Email e Password
 Utente.findByEmailAndPwd=(Email,Pwd,result)=>{
     let json=new Object();
-    let query="SELECT idUtente,ksTipo,Nome,Email,Password,TokenAuth FROM Utente WHERE Email=? AND ksTipo!=4";
+    let query="SELECT idUtente,ksTipo,Nome,Email,Password,TokenAuth,Cellulare FROM Utente WHERE Email=? AND ksTipo!=4";
     sql.query(query,Email,(errQ,risQ)=>{
         if(errQ)
         {
@@ -27,6 +27,7 @@ Utente.findByEmailAndPwd=(Email,Pwd,result)=>{
                     json.Nome=risQ[0].Nome;
                     json.Email=risQ[0].Email;
                     json.tokenAuth=risQ[0].TokenAuth;
+                    json.Cellulare=risQ[0].Cellulare;
                     result(null,json);
                 }
                 else
@@ -49,7 +50,7 @@ Utente.findByEmailAndPwd=(Email,Pwd,result)=>{
 //Login idUtente e Token
 Utente.findByIdAndAuth=(idUtente,tokenAuth,result)=>{
     let json=new Object();
-    let query="SELECT ksTipo,Nome,Email FROM Utente WHERE idUtente=? AND TokenAuth=? AND ksTipo!=4";
+    let query="SELECT ksTipo,Nome,Email,Cellulare FROM Utente WHERE idUtente=? AND TokenAuth=? AND ksTipo!=4";
     sql.query(query,[idUtente,tokenAuth],(errQ,risQ)=>{
         if(errQ)
         {
@@ -62,6 +63,7 @@ Utente.findByIdAndAuth=(idUtente,tokenAuth,result)=>{
                 json.Nome=risQ[0].Nome;
                 json.Email=risQ[0].Email;
                 json.tokenAuth=tokenAuth;
+                json.Cellulare=risQ[0].Cellulare;
                 result(null,json);
         }
         else
@@ -151,6 +153,21 @@ Utente.getUtenteById=(idUtente,result)=>{
                 result(null,risQ);
             else
                 result(true,null);
+        }
+    });
+};
+
+Utente.esisteByEmail=(email,result)=>{
+    let query="SELECT email FROM utente WHERE email=?;";
+    sql.query(query,[email],(errQ,risQ)=>{
+        if(errQ)
+            result(errQ,null);
+        else
+        {
+            if(risQ.length>0)
+                result(null,true);
+            else
+                result(null,false);
         }
     });
 };

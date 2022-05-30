@@ -37,7 +37,7 @@ INSERT INTO Utente(ksTipo,Nome,Email,Password,TokenAuth,Identificativo,Cellulare
 INSERT INTO Utente(ksTipo,Nome,Email,Password,TokenAuth,Identificativo,Cellulare) VALUES(4,"Mario Peluso","mariopeluso00@gmail.com","$2b$10$7XjpKMj.ARY5kQfvbNDC4un4aOxrgFwJgDKxFomFHRi68v94TLpWO","50LFYobUHXM3GAkpDcFLQ3WbPJukVNYPEKWKHu2KZ3l8a","383838482849","3391671194");
 
 -- Inserimento articoli
-INSERT INTO Articolo(ksIva,ksReparto,Descrizione,QntDisponibile,PrezzoIvato,PrezzoConsigliato,Lunghezza,Altezza,Profondita,Volume,Peso) VALUES(1,3,"Mascherine Chirurgiche 100 Pezzi",2,9.99,14.99,25,22,12,Altezza*Profondita*Lunghezza,400);
+INSERT INTO Articolo(ksIva,ksReparto,Descrizione,QntDisponibile,PrezzoIvato,PrezzoConsigliato,Lunghezza,Altezza,Profondita,Volume,Peso) VALUES(1,3,"Mascherine Chirurgiche 100 Pezzi",4,9.99,14.99,25,22,12,Altezza*Profondita*Lunghezza,400);
 INSERT INTO Articolo(ksIva,ksReparto,Descrizione,QntDisponibile,PrezzoIvato,PrezzoConsigliato,Lunghezza,Altezza,Profondita,Volume,Peso) VALUES(2,1,"Milka Bar Tuc",4,0.60,0.99,16,8,1.1,Altezza*Profondita*Lunghezza,87);
 INSERT INTO Articolo(ksIva,ksReparto,Descrizione,QntDisponibile,PrezzoIvato,PrezzoConsigliato,Lunghezza,Altezza,Profondita,Volume,Peso) VALUES(2,1,"KitKat White Wafer",4,0.22,0.49,17,9,3,Altezza*Profondita*Lunghezza,41);
 INSERT INTO Articolo(ksIva,ksReparto,Descrizione,QntDisponibile,PrezzoIvato,PrezzoConsigliato,Lunghezza,Altezza,Profondita,Volume,Peso,Tag) VALUES(2,1,"Kinder Happy Hippo",4,1.39,2.49,17,10,3,Altezza*Profondita*Lunghezza,136,"Ippopotamo:Raffaele");
@@ -163,6 +163,7 @@ INSERT INTO EventoLettura(ksEvento,ksArticolo,ksOperatore,Data) VALUES(1,10,3,"2
 
 -- Inserimento Posto Scaffale
 INSERT INTO PostoScaffale(ksReparto,ksArticolo,Posto,PesoMax,Altezza,Lunghezza,Profondita,Volume,Qnt) VALUES(8,1,1,300000,60,60,100,Altezza*Profondita*Lunghezza,2);
+INSERT INTO PostoScaffale(ksReparto,ksArticolo,Posto,PesoMax,Altezza,Lunghezza,Profondita,Volume,Qnt) VALUES(8,1,2,300000,60,60,100,Altezza*Profondita*Lunghezza,2);
 INSERT INTO PostoScaffale(ksReparto,ksArticolo,Posto,PesoMax,Altezza,Lunghezza,Profondita,Volume,Qnt) VALUES(1,2,2,300000,60,60,100,Altezza*Profondita*Lunghezza,4);
 INSERT INTO PostoScaffale(ksReparto,ksArticolo,Posto,PesoMax,Altezza,Lunghezza,Profondita,Volume,Qnt) VALUES(1,3,1,300000,60,60,100,Altezza*Profondita*Lunghezza,4);
 INSERT INTO PostoScaffale(ksReparto,ksArticolo,Posto,PesoMax,Altezza,Lunghezza,Profondita,Volume,Qnt) VALUES(1,4,2,300000,60,60,100,Altezza*Profondita*Lunghezza,4);

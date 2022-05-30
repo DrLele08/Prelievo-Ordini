@@ -188,3 +188,105 @@ exports.prodByEan=(req,ris)=>{
         }
     })
 };
+
+exports.prodById=(req,ris)=>{
+    let json=new Object();
+    Utils.checkTokenAndParameter(req.query,["idUtente","TokenAuth","idProdotto"],(esistono)=>{
+        if(esistono)
+        {
+            let idUtente=req.query.idUtente;
+            let tokenAuth=req.query.TokenAuth;
+            Utente.getTipoUtente(idUtente,tokenAuth,(tipo)=>{
+                if(tipo != 4 && tipo != -1)
+                {
+                    let idProdotto=req.query.idProdotto;
+                    Prodotto.prodById(idProdotto,(errE,prodotto)=>{
+                        if(errE)
+                        {
+                            json.Ris=0;
+                            json.Mess=errE;
+                            ris.json(json);
+                        }
+                        else
+                        {
+                            json.Ris=1;
+                            json.Mess="Fatto";
+                            json.Prodotto=prodotto;
+                            ris.json(json);
+                        }
+                    })
+                }
+                else
+                {
+                    json.Ris=0;
+                    json.Mess="L'account è stato bannato";
+                    ris.json(json);
+                }
+            });
+        }
+        else
+        {
+            json.Ris=0;
+            json.Mess="Inserisci tutti i parametri";
+            ris.json(json);
+        }
+    })
+};
+
+exports.prodByTags=(req,ris)=>{
+    let json=new Object();
+    Utils.checkTokenAndParameter(req.query,["idUtente","TokenAuth","Tags"],(esistono)=>{
+        if(esistono)
+        {
+            let idUtente=req.query.idUtente;
+            let tokenAuth=req.query.TokenAuth;
+            Utente.getTipoUtente(idUtente,tokenAuth,(tipo)=>{
+                if(tipo != 4)
+                {
+                    let tags=req.query.Tags;
+                    let vettTag=tags.split(" ")
+                    Prodotto.getProdottiByTags(vettTag,(errE,result)=>{
+                        if(errE)
+                        {
+                            json.Ris=0;
+                            json.Mess=errE;
+                            ris.json(json);
+                        }
+                        else
+                        {
+                            json.Ris=1;
+                            json.Mess="Fatto";
+                            if(tipo == -1)
+                            {
+                                for(let i=0;i<result.length;i++)
+                                {
+                                    delete result[i].PrezzoPreOrder;
+                                    delete result[i].PrezzoConsigliato;
+                                    delete result[i].Lunghezza;
+                                    delete result[i].Altezza;
+                                    delete result[i].Profondita;
+                                    delete result[i].Volume;
+                                    delete result[i].Peso;
+                                }
+                            }
+                            json.Prodotti=result;
+                            ris.json(json);
+                        }
+                    })
+                }
+                else
+                {
+                    json.Ris=0;
+                    json.Mess="L'account è stato bannato";
+                    ris.json(json);
+                }
+            });
+        }
+        else
+        {
+            json.Ris=0;
+            json.Mess="Inserisci tutti i parametri";
+            ris.json(json);
+        }
+    })
+};

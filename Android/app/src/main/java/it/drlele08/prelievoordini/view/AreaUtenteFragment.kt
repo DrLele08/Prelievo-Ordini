@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import com.afollestad.materialdialogs.MaterialDialog
 import it.drlele08.prelievoordini.MainActivity
 import it.drlele08.prelievoordini.R
@@ -38,13 +39,21 @@ class AreaUtenteFragment : Fragment()
         return inflater.inflate(R.layout.fragment_areautente, container, false)
     }
     private lateinit var btnLogout:Button
+    private lateinit var textNome:TextView
+    private lateinit var textIdentificativo:TextView
+    private lateinit var textEmail:TextView
     override fun onViewCreated(view: View, savedInstanceState: Bundle?)
     {
         super.onViewCreated(view, savedInstanceState)
-        btnLogout=view.findViewById(R.id.button)
+        btnLogout=view.findViewById(R.id.btnUtenteEsce)
+        textNome=view.findViewById(R.id.textUtenteNome)
+        textIdentificativo=view.findViewById(R.id.textUtenteIden)
+        textEmail=view.findViewById(R.id.textUtenteEmail)
         btnLogout.setOnClickListener{
-
             logout()
         }
+        textNome.text=Utilita.user!!.getNome()
+        textIdentificativo.text=Utilita.user!!.getCellulare()
+        textEmail.text=Utilita.user!!.getEmail()
     }
 }

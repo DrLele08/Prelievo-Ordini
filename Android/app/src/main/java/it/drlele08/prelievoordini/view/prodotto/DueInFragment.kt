@@ -1,18 +1,17 @@
-package it.drlele08.prelievoordini.view
-
-import it.drlele08.prelievoordini.R
+package it.drlele08.prelievoordini.view.prodotto
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import it.drlele08.prelievoordini.R
 
-class ProdottiFragment : Fragment() {
+class DueInFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View
     {
-        return inflater.inflate(R.layout.fragment_prodotti,container,false)
+        return inflater.inflate(R.layout.fragment_duein,container,false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?)

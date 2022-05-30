@@ -1,18 +1,26 @@
 package it.drlele08.prelievoordini
 
+import android.app.Activity
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
-import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.android.volley.toolbox.Volley
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.mlkit.vision.common.InputImage
+import com.google.mlkit.vision.text.TextRecognition
+import com.google.mlkit.vision.text.latin.TextRecognizerOptions
 import com.onesignal.OneSignal
 import it.drlele08.prelievoordini.controller.UtenteController
 import it.drlele08.prelievoordini.databinding.ActivityMainBinding
@@ -102,7 +110,7 @@ class MainActivity : AppCompatActivity()
                     navController.navigate(R.id.viewProdotti)
                     appBarConfiguration = AppBarConfiguration(
                         setOf(
-                            R.id.viewProdotti, R.id.viewDueIn,R.id.viewPreOrder,R.id.viewImpostazioni
+                            R.id.viewProdotti,R.id.viewCart,R.id.viewDueIn,R.id.viewPreOrder,R.id.viewImpostazioni
                         )
                     )
                 }

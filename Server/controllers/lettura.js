@@ -45,6 +45,50 @@ exports.findInevase=(req,ris)=>{
     });
 };
 
+exports.letturaInCorso=(req,ris)=>{
+    let json=new Object();
+    Utils.checkTokenAndParameter(req.query,["idUtente","TokenAuth"],(risCheck)=>{
+        if(risCheck)
+        {
+            let idUtente=req.query.idUtente;
+            let tokenAuth=req.query.TokenAuth;
+            Utente.getTipoUtente(idUtente,tokenAuth,(tipo)=>{
+                if(tipo==1 || tipo==2)
+                {
+                    Lettura.letturaInCorso(idUtente,(errC,idOp,vettProd)=>{
+                        if(errC)
+                        {
+                            json.Ris=0;
+                            json.Mess=errC;
+                            ris.json(json);
+                        }
+                        else
+                        {
+                            json.Ris=1;
+                            json.Mess="Fatto";
+                            json.idOperatore=idOp
+                            json.Prodotti=vettProd;
+                            ris.json(json);
+                        }
+                    });
+                }
+                else
+                {
+                    json.Ris=0;
+                    json.Mess="Non hai i permessi";
+                    ris.json(json);
+                }
+            });
+        }
+        else
+        {
+            json.Ris=-1;
+            json.Mess="Parametri errati";
+            ris.json(json);
+        }
+    });
+};
+
 exports.sceltaLettura=(req,ris)=>{
     let json=new Object();
     Utils.checkTokenAndParameter(req.body,["idUtente","TokenAuth","idOrdine"],(risCheck)=>{
@@ -56,7 +100,7 @@ exports.sceltaLettura=(req,ris)=>{
                 if(tipo==1 || tipo==2)
                 {
                     let idOrdine=req.body.idOrdine;
-                    Lettura.sceltaLettura(idOrdine,(errScelta,risScelta)=>{
+                    Lettura.sceltaLettura(idUtente,idOrdine,(errScelta,risScelta,vettProd)=>{
                         if(errScelta)
                         {
                             json.Ris=0;
@@ -67,6 +111,8 @@ exports.sceltaLettura=(req,ris)=>{
                         {
                             json.Ris=1;
                             json.Mess="Fatto";
+                            json.idOperatore=risScelta;
+                            json.Prodotti=vettProd;
                             ris.json(json);
                         }
                     });

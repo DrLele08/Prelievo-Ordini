@@ -5,4 +5,70 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#181A20"
-    tools:context=".view.ProdottiFragment" />
+    tools:context=".view.prodotto.ProdottiFragment" >
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/inputDescProd"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="12dp"
+        android:background="#1F222A"
+        android:ems="10"
+        android:hint="Nome..."
+        android:inputType="textPersonName"
+        android:padding="8sp"
+        android:textColor="@color/white"
+        android:textColorHint="#9E9E9E"
+        app:layout_constraintEnd_toStartOf="@+id/btnEanProd"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnFiltroProd" />
+
+    <ImageView
+        android:id="@+id/btnTextRecProd"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnFiltroProd"
+        app:srcCompat="@drawable/image_processing"
+        tools:src="@tools:sample/avatars" />
+
+    <ImageView
+        android:id="@+id/btnEanProd"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="4dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toStartOf="@+id/btnTextRecProd"
+        app:layout_constraintTop_toBottomOf="@+id/btnFiltroProd"
+        app:srcCompat="@drawable/barcode"
+        tools:src="@tools:sample/avatars" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listProdotti"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputDescProd" />
+
+    <ImageView
+        android:id="@+id/btnFiltroProd"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="12dp"
+        android:src="@drawable/filter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
