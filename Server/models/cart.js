@@ -23,7 +23,7 @@ async function createCart(idUtente)
 async function clearCart(idUtente)
 {
     return new Promise((resolve,reject)=>{
-        let query="SELECT prodottocarrello.idProdottoCarrello AS ID FROM utente,articolo,carrello,prodottocarrello WHERE carrello.idCarrello=prodottocarrello.ksCarrello AND prodottocarrello.ksArticolo=articolo.idArticolo AND articolo.QntDisponibile<=0 AND utente.idUtente=carrello.ksUtente AND carrello.ksUtente=?";
+        let query="SELECT ProdottoCarrello.idProdottoCarrello AS ID FROM Utente,Articolo,Carrello,ProdottoCarrello WHERE Carrello.idCarrello=ProdottoCarrello.ksCarrello AND ProdottoCarrello.ksArticolo=Articolo.idArticolo AND Articolo.QntDisponibile<=0 AND Utente.idUtente=Carrello.ksUtente AND Carrello.ksUtente=?";
         sql.query(query,[idUtente],(errQ,risQ)=>{
             if(errQ)
             {
@@ -57,7 +57,7 @@ async function clearCart(idUtente)
 async function hasCart(idUtente)
 {
     return new Promise((resolve,reject)=>{
-        let query="SELECT * FROM  Carrello WHERE ksUtente=?";
+        let query="SELECT * FROM Carrello WHERE ksUtente=?";
         sql.query(query,[idUtente],(errQ,risQ)=>{
             if(errQ)
                 resolve(false);
@@ -72,7 +72,7 @@ async function hasCart(idUtente)
 async function getIdCartByUser(idUtente)
 {
     return new Promise((resolve,reject)=>{
-        let query="SELECT idCarrello FROM  Carrello WHERE ksUtente=?";
+        let query="SELECT idCarrello FROM Carrello WHERE ksUtente=?";
         sql.query(query,[idUtente],(errQ,risQ)=>{
             if(errQ)
                 resolve(-1);
@@ -106,7 +106,7 @@ async function updateDataCart(idCarrello)
 
 Cart.getIdByUtente=(idUtente)=>{
     return new Promise((resolve,reject)=>{
-        let query="SELECT idCarrello FROM  Carrello WHERE ksUtente=?";
+        let query="SELECT idCarrello FROM Carrello WHERE ksUtente=?";
         sql.query(query,[idUtente],(errQ,risQ)=>{
             if(errQ)
                 resolve(-1);
@@ -130,7 +130,7 @@ Cart.seeCart=async(idUtente,result)=>{
         let clear=await clearCart(idUtente);
         if(clear)
         {
-            let query="SELECT articolo.idArticolo,articolo.Descrizione,articolo.PrezzoIvato,articolo.Peso,articolo.Volume,prodottocarrello.Qnt AS QntCart FROM articolo,prodottocarrello,carrello,utente WHERE carrello.idCarrello=prodottocarrello.ksCarrello AND articolo.idArticolo=prodottocarrello.ksArticolo AND carrello.ksUtente=utente.idUtente AND utente.idUtente=?;";
+            let query="SELECT Articolo.idArticolo,Articolo.Descrizione,Articolo.PrezzoIvato,Articolo.Peso,Articolo.Volume,ProdottoCarrello.Qnt AS QntCart FROM Articolo,ProdottoCarrello,Carrello,Utente WHERE Carrello.idCarrello=ProdottoCarrello.ksCarrello AND Articolo.idArticolo=ProdottoCarrello.ksArticolo AND Carrello.ksUtente=Utente.idUtente AND Utente.idUtente=?;";
             sql.query(query,[idUtente],(errQ,risQ)=>{
                 if(errQ)
                 {

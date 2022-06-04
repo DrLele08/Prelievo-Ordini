@@ -29,9 +29,13 @@
 
     <fragment
         android:id="@+id/viewDueIn"
-        android:name="it.drlele08.prelievoordini.view.prodotto.DueInFragment"
+        android:name="it.drlele08.prelievoordini.view.duein.DueInFragment"
         android:label="@string/title_duein"
-        tools:layout="@layout/fragment_duein" />
+        tools:layout="@layout/fragment_duein" >
+        <action
+            android:id="@+id/action_viewDueIn_to_dueInDetailFragment"
+            app:destination="@id/dueInDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/viewLogin"
         android:name="it.drlele08.prelievoordini.view.LoginFragment"
@@ -52,9 +56,13 @@
     </fragment>
     <fragment
         android:id="@+id/viewLetture"
-        android:name="it.drlele08.prelievoordini.view.LettureFragment"
+        android:name="it.drlele08.prelievoordini.view.lettura.LettureFragment"
         android:label="@string/title_letture"
-        tools:layout="@layout/fragment_letture" />
+        tools:layout="@layout/fragment_letture" >
+        <action
+            android:id="@+id/action_viewLetture_to_letturaSceltaFragment"
+            app:destination="@id/letturaSceltaFragment" />
+    </fragment>
     <fragment
         android:id="@+id/viewGestione"
         android:name="it.drlele08.prelievoordini.view.StatisticheFragment"
@@ -106,5 +114,24 @@
             android:name="idArticolo"
             android:defaultValue="-1"
             app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/dueInDetailFragment"
+        android:name="it.drlele08.prelievoordini.view.duein.DueInDetailFragment"
+        android:label="Dettaglio Due In"
+        tools:layout="@layout/fragment_due_in_detail">
+        <argument
+            android:name="idDue"
+            android:defaultValue="-1"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/letturaSceltaFragment"
+        android:name="it.drlele08.prelievoordini.view.lettura.LetturaSceltaFragment"
+        android:label="Lettura"
+        tools:layout="@layout/fragment_lettura_scelta">
+        <argument
+            android:name="lettura"
+            app:argType="it.drlele08.prelievoordini.model.lettura.Lettura" />
     </fragment>
 </navigation>

@@ -3,7 +3,7 @@ CREATE DATABASE PrelieviOrdini;
 
 USE PrelieviOrdini;
 
-CREATE TABLE TipoUtente(
+CREATE TABLE tipoutente(
 	idTipo INT PRIMARY KEY AUTO_INCREMENT,
 	Tipo VARCHAR(48) NOT NULL
 );

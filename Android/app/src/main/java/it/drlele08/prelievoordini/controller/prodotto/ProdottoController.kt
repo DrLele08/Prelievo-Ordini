@@ -10,7 +10,7 @@ import java.util.ArrayList
 
 class ProdottoController
 {
-    fun getProdotti(idUtente:Int=-1,tokenAuth:String="",pagina:Int,filtro:Int,descrizione:String,categoria:String,queue: RequestQueue,onSuccess:(prodotti:ArrayList<Prodotto>)->Unit,onError:(mess:String)->Unit)
+    fun getProdotti(idUtente:Int=-1,tokenAuth:String="",pagina:Int,filtro:Int,descrizione:String,categoria:Int,queue: RequestQueue,onSuccess:(prodotti:ArrayList<Prodotto>)->Unit,onError:(mess:String)->Unit)
     {
         val url="${Utilita.host}/api/prodotto/prodotti?Token=${Utilita.token}&idUtente=${idUtente}&TokenAuth=${tokenAuth}&Pagina=${pagina}&Filtro=${filtro}&Descrizione=${descrizione}&Categoria=${categoria}"
         val jsonObjectRequest = JsonObjectRequest(
@@ -27,13 +27,24 @@ class ProdottoController
                         val idArt=item.getInt("idArticolo")
                         val desc=item.getString("Descrizione")
                         val qnt=item.getInt("QntDisponibile")
-                        val prezzo=item.getDouble("PrezzoIvato").toFloat()
-                        val prezzoCons=item.getDouble("PrezzoConsigliato").toFloat()
-                        val lung=item.getInt("Lunghezza")
-                        val alt=item.getInt("Altezza")
-                        val prof=item.getInt("Profondita")
-                        val vol=item.getInt("Volume")
-                        val pesoG=item.getInt("Peso")
+
+                        var prezzo=0.0F
+                        var prezzoCons=0.0F
+                        var lung=0
+                        var alt=0
+                        var prof=0
+                        var vol=0
+                        var pesoG=0
+                        if(idUtente != -1)
+                        {
+                            prezzo=item.getDouble("PrezzoIvato").toFloat()
+                            prezzoCons=item.getDouble("PrezzoConsigliato").toFloat()
+                            lung=item.getInt("Lunghezza")
+                            alt=item.getInt("Altezza")
+                            prof=item.getInt("Profondita")
+                            vol=item.getInt("Volume")
+                            pesoG=item.getInt("Peso")
+                        }
                         vett.add(Prodotto(idArt,desc,qnt,prezzo,prezzoCons,lung,alt,prof,vol,pesoG))
                     }
                     onSuccess(vett)
@@ -163,7 +174,7 @@ class ProdottoController
         queue.add(jsonObjectRequest)
     }
 
-    fun getPreOrderProdotti(idUtente:Int=-1,tokenAuth:String="",pagina:Int,filtro:Int,descrizione:String,categoria:String,queue: RequestQueue,onSuccess:(prodotti:ArrayList<Prodotto>)->Unit,onError:(mess:String)->Unit)
+    fun getPreOrderProdotti(idUtente:Int=-1,tokenAuth:String="",pagina:Int,filtro:Int,descrizione:String,categoria:Int,queue: RequestQueue,onSuccess:(prodotti:ArrayList<Prodotto>)->Unit,onError:(mess:String)->Unit)
     {
         val url="${Utilita.host}/api/prodotto/preOrder?Token=${Utilita.token}&idUtente=${idUtente}&TokenAuth=${tokenAuth}&Pagina=${pagina}&Filtro=${filtro}&Descrizione=${descrizione}&Categoria=${categoria}"
         val jsonObjectRequest = JsonObjectRequest(
@@ -173,14 +184,14 @@ class ProdottoController
                 if(ris==1)
                 {
                     val vett= ArrayList<Prodotto>()
-                    val prod=response.getJSONArray("Vett")
+                    val prod=response.getJSONArray("Prodotti")
                     for(i in 0 until prod.length())
                     {
                         val item=prod.getJSONObject(i)
                         val idArt=item.getInt("idArticolo")
                         val desc=item.getString("Descrizione")
                         val qnt=item.getInt("QntDisponibile")
-                        val prezzo=item.getDouble("PrezzoIvato").toFloat()
+                        val prezzo=item.getDouble("PrezzoPreOrder").toFloat()
                         val prezzoCons=item.getDouble("PrezzoConsigliato").toFloat()
                         val lung=item.getInt("Lunghezza")
                         val alt=item.getInt("Altezza")

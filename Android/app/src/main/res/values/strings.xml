@@ -30,4 +30,23 @@
     <string name="acquista">Acquista</string>
     <string name="elimina_carrello">Svuota carrello</string>
     <string name="totale_cart">Totale: %.2f€</string>
+    <string-array name="vett_categorie">
+        <item>Tutte</item>
+        <item>Alimentari</item>
+        <item>Carta e Monouso</item>
+        <item>Casalinghi</item>
+        <item>Cosmetica</item>
+        <item>Detersivi</item>
+        <item>Eventi</item>
+        <item>Giochi</item>
+        <item>Scuola e Ufficio</item>
+    </string-array>
+    <string-array name="vett_ordinamento">
+        <item>Descrizione A-Z</item>
+        <item>Descrizione Z-A</item>
+        <item>Quantità crescente</item>
+        <item>Quantità descrescente</item>
+        <item>Prezzo crescente</item>
+        <item>Prezzo descrescente-</item>
+    </string-array>
 </resources>

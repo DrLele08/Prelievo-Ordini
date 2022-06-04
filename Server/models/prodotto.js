@@ -41,11 +41,11 @@ Prodotto.getProdotti=(pagina,filtro,desc,categoria,soloInGiacenza,result)=>{
     if(soloInGiacenza)
         where="WHERE QntDisponibile>0"
     if(categoria>0)
-        sqlCat=" AND ksRepartoPreferito="+sql.escape(categoria)+" ";
-    let query="SELECT DISTINCT articolo.idArticolo,articolo.Descrizione,articolo.QntDisponibile,articolo.PrezzoIvato,articolo.PrezzoConsigliato,Lunghezza,Altezza,Profondita,Volume,Peso FROM articolo "+where+" "+sqlCat+" ORDER BY "+getFiltro(filtro)+" LIMIT ? OFFSET ?";
+        sqlCat=" AND ksReparto="+sql.escape(categoria)+" ";
+    let query="SELECT DISTINCT Articolo.idArticolo,Articolo.Descrizione,Articolo.QntDisponibile,Articolo.PrezzoIvato,Articolo.PrezzoConsigliato,Lunghezza,Altezza,Profondita,Volume,Peso FROM Articolo "+where+" "+sqlCat+" ORDER BY "+getFiltro(filtro)+" LIMIT ? OFFSET ?";
     if(desc != "")
-        query="SELECT DISTINCT articolo.idArticolo,articolo.Descrizione,articolo.QntDisponibile,articolo.PrezzoIvato,articolo.PrezzoConsigliato,Lunghezza,Altezza,Profondita,Volume,Peso FROM articolo,EAN "+where+" AND EAN.ksArticolo=Articolo.idArticolo AND (Descrizione LIKE "+sql.escape("%"+desc+"%")+" OR EAN="+sql.escape(desc)+" OR Tag LIKE "+sql.escape("%"+desc+"%")+") "+sqlCat+" ORDER BY "+getFiltro(filtro)+" LIMIT ? OFFSET ?";
-    sql.query(query,[PROD_PAGINA,PROD_PAGINA*pagina],(errQ,risQ)=>{
+        query="SELECT DISTINCT Articolo.idArticolo,Articolo.Descrizione,Articolo.QntDisponibile,Articolo.PrezzoIvato,Articolo.PrezzoConsigliato,Lunghezza,Altezza,Profondita,Volume,Peso FROM Articolo,EAN "+where+" AND EAN.ksArticolo=Articolo.idArticolo AND (Descrizione LIKE "+sql.escape("%"+desc+"%")+" OR EAN="+sql.escape(desc)+" OR Tag LIKE "+sql.escape("%"+desc+"%")+") "+sqlCat+" ORDER BY "+getFiltro(filtro)+" LIMIT ? OFFSET ?";
+        sql.query(query,[PROD_PAGINA,PROD_PAGINA*pagina],(errQ,risQ)=>{
         if(errQ)
         {
             result(null);
@@ -58,7 +58,7 @@ Prodotto.getProdotti=(pagina,filtro,desc,categoria,soloInGiacenza,result)=>{
 };
 
 Prodotto.prodById=(idProdotto,result)=>{
-    let query="SELECT articolo.idArticolo,articolo.Descrizione,articolo.QntDisponibile,articolo.PrezzoIvato,articolo.PrezzoConsigliato,Lunghezza,Altezza,Profondita,Volume,Peso FROM articolo WHERE idArticolo=?;";
+    let query="SELECT Articolo.idArticolo,Articolo.Descrizione,Articolo.QntDisponibile,Articolo.PrezzoIvato,Articolo.PrezzoConsigliato,Lunghezza,Altezza,Profondita,Volume,Peso FROM Articolo WHERE idArticolo=?;";
     sql.query(query,[idProdotto],(errQ,risQ)=>{
         if(errQ)
         {
@@ -82,7 +82,7 @@ Prodotto.getProdottiByTags=(tags,result)=>{
         if(i!=(tags.length-1))
             likePart+="OR "
     }
-    let query="SELECT DISTINCT articolo.idArticolo,articolo.Descrizione,articolo.QntDisponibile,articolo.PrezzoIvato,articolo.PrezzoConsigliato,Lunghezza,Altezza,Profondita,Volume,Peso FROM articolo WHERE "+likePart;
+    let query="SELECT DISTINCT Articolo.idArticolo,Articolo.Descrizione,Articolo.QntDisponibile,Articolo.PrezzoIvato,Articolo.PrezzoConsigliato,Lunghezza,Altezza,Profondita,Volume,Peso FROM Articolo WHERE "+likePart;
     sql.query(query,[],(errQ,risQ)=>{
         if(errQ)
         {
@@ -102,10 +102,10 @@ Prodotto.getProdottiPreOrder=(pagina,filtro,desc,categoria,result)=>{
     const PROD_PAGINA=parseInt(process.env.PROD_PAGINA);
     let sqlCat="";
     if(categoria>0)
-        sqlCat=" AND ksRepartoPreferito="+sql.escape(categoria)+" ";
-    let query="SELECT DISTINCT articolo.idArticolo,articolo.Descrizione,articolo.QntDisponibile,articolo.PrezzoPreOrder,articolo.PrezzoConsigliato,Lunghezza,Altezza,Profondita,Volume,Peso FROM articolo WHERE PrezzoPreOrder IS NOT NULL "+sqlCat+" ORDER BY "+getFiltro(filtro)+" LIMIT ? OFFSET ?";
+        sqlCat=" AND ksReparto="+sql.escape(categoria)+" ";
+    let query="SELECT DISTINCT Articolo.idArticolo,Articolo.Descrizione,Articolo.QntDisponibile,Articolo.PrezzoPreOrder,Articolo.PrezzoConsigliato,Lunghezza,Altezza,Profondita,Volume,Peso FROM Articolo WHERE PrezzoPreOrder IS NOT NULL "+sqlCat+" ORDER BY "+getFiltro(filtro)+" LIMIT ? OFFSET ?";
     if(desc != "")
-        query="SELECT DISTINCT articolo.idArticolo,articolo.Descrizione,articolo.QntDisponibile,articolo.PrezzoPreOrder,articolo.PrezzoConsigliato,Lunghezza,Altezza,Profondita,Volume,Peso FROM articolo,ean WHERE ean.ksArticolo=idArticolo AND PrezzoPreOrder IS NOT NULL "+sqlCat+" AND (Descrizione LIKE "+sql.escape("%"+desc+"%")+" OR EAN="+sql.escape(desc)+" OR Tag LIKE "+sql.escape("%"+desc+"%")+") ORDER BY "+getFiltro(filtro)+" LIMIT ? OFFSET ?";
+        query="SELECT DISTINCT Articolo.idArticolo,Articolo.Descrizione,Articolo.QntDisponibile,Articolo.PrezzoPreOrder,Articolo.PrezzoConsigliato,Lunghezza,Altezza,Profondita,Volume,Peso FROM Articolo,EAN WHERE EAN.ksArticolo=idArticolo AND PrezzoPreOrder IS NOT NULL "+sqlCat+" AND (Descrizione LIKE "+sql.escape("%"+desc+"%")+" OR EAN="+sql.escape(desc)+" OR Tag LIKE "+sql.escape("%"+desc+"%")+") ORDER BY "+getFiltro(filtro)+" LIMIT ? OFFSET ?";
         sql.query(query,[PROD_PAGINA,PROD_PAGINA*pagina],(errQ,risQ)=>{
         if(errQ)
         {
@@ -119,7 +119,7 @@ Prodotto.getProdottiPreOrder=(pagina,filtro,desc,categoria,result)=>{
 };
 
 Prodotto.getProdottoByEAN=(ean,result)=>{
-    let query="SELECT DISTINCT articolo.idArticolo,articolo.Descrizione,articolo.QntDisponibile,articolo.PrezzoIvato,articolo.PrezzoConsigliato,Lunghezza,Altezza,Profondita,Volume,Peso,ean.QntConfezione FROM articolo,ean WHERE EAN.ksArticolo=articolo.idArticolo AND EAN.EAN=?;";
+    let query="SELECT DISTINCT Articolo.idArticolo,Articolo.Descrizione,Articolo.QntDisponibile,Articolo.PrezzoIvato,Articolo.PrezzoConsigliato,Lunghezza,Altezza,Profondita,Volume,Peso,EAN.QntConfezione FROM Articolo,EAN WHERE EAN.ksArticolo=Articolo.idArticolo AND EAN.EAN=?;";
     sql.query(query,[ean],(errQ,risQ)=>{
         if(errQ)
         {

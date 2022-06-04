@@ -1,20 +1,20 @@
 package it.drlele08.prelievoordini.controller.prodotto
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.Picasso
+import com.bumptech.glide.Glide
 import it.drlele08.prelievoordini.R
 import it.drlele08.prelievoordini.Utilita
 import it.drlele08.prelievoordini.model.Prodotto
-import org.w3c.dom.Text
 import java.util.ArrayList
 
-class ProdottoAdapter(private var list: ArrayList<Prodotto>,private val delegate: ProdottoDelegate): RecyclerView.Adapter<ProdottoAdapter.ViewHolder>()
+class ProdottoAdapter(private var list: ArrayList<Prodotto>,private val delegate: ProdottoDelegate,private val context:Context): RecyclerView.Adapter<ProdottoAdapter.ViewHolder>()
 {
     @SuppressLint("NotifyDataSetChanged")
     fun updateVett(vett:ArrayList<Prodotto>)
@@ -40,8 +40,11 @@ class ProdottoAdapter(private var list: ArrayList<Prodotto>,private val delegate
     {
         val item= list[position]
         holder.textNome.text=item.getDescrizione()
-        Picasso.get().load("${Utilita.host}/img/articoli/${item.getIdArticolo()}.jpg").into(holder.imageProd)
-        holder.textDetail.text="${item.getPrezzoIvato()}€"
+        Glide.with(context).load("${Utilita.host}/img/articoli/${item.getIdArticolo()}.jpg").into(holder.imageProd)
+        if(Utilita.user != null)
+            holder.textDetail.text="${item.getPrezzoIvato()}€"
+        else
+            holder.textDetail.text="Accedi per visualizzare i prezzi"
         holder.itemView.setOnClickListener{
             delegate.onProductClick(item)
         }

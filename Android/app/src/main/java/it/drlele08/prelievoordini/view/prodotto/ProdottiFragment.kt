@@ -3,19 +3,13 @@ package it.drlele08.prelievoordini.view.prodotto
 import android.app.Activity
 import android.content.Intent
 import android.net.Uri
-import it.drlele08.prelievoordini.R
-
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.ImageView
-import android.widget.Toast
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AppCompatActivity
+import android.widget.Spinner
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
@@ -24,12 +18,16 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.bottomsheets.BottomSheet
+import com.afollestad.materialdialogs.customview.customView
+import com.afollestad.materialdialogs.customview.getCustomView
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.Volley
 import com.github.dhaval2404.imagepicker.ImagePicker
+import com.google.mlkit.vision.barcode.BarcodeScanning
 import com.google.mlkit.vision.common.InputImage
 import com.google.mlkit.vision.text.TextRecognition
 import com.google.mlkit.vision.text.latin.TextRecognizerOptions
+import it.drlele08.prelievoordini.R
 import it.drlele08.prelievoordini.Utilita
 import it.drlele08.prelievoordini.controller.prodotto.ProdottoAdapter
 import it.drlele08.prelievoordini.controller.prodotto.ProdottoController
@@ -37,14 +35,15 @@ import it.drlele08.prelievoordini.controller.prodotto.ProdottoDelegate
 import it.drlele08.prelievoordini.model.Prodotto
 import www.sanju.motiontoast.MotionToast
 import www.sanju.motiontoast.MotionToastStyle
-import java.util.ArrayList
+
 
 class ProdottiFragment : Fragment(),ProdottoDelegate
 {
+    @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?)
     {
         super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode == Activity.RESULT_OK)
+        if (resultCode == Activity.RESULT_OK && requestCode==454)
         {
             val uri: Uri = data?.data!!
             val recognizer = TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS)
@@ -81,6 +80,45 @@ class ProdottiFragment : Fragment(),ProdottoDelegate
                         ResourcesCompat.getFont(requireContext(), www.sanju.motiontoast.R.font.helvetica_regular))
                 }
         }
+        else if (resultCode == Activity.RESULT_OK && requestCode==455)
+        {
+            val uri: Uri = data?.data!!
+            val scanner = BarcodeScanning.getClient()
+            val image= InputImage.fromFilePath(requireContext(),uri)
+            scanner.process(image)
+                .addOnSuccessListener { barcodes ->
+                    if(barcodes.size>0)
+                    {
+                        val bar=barcodes[0].rawValue!!
+                        ProdottoController().getProdottoByEan(Utilita.user!!.getIdUtente(),Utilita.user!!.getTokenAuth(),bar,queue,{prodotto, _ ->
+                            val b=Bundle()
+                            b.putInt("idArticolo",prodotto.getIdArticolo())
+                            Navigation.findNavController(viewGlo).navigate(R.id.detailProdottoFragment,b)
+                        },{err ->
+                            MotionToast.darkToast(requireActivity(),"Errore",err,
+                                MotionToastStyle.ERROR,
+                                MotionToast.GRAVITY_BOTTOM,
+                                MotionToast.LONG_DURATION,
+                                ResourcesCompat.getFont(requireContext(), www.sanju.motiontoast.R.font.helvetica_regular))
+                        })
+                    }
+                    else
+                    {
+                        MotionToast.darkToast(requireActivity(),"Errore","Nessun EAN trovato",
+                            MotionToastStyle.ERROR,
+                            MotionToast.GRAVITY_BOTTOM,
+                            MotionToast.LONG_DURATION,
+                            ResourcesCompat.getFont(requireContext(), www.sanju.motiontoast.R.font.helvetica_regular))
+                    }
+                }
+                .addOnFailureListener {
+                    MotionToast.darkToast(requireActivity(),"Errore",it.toString(),
+                        MotionToastStyle.ERROR,
+                        MotionToast.GRAVITY_BOTTOM,
+                        MotionToast.LONG_DURATION,
+                        ResourcesCompat.getFont(requireContext(), www.sanju.motiontoast.R.font.helvetica_regular))
+                }
+        }
     }
 
     private fun getProdTags(tags:String)
@@ -100,11 +138,24 @@ class ProdottiFragment : Fragment(),ProdottoDelegate
     private fun showFilter()
     {
         MaterialDialog(requireContext(), BottomSheet()).show {
-
+            title(text = "Filtri")
+            customView(R.layout.filter_modal, scrollable = true, horizontalPadding = true)
+            positiveButton(text = "Applica") { dialog ->
+                val spinnerCategoria:Spinner=dialog.getCustomView().findViewById(R.id.spinnerFilterCategoria)
+                val spinnerOrdina:Spinner=dialog.getCustomView().findViewById(R.id.spinnerFilterOrdinamento)
+                val selectedCategoria=spinnerCategoria.selectedItemId.toInt()
+                val selectedOrdina=spinnerOrdina.selectedItemId.toInt()
+                categoria=selectedCategoria
+                filtro=selectedOrdina+1
+                pagina=0
+                listProdotti.clear()
+                getProdotti()
+            }
+            negativeButton(text = "Annulla")
         }
     }
 
-    private fun getProdotti(pagina:Int,filtro:Int,desc:String,categoria:String,queue: RequestQueue)
+    private fun getProdotti()
     {
         var idUtente=-1
         var tokenAuth=""
@@ -114,7 +165,11 @@ class ProdottiFragment : Fragment(),ProdottoDelegate
             tokenAuth=Utilita.user!!.getTokenAuth()
         }
         ProdottoController().getProdotti(idUtente,tokenAuth,pagina,filtro,desc,categoria,queue,{ list->
-            listProdotti=list
+            maxPagina = list.size <= 0
+            for(item in list)
+            {
+                listProdotti.add(item)
+            }
             adapter.updateVett(listProdotti)
         },{mess->
             MotionToast.darkToast(requireActivity(),"Errore",mess,
@@ -131,7 +186,16 @@ class ProdottiFragment : Fragment(),ProdottoDelegate
             .crop()
             .compress(1024)
             .maxResultSize(1080, 1080)
-            .start()
+            .start(454)
+    }
+
+    private fun scanBarcode()
+    {
+        ImagePicker.with(this)
+            .crop()
+            .compress(1024)
+            .maxResultSize(1080, 1080)
+            .start(455)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View
@@ -148,9 +212,11 @@ class ProdottiFragment : Fragment(),ProdottoDelegate
     private lateinit var adapter:ProdottoAdapter
     private lateinit var viewGlo:View
     private var pagina=0
-    private val filtro=0
+    private var filtro=6
     private var desc=""
-    private val categoria=""
+    private var categoria=0
+    private var maxPagina=false
+    private lateinit var layoutManager: LinearLayoutManager
     override fun onViewCreated(view: View, savedInstanceState: Bundle?)
     {
         super.onViewCreated(view, savedInstanceState)
@@ -161,9 +227,10 @@ class ProdottiFragment : Fragment(),ProdottoDelegate
         btnTextRec=view.findViewById(R.id.btnTextRecProd)
         textNome=view.findViewById(R.id.inputDescProd)
         queue=Volley.newRequestQueue(requireContext())
-        viewProdotti.layoutManager = LinearLayoutManager(requireContext())
+        layoutManager=LinearLayoutManager(requireContext())
+        viewProdotti.layoutManager = layoutManager
         listProdotti= ArrayList()
-        adapter=ProdottoAdapter(listProdotti,this)
+        adapter=ProdottoAdapter(listProdotti,this,requireContext())
         viewProdotti.adapter=adapter
         btnFilter.setOnClickListener{
             showFilter()
@@ -171,22 +238,45 @@ class ProdottiFragment : Fragment(),ProdottoDelegate
         btnTextRec.setOnClickListener{
             showTextRec()
         }
-        getProdotti(pagina,filtro,desc,categoria,queue)
+        btnEan.setOnClickListener{
+            scanBarcode()
+        }
+        getProdotti()
         textNome.doOnTextChanged { text, _, _, _ ->
+            pagina=0
             listProdotti.clear()
             desc = if(text.toString().length>2)
                 text.toString()
             else
                 ""
-            getProdotti(pagina,filtro,desc,categoria,queue)
+            getProdotti()
         }
+
+        viewProdotti.addOnScrollListener(object : RecyclerView.OnScrollListener(){
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                val pastVisibleItem = layoutManager.findFirstCompletelyVisibleItemPosition()
+                val total = adapter.itemCount
+                if(total>5)
+                {
+                    if (pastVisibleItem>(total-5) && !maxPagina)
+                    {
+                        pagina++
+                        getProdotti()
+                    }
+                }
+                super.onScrolled(recyclerView, dx, dy)
+            }
+        })
     }
 
     override fun onProductClick(prodotto: Prodotto)
     {
-        val b=Bundle()
-        b.putInt("idArticolo",prodotto.getIdArticolo())
-        Navigation.findNavController(viewGlo).navigate(R.id.detailProdottoFragment,b)
+        if(Utilita.user != null)
+        {
+            val b=Bundle()
+            b.putInt("idArticolo",prodotto.getIdArticolo())
+            Navigation.findNavController(viewGlo).navigate(R.id.detailProdottoFragment,b)
+        }
     }
 
 }

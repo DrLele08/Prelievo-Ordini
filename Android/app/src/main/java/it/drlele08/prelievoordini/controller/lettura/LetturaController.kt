@@ -1,4 +1,4 @@
-package it.drlele08.prelievoordini.controller
+package it.drlele08.prelievoordini.controller.lettura
 
 import com.android.volley.Request
 import com.android.volley.RequestQueue
@@ -63,30 +63,37 @@ class LetturaController
                 if(ris==1)
                 {
                     val idOperatore=response.getInt("idOperatore")
-                    val prod=response.getJSONArray("Posizioni")
-                    val vett=ArrayList<DetailLettura>()
-                    for(i in 0 until prod.length())
+                    if(idOperatore == -1)
                     {
-                        val obj=prod.getJSONObject(i)
-                        val idRiga=obj.getInt("idRigaOrdine")
-                        val idArt=obj.getInt("idArticolo")
-                        val desc=obj.getString("Descrizione")
-                        val qntOrd=obj.getInt("QntOrdinata")
-                        val vettPos=ArrayList<PosizioneProdotto>()
-                        val vettTmp=obj.getJSONArray("Posizioni")
-                        for(j in 0 until vettTmp.length())
-                        {
-                            val tmp=vettTmp.getJSONObject(j)
-                            val idRep=tmp.getInt("idReparto")
-                            val nomeRep=tmp.getString("NomeReparto")
-                            val scaff=tmp.getInt("Scaffale")
-                            val qnt=tmp.getInt("Qnt")
-                            vettPos.add(PosizioneProdotto(idRep,nomeRep,scaff,qnt))
-                        }
-                        vett.add(DetailLettura(idRiga,idArt,desc,qntOrd,vettPos))
+                        onSuccess(Lettura(-1,java.util.ArrayList()))
                     }
-                    val lett=Lettura(idOperatore,vett)
-                    onSuccess(lett)
+                    else
+                    {
+                        val prod=response.getJSONArray("Prodotti")
+                        val vett=ArrayList<DetailLettura>()
+                        for(i in 0 until prod.length())
+                        {
+                            val obj=prod.getJSONObject(i)
+                            val idRiga=obj.getInt("idRigaOrdine")
+                            val idArt=obj.getInt("idArticolo")
+                            val desc=obj.getString("Descrizione")
+                            val qntOrd=obj.getInt("QntOrdinata")
+                            val vettPos=ArrayList<PosizioneProdotto>()
+                            val vettTmp=obj.getJSONArray("Posizioni")
+                            for(j in 0 until vettTmp.length())
+                            {
+                                val tmp=vettTmp.getJSONObject(j)
+                                val idRep=tmp.getInt("idReparto")
+                                val nomeRep=tmp.getString("NomeReparto")
+                                val scaff=tmp.getInt("Scaffale")
+                                val qnt=tmp.getInt("Qnt")
+                                vettPos.add(PosizioneProdotto(idRep,nomeRep,scaff,qnt))
+                            }
+                            vett.add(DetailLettura(idRiga,idArt,desc,qntOrd,vettPos))
+                        }
+                        val lett=Lettura(idOperatore,vett)
+                        onSuccess(lett)
+                    }
                 }
                 else
                 {

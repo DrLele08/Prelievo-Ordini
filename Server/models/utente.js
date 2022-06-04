@@ -133,7 +133,7 @@ Utente.getNomeByCell=(cell,result)=>{
 }
 
 Utente.getUtenti=(result)=>{
-    let query="SELECT utente.idUtente,utente.Nome,utente.ksTipo AS Ruolo FROM utente";
+    let query="SELECT Utente.idUtente,Utente.Nome,Utente.ksTipo AS Ruolo FROM Utente WHERE ksTipo IN(1,2)";
     sql.query(query,(errQ,risQ)=>{
         if(errQ)
             result(errQ,null);
@@ -143,7 +143,7 @@ Utente.getUtenti=(result)=>{
 };
 
 Utente.getUtenteById=(idUtente,result)=>{
-    let query="SELECT idUtente,ksTipo,Nome,Email,Identificativo,Cellulare FROM utente WHERE idUtente=?;";
+    let query="SELECT idUtente,ksTipo,Nome,Email,Identificativo,Cellulare FROM Utente WHERE idUtente=?;";
     sql.query(query,[idUtente],(errQ,risQ)=>{
         if(errQ)
             result(true,null);
@@ -158,7 +158,7 @@ Utente.getUtenteById=(idUtente,result)=>{
 };
 
 Utente.esisteByEmail=(email,result)=>{
-    let query="SELECT email FROM utente WHERE email=?;";
+    let query="SELECT Email FROM Utente WHERE Email=?;";
     sql.query(query,[email],(errQ,risQ)=>{
         if(errQ)
             result(errQ,null);

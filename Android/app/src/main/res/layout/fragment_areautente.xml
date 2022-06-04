@@ -25,7 +25,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/animationView" />
+        app:layout_constraintTop_toBottomOf="@+id/animationLettura" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/textUtenteIden"
@@ -47,7 +47,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textUtenteNome" />
 
     <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/animationView"
+        android:id="@+id/animationLettura"
         android:layout_width="0dp"
         android:layout_height="160dp"
         android:layout_marginStart="12dp"

@@ -167,7 +167,7 @@ exports.prodByEan=(req,ris)=>{
                                 delete prodotto[0].Volume;
                                 delete prodotto[0].Peso;
                             }
-                            json.Prodotto=prodotto;
+                            json.Prodotto=prodotto[0];
                             ris.json(json);
                         }
                     })

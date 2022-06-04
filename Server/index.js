@@ -1,7 +1,7 @@
 const express=require('express');
 const app=express();
 const http=require('http').Server(app);
-const port=3000;
+const port=8000;
 require('dotenv').config();
 app.use(express.json());
 app.use(express.static('public'));

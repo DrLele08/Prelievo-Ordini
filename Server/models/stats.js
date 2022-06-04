@@ -9,7 +9,7 @@ Stats.statsById=(idUtente,result)=>{
     json.Mess="Fatto";
     let stat=new Array();
     //Lettura aperta
-    let query="SELECT COUNT(*) AS N FROM operatorilettura WHERE ksUtente=?";
+    let query="SELECT COUNT(*) AS N FROM OperatoriLettura WHERE ksUtente=?";
     sql.query(query,[idUtente],(errQ,risQ)=>{
         if(risQ.length)
         {
@@ -20,7 +20,7 @@ Stats.statsById=(idUtente,result)=>{
         }
         json.Stat=stat;
         //Letture totali
-        let queryTotale="SELECT COUNT(*) AS N FROM eventolettura,operatorilettura,utente WHERE eventolettura.ksOperatore=operatorilettura.idOperatoriLettura AND operatorilettura.ksUtente=utente.idUtente AND utente.idUtente=? AND ksEvento IN(1,2);";
+        let queryTotale="SELECT COUNT(*) AS N FROM EventoLettura,OperatoriLettura,Utente WHERE EventoLettura.ksOperatore=OperatoriLettura.idOperatoriLettura AND OperatoriLettura.ksUtente=Utente.idUtente AND Utente.idUtente=? AND ksEvento IN(1,2);";
         sql.query(queryTotale,[idUtente],(errTot,risTot)=>{
             if(risTot.length)
             {
@@ -69,7 +69,7 @@ Stats.statsGeneric=(result)=>{
             json.MostLetture=vett;
 
             //Utente con più errori
-            let queryMostError="SELECT Utente.Nome,COUNT(*) AS numLetture FROM OperatoriLettura,Utente,eventolettura WHERE eventolettura.ksOperatore=operatorilettura.idOperatoriLettura AND Utente.idUtente=OperatoriLettura.ksUtente AND eventolettura.ksEvento=2 GROUP BY ksUtente ORDER BY numLetture DESC LIMIT 1;";
+            let queryMostError="SELECT Utente.Nome,COUNT(*) AS numLetture FROM OperatoriLettura,Utente,EventoLettura WHERE EventoLettura.ksOperatore=OperatoriLettura.idOperatoriLettura AND Utente.idUtente=OperatoriLettura.ksUtente AND EventoLettura.ksEvento=2 GROUP BY ksUtente ORDER BY numLetture DESC LIMIT 1;";
             sql.query(queryMostError,(errQ2,risQ2)=>{
                 if(!errQ2)
                 {

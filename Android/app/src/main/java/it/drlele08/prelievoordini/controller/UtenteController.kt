@@ -5,6 +5,7 @@ import com.android.volley.RequestQueue
 import com.android.volley.toolbox.JsonObjectRequest
 import it.drlele08.prelievoordini.Utilita
 import it.drlele08.prelievoordini.model.Utente
+import it.drlele08.prelievoordini.model.UtenteMini
 import org.json.JSONObject
 import java.util.ArrayList
 
@@ -72,7 +73,7 @@ class UtenteController
         queue.add(jsonObjectRequest)
     }
 
-    fun getAllUtenti(idUtente: Int,token: String,queue: RequestQueue,onSuccess: (vettUtente: ArrayList<Utente>) -> Unit,onError: (err: String) -> Unit)
+    fun getAllOperatori(idUtente: Int,token: String,queue: RequestQueue,onSuccess: (vettUtente: ArrayList<UtenteMini>) -> Unit,onError: (err: String) -> Unit)
     {
         val url="${Utilita.host}/api/utente/utenti?Token=${Utilita.token}&idUtente=${idUtente}&TokenAuth=${token}"
         val jsonObjectRequest = JsonObjectRequest(
@@ -81,15 +82,14 @@ class UtenteController
                 val ris=response.getInt("Ris")
                 if(ris==1)
                 {
-                    val vett=ArrayList<Utente>()
+                    val vett=ArrayList<UtenteMini>()
                     val users=response.getJSONArray("Vett")
                     for(i in 0 until users.length())
                     {
                         val item=users.getJSONObject(i)
                         val idTmp=item.getInt("idUtente")
                         val nome=item.getString("Nome")
-                        val ruolo=item.getInt("Ruolo")
-                        vett.add(Utente(idUtente=idTmp, tipoUtente =ruolo, nome = nome))
+                        vett.add(UtenteMini(idTmp,nome))
                     }
                     onSuccess(vett)
                 }

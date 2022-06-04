@@ -1,5 +1,3 @@
-const e = require("cors");
-const { resume } = require("../models/database.js");
 const Utente=require("../models/utente.js");
 const Utils=require("../models/utils.js");
 
@@ -16,7 +14,7 @@ exports.findByEmailAndPwd=(req,ris)=>{
                     if(err)
                     {
                         json.Ris=0;
-                        json.Mess=err;
+                        json.Mess=err.Mess;
                         ris.json(json);
                     }
                     else

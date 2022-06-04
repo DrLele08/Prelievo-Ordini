@@ -125,7 +125,7 @@ class MainActivity : AppCompatActivity()
             )
         }
         navController.addOnDestinationChangedListener { _, nd: NavDestination, _ ->
-            if (nd.id == R.id.viewLogin || nd.id == R.id.viewRegistrazione || nd.id==R.id.registrazioneContinuoFragment)
+            if (nd.id == R.id.viewLogin || nd.id==R.id.detailProdottoFragment || nd.id == R.id.viewRegistrazione || nd.id==R.id.registrazioneContinuoFragment || nd.id==R.id.letturaSceltaFragment)
             {
                 navView.visibility = View.GONE
             }
@@ -138,7 +138,8 @@ class MainActivity : AppCompatActivity()
         navView.setupWithNavController(navController)
 
     }
-    override fun onSupportNavigateUp(): Boolean {
+    override fun onSupportNavigateUp(): Boolean
+    {
         onBackPressed()
         return true
     }

@@ -37,7 +37,7 @@ class CarrelloFragment : Fragment(),CarrelloDelegate
         CarrelloController().showCart(Utilita.user!!.getIdUtente(),Utilita.user!!.getTokenAuth(),queue,{ list ->
             vettCart=list
             listCart.layoutManager = LinearLayoutManager(requireContext())
-            adapter=CarrelloAdapter(vettCart,this)
+            adapter=CarrelloAdapter(vettCart,this,requireContext())
             listCart.adapter=adapter
             if(list.size>0)
             {

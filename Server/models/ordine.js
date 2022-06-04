@@ -84,7 +84,7 @@ Ordine.showDetailDue=(idDue,result)=>{
 };
 
 Ordine.ordersByCell=(cell,result)=>{
-    let query="SELECT ordine.idOrdine,statoordine.Stato,ordine.Data FROM ordine,statoordine,articoloordine,utente WHERE ordine.idOrdine=articoloordine.ksOrdine AND ordine.ksUtente=utente.idUtente AND utente.Cellulare=? AND statoordine.idStato=ordine.ksStato GROUP BY idOrdine ORDER BY ordine.Data DESC LIMIT 5;";
+    let query="SELECT Ordine.idOrdine,StatoOrdine.Stato,Ordine.Data FROM Ordine,StatoOrdine,ArticoloOrdine,Utente WHERE Ordine.idOrdine=ArticoloOrdine.ksOrdine AND Ordine.ksUtente=Utente.idUtente AND Utente.Cellulare=? AND StatoOrdine.idStato=Ordine.ksStato GROUP BY idOrdine ORDER BY Ordine.Data DESC LIMIT 5;";
     sql.query(query,[cell],(errQ,risQ)=>{
         if(errQ)
         {
@@ -239,7 +239,7 @@ Ordine.seeOrdini=(pagina,stato,result)=>{
     if(stato>0)
     {
         const offset=pagina*qntPage;
-        let query="SELECT idOrdine,statoordine.Stato,utente.Nome,IFNULL(NoteExtra,'') AS NoteExtra,DATE_FORMAT(Ordine.Data,'%e-%m-%Y %H:%i') AS Data FROM ordine,statoordine,utente WHERE ordine.ksUtente=utente.idUtente AND statoordine.idStato=ordine.ksStato AND ksStato=? ORDER BY Data DESC LIMIT ? OFFSET ?";
+        let query="SELECT idOrdine,StatoOrdine.Stato,Utente.Nome,IFNULL(NoteExtra,'') AS NoteExtra,DATE_FORMAT(Ordine.Data,'%e-%m-%Y %H:%i') AS Data FROM Ordine,StatoOrdine,Utente WHERE Ordine.ksUtente=Utente.idUtente AND StatoOrdine.idStato=Ordine.ksStato AND ksStato=? ORDER BY Data DESC LIMIT ? OFFSET ?";
         sql.query(query,[stato,qntPage,offset],(errQ,risQ)=>{
             if(errQ)
             {
@@ -254,7 +254,7 @@ Ordine.seeOrdini=(pagina,stato,result)=>{
     else
     {
         const offset=pagina*qntPage;
-        let query="SELECT idOrdine,statoordine.Stato,utente.Nome,IFNULL(NoteExtra,'') AS NoteExtra,DATE_FORMAT(Ordine.Data,'%e-%m-%Y %H:%i') AS Data FROM ordine,statoordine,utente WHERE ordine.ksUtente=utente.idUtente AND statoordine.idStato=ordine.ksStato ORDER BY Data DESC LIMIT ? OFFSET ?";
+        let query="SELECT idOrdine,StatoOrdine.Stato,Utente.Nome,IFNULL(NoteExtra,'') AS NoteExtra,DATE_FORMAT(Ordine.Data,'%e-%m-%Y %H:%i') AS Data FROM Ordine,StatoOrdine,Utente WHERE Ordine.ksUtente=Utente.idUtente AND StatoOrdine.idStato=Ordine.ksStato ORDER BY Data DESC LIMIT ? OFFSET ?";
         sql.query(query,[qntPage,offset],(errQ,risQ)=>{
             if(errQ)
             {
@@ -269,7 +269,7 @@ Ordine.seeOrdini=(pagina,stato,result)=>{
 };
 
 Ordine.detailOrdine=(idOrdine,result)=>{
-    let query="SELECT idRigaOrdine,idArticolo,Descrizione,Prezzo AS PrezzoAcquisto,PrezzoIvato AS PrezzoAttuale,Qnt AS QntOrdine,QntEvasa FROM rigaordine,articolo WHERE rigaordine.ksArticolo=articolo.idArticolo AND rigaordine.ksOrdine=?;";
+    let query="SELECT idRigaOrdine,idArticolo,Descrizione,Prezzo AS PrezzoAcquisto,PrezzoIvato AS PrezzoAttuale,Qnt AS QntOrdine,QntEvasa FROM RigaOrdine,Articolo WHERE RigaOrdine.ksArticolo=Articolo.idArticolo AND RigaOrdine.ksOrdine=?;";
     sql.query(query,[idOrdine],(errQ,risQ)=>{
         if(errQ)
         {

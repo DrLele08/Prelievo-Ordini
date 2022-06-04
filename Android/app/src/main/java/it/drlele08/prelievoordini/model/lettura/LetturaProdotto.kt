@@ -1,6 +1,8 @@
 package it.drlele08.prelievoordini.model.lettura
 
-class LetturaProdotto(private val idRigaOrdine:Int=-1,private val ksArticolo:Int=-1,private val tipoEvento:Int,private val qnt:Int=-1,private val note:String="")
+import java.io.Serializable
+
+class LetturaProdotto(private val idRigaOrdine:Int=-1,private val ksArticolo:Int=-1,private val tipoEvento:Int,private val qnt:Int=-1,private val note:String=""):Serializable
 {
     fun getIdRigaOrdine():Int
     {

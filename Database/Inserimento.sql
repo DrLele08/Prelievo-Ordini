@@ -34,7 +34,7 @@ INSERT INTO TipoUtente(Tipo) VALUES("Bannato");
 INSERT INTO Utente(ksTipo,Nome,Email,Password,TokenAuth,Identificativo,Cellulare) VALUES(1,"Raffaele Sais","saisraffaele08@gmail.com","$2b$10$7XjpKMj.ARY5kQfvbNDC4un4aOxrgFwJgDKxFomFHRi68v94TLpWO","50LFYobUHXM3GAkpDcFLQ3WbPJukVNYPEKWKHu2KZ3l8a","SSARFL00L30F839Z","3292251164");
 INSERT INTO Utente(ksTipo,Nome,Email,Password,TokenAuth,Identificativo,Cellulare) VALUES(2,"Tim Cook","iloveapple@gmail.com","$2b$10$7XjpKMj.ARY5kQfvbNDC4un4aOxrgFwJgDKxFomFHRi68v94TLpWO","50LFYobUHXM3GAkpDcFLQ3WbPJukVNYPEKWKHu2KZ3l8a","383838482842","3383932209");
 INSERT INTO Utente(ksTipo,Nome,Email,Password,TokenAuth,Identificativo,Cellulare) VALUES(3,"Vincenzo Coppola","vincenzocoppola04@gmail.com","$2b$10$7XjpKMj.ARY5kQfvbNDC4un4aOxrgFwJgDKxFomFHRi68v94TLpWO","50LFYobUHXM3GAkpDcFLQ3WbPJukVNYPEKWKHu2KZ3l8a","383838482844","3341334261");
-INSERT INTO Utente(ksTipo,Nome,Email,Password,TokenAuth,Identificativo,Cellulare) VALUES(4,"Mario Peluso","mariopeluso00@gmail.com","$2b$10$7XjpKMj.ARY5kQfvbNDC4un4aOxrgFwJgDKxFomFHRi68v94TLpWO","50LFYobUHXM3GAkpDcFLQ3WbPJukVNYPEKWKHu2KZ3l8a","383838482849","3391671194");
+INSERT INTO Utente(ksTipo,Nome,Email,Password,TokenAuth,Identificativo,Cellulare) VALUES(3,"Mario Peluso","mariopeluso00@gmail.com","$2b$10$7XjpKMj.ARY5kQfvbNDC4un4aOxrgFwJgDKxFomFHRi68v94TLpWO","50LFYobUHXM3GAkpDcFLQ3WbPJukVNYPEKWKHu2KZ3l8a","383838482849","3391671194");
 
 -- Inserimento articoli
 INSERT INTO Articolo(ksIva,ksReparto,Descrizione,QntDisponibile,PrezzoIvato,PrezzoConsigliato,Lunghezza,Altezza,Profondita,Volume,Peso) VALUES(1,3,"Mascherine Chirurgiche 100 Pezzi",4,9.99,14.99,25,22,12,Altezza*Profondita*Lunghezza,400);
@@ -77,7 +77,7 @@ INSERT INTO EAN(EAN,ksArticolo,QntConfezione) VALUES("8058647840015",15,1);
 INSERT INTO EAN(EAN,ksArticolo,QntConfezione) VALUES("8058647840016",16,1);
 INSERT INTO EAN(EAN,ksArticolo,QntConfezione) VALUES("8058647840017",17,1);
 INSERT INTO EAN(EAN,ksArticolo,QntConfezione) VALUES("8058647840018",18,1);
-INSERT INTO EAN(EAN,ksArticolo,QntConfezione) VALUES("8058647840019",19,1);
+INSERT INTO EAN(EAN,ksArticolo,QntConfezione) VALUES("5011363519677",19,1);
 INSERT INTO EAN(EAN,ksArticolo,QntConfezione) VALUES("8058647840020",20,1);
 
 INSERT INTO EAN(EAN,ksArticolo,QntConfezione) VALUES("8058647841101",1,4);
@@ -110,8 +110,8 @@ INSERT INTO StatoOrdine(Stato) VALUES("Annullato");
 INSERT INTO StatoOrdine(Stato) VALUES("Bloccato da un dispositivo");
 
 -- Inserimento Tipo Evento
-INSERT INTO TipoEvento(Evento) VALUES("Lattura confermata");
-INSERT INTO TipoEvento(Evento) VALUES("Lattura errata");
+INSERT INTO TipoEvento(Evento) VALUES("Lettura confermata");
+INSERT INTO TipoEvento(Evento) VALUES("Lettura errata");
 INSERT INTO TipoEvento(Evento) VALUES("Chiusura motivata");
 INSERT INTO TipoEvento(Evento) VALUES("Dispositivo scollegato");
 INSERT INTO TipoEvento(Evento) VALUES("Dispositivo collegato");
@@ -120,7 +120,7 @@ INSERT INTO TipoEvento(Evento) VALUES("Lettura terminata");
 -- Inserimento Ordini
 INSERT INTO Ordine(ksUtente,ksStato,Data) VALUES(3,3,"2022-04-10 19:23:21");
 INSERT INTO Ordine(ksUtente,ksStato,Data) VALUES(4,4,"2022-04-12 11:24:45");
-INSERT INTO Ordine(ksUtente,ksStato,Data) VALUES(3,2,"2022-04-18 12:43:32");
+INSERT INTO Ordine(ksUtente,ksStato,Data) VALUES(3,1,"2022-04-18 12:43:32");
 INSERT INTO Ordine(ksUtente,ksStato,Data) VALUES(3,1,"2022-04-24 16:24:55");
 
 -- Inserimento Articoli Ordine
@@ -146,7 +146,7 @@ INSERT INTO RigaOrdine(ksOrdine,ksArticolo,Prezzo,Qnt) VALUES(4,17,17.99,12);
 -- Inserimento Operatori Lettura
 INSERT INTO OperatoriLettura(ksOrdine,ksUtente,DataInizio,DataFine) VALUES(1,1,"2022-04-11 10:03:22","2022-04-11 13:24:21");
 INSERT INTO OperatoriLettura(ksOrdine,ksUtente,DataInizio,DataFine) VALUES(1,2,"2022-04-11 13:10:19","2022-04-11 14:33:08");
-INSERT INTO OperatoriLettura(ksOrdine,ksUtente,DataInizio) VALUES(3,1,"2022-04-18 15:01:52");
+INSERT INTO OperatoriLettura(ksOrdine,ksUtente,DataInizio,DataFine) VALUES(3,1,"2022-04-18 15:01:52","2022-04-18 15:21:23");
 
 -- Inserimento Evento Lettura
 INSERT INTO EventoLettura(ksEvento,ksArticolo,ksOperatore,Data) VALUES(1,1,1,"2022-04-11 10:05:22");
