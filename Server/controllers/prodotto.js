@@ -38,6 +38,7 @@ exports.showProdotti=(req,ris)=>{
                                     delete result[i].Profondita;
                                     delete result[i].Volume;
                                     delete result[i].Peso;
+                                    delete result[i].QntConfezione;
                                 }
                             }
                             json.Prodotti=result;
@@ -102,6 +103,7 @@ exports.showPreOrdine=(req,ris)=>{
                                     delete result[i].Profondita;
                                     delete result[i].Volume;
                                     delete result[i].Peso;
+                                    delete result[i].QntConfezione;
                                 }
                             }
                             json.Prodotti=result;
@@ -155,8 +157,8 @@ exports.prodByEan=(req,ris)=>{
                         {
                             json.Ris=1;
                             json.Mess="Fatto";
-                            json.QntEan=prodotto[0].QntConfezione;
-                            delete prodotto[0].QntConfezione;
+                            json.QntEan=prodotto[0].QntEan;
+                            delete prodotto[0].QntEan;
                             if(tipo == -1)
                             {
                                 delete prodotto[0].PrezzoIvato;
@@ -166,6 +168,7 @@ exports.prodByEan=(req,ris)=>{
                                 delete prodotto[0].Profondita;
                                 delete prodotto[0].Volume;
                                 delete prodotto[0].Peso;
+                                delete result[0].QntConfezione;
                             }
                             json.Prodotto=prodotto[0];
                             ris.json(json);
@@ -267,6 +270,7 @@ exports.prodByTags=(req,ris)=>{
                                     delete result[i].Profondita;
                                     delete result[i].Volume;
                                     delete result[i].Peso;
+                                    delete result[i].QntConfezione;
                                 }
                             }
                             json.Prodotti=result;

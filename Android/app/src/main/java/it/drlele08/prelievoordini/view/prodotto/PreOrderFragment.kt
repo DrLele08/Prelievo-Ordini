@@ -136,7 +136,7 @@ class PreOrderFragment : Fragment(),ProdottoDelegate
                 val total = adapter.itemCount
                 if(total>5)
                 {
-                    if (pastVisibleItem>(total-5) && !maxPagina)
+                    if (pastVisibleItem>(total-8) && !maxPagina)
                     {
                         pagina++
                         getProdotti()

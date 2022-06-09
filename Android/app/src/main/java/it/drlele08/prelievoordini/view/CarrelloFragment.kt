@@ -181,7 +181,7 @@ class CarrelloFragment : Fragment(),CarrelloDelegate
     @SuppressLint("CheckResult")
     override fun onItemClick(idProdotto: Int)
     {
-        val item=listOf("Visualizza prodotto","Elimina dal carrello")
+        val item=listOf("Visualizza prodotto","Elimina dal carrello","Annulla")
         MaterialDialog(requireContext()).show {
             title(text = "Scegli l'operazione")
             listItems(items = item) { _, index, _ ->
@@ -191,7 +191,7 @@ class CarrelloFragment : Fragment(),CarrelloDelegate
                     bundle.putInt("idArticolo",idProdotto)
                     Navigation.findNavController(viewPage).navigate(R.id.detailProdottoFragment,bundle)
                 }
-                else
+                else if(index==1)
                 {
                     deleteItemCart(idProdotto)
                 }

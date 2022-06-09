@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Spinner
+import android.widget.Toast
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
@@ -35,6 +36,8 @@ import it.drlele08.prelievoordini.controller.prodotto.ProdottoDelegate
 import it.drlele08.prelievoordini.model.Prodotto
 import www.sanju.motiontoast.MotionToast
 import www.sanju.motiontoast.MotionToastStyle
+import javax.crypto.Cipher
+import kotlin.math.max
 
 
 class ProdottiFragment : Fragment(),ProdottoDelegate
@@ -220,6 +223,11 @@ class ProdottiFragment : Fragment(),ProdottoDelegate
     override fun onViewCreated(view: View, savedInstanceState: Bundle?)
     {
         super.onViewCreated(view, savedInstanceState)
+        pagina=0
+        filtro=6
+        desc=""
+        categoria=0
+        maxPagina=false
         viewProdotti=view.findViewById(R.id.listProdotti)
         btnFilter=view.findViewById(R.id.btnFiltroProd)
         btnEan=view.findViewById(R.id.btnEanProd)
@@ -232,15 +240,24 @@ class ProdottiFragment : Fragment(),ProdottoDelegate
         listProdotti= ArrayList()
         adapter=ProdottoAdapter(listProdotti,this,requireContext())
         viewProdotti.adapter=adapter
+        if(Utilita.user != null)
+        {
+            btnTextRec.setOnClickListener{
+                showTextRec()
+            }
+            btnEan.setOnClickListener{
+                scanBarcode()
+            }
+        }
+        else
+        {
+            btnTextRec.visibility=View.GONE
+            btnEan.visibility=View.GONE
+        }
         btnFilter.setOnClickListener{
             showFilter()
         }
-        btnTextRec.setOnClickListener{
-            showTextRec()
-        }
-        btnEan.setOnClickListener{
-            scanBarcode()
-        }
+
         getProdotti()
         textNome.doOnTextChanged { text, _, _, _ ->
             pagina=0
@@ -258,7 +275,7 @@ class ProdottiFragment : Fragment(),ProdottoDelegate
                 val total = adapter.itemCount
                 if(total>5)
                 {
-                    if (pastVisibleItem>(total-5) && !maxPagina)
+                    if (pastVisibleItem>(total-8) && !maxPagina)
                     {
                         pagina++
                         getProdotti()

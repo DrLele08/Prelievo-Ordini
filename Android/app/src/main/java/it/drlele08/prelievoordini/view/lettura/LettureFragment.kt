@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.core.content.res.ResourcesCompat
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -32,7 +31,7 @@ class LettureFragment : Fragment(), LetturaDelegate
         MaterialDialog(requireContext()).show {
             title(text = "Conferma ordine")
             message(text = "Vuoi confermare la presa in carico per l'ordine #$idOrdine")
-            positiveButton(R.string.si) { _ ->
+            positiveButton(R.string.si) {
                 LetturaController().scegliLettura(Utilita.user!!.getIdUtente(),Utilita.user!!.getTokenAuth(),idOrdine,queue,{lett ->
                     val b=Bundle()
                     b.putSerializable("lettura",lett)

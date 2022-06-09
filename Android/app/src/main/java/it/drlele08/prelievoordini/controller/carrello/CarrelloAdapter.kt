@@ -21,6 +21,7 @@ class CarrelloAdapter(private val list:ArrayList<ProdottoCarrello>,private val d
         val imageProd:ImageView=ItemView.findViewById(R.id.imageCartProd)
         val textNome:TextView=ItemView.findViewById(R.id.textCartNome)
         val textQnt:TextView=ItemView.findViewById(R.id.textCartQnt)
+        val btnDelete:ImageView=ItemView.findViewById(R.id.imageDelItem)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder
@@ -36,7 +37,7 @@ class CarrelloAdapter(private val list:ArrayList<ProdottoCarrello>,private val d
         holder.textNome.text=item.getDescrizione()
         holder.textQnt.text=""+item.getQntCart()+" Pz"
         Glide.with(context).load("${Utilita.host}/img/articoli/${item.getIdArticolo()}.jpg").into(holder.imageProd)
-        holder.itemView.setOnClickListener{
+        holder.btnDelete.setOnClickListener{
             delegate.onItemClick(item.getIdArticolo())
         }
     }

@@ -3,7 +3,7 @@ package it.drlele08.prelievoordini.model
 import android.os.Parcelable
 import java.io.Serializable
 
-class Prodotto(private val idArticolo:Int,private val descrizione:String,private val qntDisp:Int,private val prezzoIvato:Float,private val prezzoConsigliato:Float,private val lunghezza:Int,private val altezza:Int,private val profondita:Int,private val volume: Int,private val pesoGrammi:Int)
+class Prodotto(private val idArticolo:Int,private val descrizione:String,private val qntDisp:Int,private val prezzoIvato:Float,private val prezzoConsigliato:Float,private val lunghezza:Int,private val altezza:Int,private val profondita:Int,private val volume: Int,private val pesoGrammi:Int,private val qntConfezione:Int)
 {
     fun getIdArticolo():Int
     {
@@ -53,5 +53,10 @@ class Prodotto(private val idArticolo:Int,private val descrizione:String,private
     fun getPesoGrammi():Int
     {
         return pesoGrammi
+    }
+
+    fun getQntConfezione():Int
+    {
+        return qntConfezione
     }
 }

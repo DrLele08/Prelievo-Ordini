@@ -1,11 +1,11 @@
 package it.drlele08.prelievoordini.controller
 
+import com.android.volley.DefaultRetryPolicy
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.JsonObjectRequest
 import it.drlele08.prelievoordini.Utilita
 import it.drlele08.prelievoordini.model.Categoria
-import it.drlele08.prelievoordini.model.Utente
 import java.util.ArrayList
 
 class CategoriaController
@@ -40,6 +40,11 @@ class CategoriaController
                 onError(error.toString())
             }
         )
+        jsonObjectRequest.retryPolicy =
+            DefaultRetryPolicy(
+                0,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT)
         queue.add(jsonObjectRequest)
     }
 }

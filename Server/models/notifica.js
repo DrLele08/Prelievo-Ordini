@@ -18,14 +18,12 @@ var sendNotification=function(data){
     var https = require('https');
     var req = https.request(options, function(res) {  
       res.on('data', function(data) {
-        console.log("Response:");
-        console.log(JSON.parse(data));
+
       });
     });
     
     req.on('error', function(e) {
-      console.log("ERROR:");
-      console.log(e);
+
     });
     
     req.write(JSON.stringify(data));

@@ -1,13 +1,12 @@
 package it.drlele08.prelievoordini.controller.statistiche
 
+import com.android.volley.DefaultRetryPolicy
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.JsonObjectRequest
 import it.drlele08.prelievoordini.Utilita
-import it.drlele08.prelievoordini.model.Utente
 import org.json.JSONArray
 import org.json.JSONObject
-import java.util.ArrayList
 
 class StatisticheController
 {
@@ -32,6 +31,11 @@ class StatisticheController
                 onError(error.toString())
             }
         )
+        jsonObjectRequest.retryPolicy =
+            DefaultRetryPolicy(
+                0,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT)
         queue.add(jsonObjectRequest)
     }
 
@@ -56,6 +60,11 @@ class StatisticheController
                 onError(error.toString())
             }
         )
+        jsonObjectRequest.retryPolicy =
+            DefaultRetryPolicy(
+                0,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT)
         queue.add(jsonObjectRequest)
     }
 }

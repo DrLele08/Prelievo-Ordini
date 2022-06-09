@@ -1,5 +1,6 @@
 package it.drlele08.prelievoordini.controller
 
+import com.android.volley.DefaultRetryPolicy
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.JsonObjectRequest
@@ -44,6 +45,11 @@ class OrdineController
                 onError(error.toString())
             }
         )
+        jsonObjectRequest.retryPolicy =
+            DefaultRetryPolicy(
+                0,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT)
         queue.add(jsonObjectRequest)
     }
 
@@ -82,6 +88,11 @@ class OrdineController
                 onError(error.toString())
             }
         )
+        jsonObjectRequest.retryPolicy =
+            DefaultRetryPolicy(
+                0,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT)
         queue.add(jsonObjectRequest)
     }
 
@@ -111,6 +122,11 @@ class OrdineController
                 onError(error.toString())
             }
         )
+        jsonObjectRequest.retryPolicy =
+            DefaultRetryPolicy(
+                0,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT)
         queue.add(jsonObjectRequest)
     }
 
@@ -141,6 +157,11 @@ class OrdineController
                 onError(error.toString())
             }
         )
+        jsonObjectRequest.retryPolicy =
+            DefaultRetryPolicy(
+                0,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT)
         queue.add(jsonObjectRequest)
     }
 }

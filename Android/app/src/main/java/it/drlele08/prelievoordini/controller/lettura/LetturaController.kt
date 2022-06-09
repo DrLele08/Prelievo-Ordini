@@ -1,8 +1,10 @@
 package it.drlele08.prelievoordini.controller.lettura
 
+import com.android.volley.DefaultRetryPolicy
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.JsonObjectRequest
+import com.google.gson.Gson
 import it.drlele08.prelievoordini.Utilita
 import it.drlele08.prelievoordini.model.PosizioneProdotto
 import it.drlele08.prelievoordini.model.lettura.DetailLettura
@@ -50,6 +52,11 @@ class LetturaController
                 onError(error.toString())
             }
         )
+        jsonObjectRequest.retryPolicy =
+            DefaultRetryPolicy(
+                0,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT)
         queue.add(jsonObjectRequest)
     }
 
@@ -105,6 +112,11 @@ class LetturaController
                 onError(error.toString())
             }
         )
+        jsonObjectRequest.retryPolicy =
+            DefaultRetryPolicy(
+                0,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT)
         queue.add(jsonObjectRequest)
     }
 
@@ -158,6 +170,11 @@ class LetturaController
                 onError(error.toString())
             }
         )
+        jsonObjectRequest.retryPolicy =
+            DefaultRetryPolicy(
+                0,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT)
         queue.add(jsonObjectRequest)
     }
 
@@ -172,7 +189,7 @@ class LetturaController
             json.put("idUtente",idUtente)
             json.put("TokenAuth",token)
             json.put("idOperatoreLettura",idOperatoreLettura)
-            json.put("Letture",vettJsonLett)
+            json.put("Letture",Gson().toJson(letture))
             val jsonObjectRequest = JsonObjectRequest(
                 Request.Method.POST, url, json,
                 { response ->
@@ -191,6 +208,11 @@ class LetturaController
                     onError(error.toString())
                 }
             )
+            jsonObjectRequest.retryPolicy =
+                DefaultRetryPolicy(
+                    0,
+                    DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT)
             queue.add(jsonObjectRequest)
         }
         else

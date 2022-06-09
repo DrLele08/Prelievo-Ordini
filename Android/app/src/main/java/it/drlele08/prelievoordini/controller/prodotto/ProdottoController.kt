@@ -1,6 +1,6 @@
 package it.drlele08.prelievoordini.controller.prodotto
 
-import android.util.Log
+import com.android.volley.DefaultRetryPolicy
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.JsonObjectRequest
@@ -35,6 +35,7 @@ class ProdottoController
                         var prof=0
                         var vol=0
                         var pesoG=0
+                        var qntConfezione=1
                         if(idUtente != -1)
                         {
                             prezzo=item.getDouble("PrezzoIvato").toFloat()
@@ -44,8 +45,9 @@ class ProdottoController
                             prof=item.getInt("Profondita")
                             vol=item.getInt("Volume")
                             pesoG=item.getInt("Peso")
+                            qntConfezione=item.getInt("QntConfezione")
                         }
-                        vett.add(Prodotto(idArt,desc,qnt,prezzo,prezzoCons,lung,alt,prof,vol,pesoG))
+                        vett.add(Prodotto(idArt,desc,qnt,prezzo,prezzoCons,lung,alt,prof,vol,pesoG,qntConfezione))
                     }
                     onSuccess(vett)
                 }
@@ -59,6 +61,11 @@ class ProdottoController
                 onError(error.toString())
             }
         )
+        jsonObjectRequest.retryPolicy =
+            DefaultRetryPolicy(
+                0,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT)
         queue.add(jsonObjectRequest)
     }
 
@@ -82,8 +89,9 @@ class ProdottoController
                     val prof=item.getInt("Profondita")
                     val vol=item.getInt("Volume")
                     val pesoG=item.getInt("Peso")
+                    val qntConfezione=item.getInt("QntConfezione")
                     val qntEan=response.getInt("QntEan")
-                    onSuccess(Prodotto(idArt,desc,qnt,prezzo,prezzoCons,lung,alt,prof,vol,pesoG),qntEan)
+                    onSuccess(Prodotto(idArt,desc,qnt,prezzo,prezzoCons,lung,alt,prof,vol,pesoG,qntConfezione),qntEan)
                 }
                 else
                 {
@@ -95,6 +103,11 @@ class ProdottoController
                 onError(error.toString())
             }
         )
+        jsonObjectRequest.retryPolicy =
+            DefaultRetryPolicy(
+                0,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT)
         queue.add(jsonObjectRequest)
     }
 
@@ -118,7 +131,8 @@ class ProdottoController
                     val prof=item.getInt("Profondita")
                     val vol=item.getInt("Volume")
                     val pesoG=item.getInt("Peso")
-                    onSuccess(Prodotto(idArt,desc,qnt,prezzo,prezzoCons,lung,alt,prof,vol,pesoG))
+                    val qntConfezione=item.getInt("QntConfezione")
+                    onSuccess(Prodotto(idArt,desc,qnt,prezzo,prezzoCons,lung,alt,prof,vol,pesoG,qntConfezione))
                 }
                 else
                 {
@@ -130,6 +144,11 @@ class ProdottoController
                 onError(error.toString())
             }
         )
+        jsonObjectRequest.retryPolicy =
+            DefaultRetryPolicy(
+                0,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT)
         queue.add(jsonObjectRequest)
     }
 
@@ -157,7 +176,8 @@ class ProdottoController
                         val prof=item.getInt("Profondita")
                         val vol=item.getInt("Volume")
                         val pesoG=item.getInt("Peso")
-                        vett.add(Prodotto(idArt,desc,qnt,prezzo,prezzoCons,lung,alt,prof,vol,pesoG))
+                        val qntConfezione=item.getInt("QntConfezione")
+                        vett.add(Prodotto(idArt,desc,qnt,prezzo,prezzoCons,lung,alt,prof,vol,pesoG,qntConfezione))
                     }
                     onSuccess(vett)
                 }
@@ -171,6 +191,11 @@ class ProdottoController
                 onError(error.toString())
             }
         )
+        jsonObjectRequest.retryPolicy =
+            DefaultRetryPolicy(
+                0,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT)
         queue.add(jsonObjectRequest)
     }
 
@@ -198,7 +223,8 @@ class ProdottoController
                         val prof=item.getInt("Profondita")
                         val vol=item.getInt("Volume")
                         val pesoG=item.getInt("Peso")
-                        vett.add(Prodotto(idArt,desc,qnt,prezzo,prezzoCons,lung,alt,prof,vol,pesoG))
+                        val qntConfezione=item.getInt("QntConfezione")
+                        vett.add(Prodotto(idArt,desc,qnt,prezzo,prezzoCons,lung,alt,prof,vol,pesoG,qntConfezione))
                     }
                     onSuccess(vett)
                 }
@@ -212,6 +238,11 @@ class ProdottoController
                 onError(error.toString())
             }
         )
+        jsonObjectRequest.retryPolicy =
+            DefaultRetryPolicy(
+                0,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT)
         queue.add(jsonObjectRequest)
     }
 }

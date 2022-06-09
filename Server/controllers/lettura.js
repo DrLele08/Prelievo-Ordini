@@ -145,7 +145,7 @@ exports.updateLettura=(req,ris)=>{
                 if(tipo==1 || tipo==2)
                 {
                     let idOperatore=req.body.idOperatoreLettura
-                    let letture=req.body.Letture;
+                    let letture=JSON.parse(req.body.Letture);
                     if(letture.length>0 && idOperatore>0)
                     {
                         Lettura.updateLettura(idOperatore,letture,(errUp,risUp)=>{

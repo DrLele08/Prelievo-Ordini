@@ -37,26 +37,26 @@ INSERT INTO Utente(ksTipo,Nome,Email,Password,TokenAuth,Identificativo,Cellulare
 INSERT INTO Utente(ksTipo,Nome,Email,Password,TokenAuth,Identificativo,Cellulare) VALUES(3,"Mario Peluso","mariopeluso00@gmail.com","$2b$10$7XjpKMj.ARY5kQfvbNDC4un4aOxrgFwJgDKxFomFHRi68v94TLpWO","50LFYobUHXM3GAkpDcFLQ3WbPJukVNYPEKWKHu2KZ3l8a","383838482849","3391671194");
 
 -- Inserimento articoli
-INSERT INTO Articolo(ksIva,ksReparto,Descrizione,QntDisponibile,PrezzoIvato,PrezzoConsigliato,Lunghezza,Altezza,Profondita,Volume,Peso) VALUES(1,3,"Mascherine Chirurgiche 100 Pezzi",4,9.99,14.99,25,22,12,Altezza*Profondita*Lunghezza,400);
-INSERT INTO Articolo(ksIva,ksReparto,Descrizione,QntDisponibile,PrezzoIvato,PrezzoConsigliato,Lunghezza,Altezza,Profondita,Volume,Peso) VALUES(2,1,"Milka Bar Tuc",4,0.60,0.99,16,8,1.1,Altezza*Profondita*Lunghezza,87);
-INSERT INTO Articolo(ksIva,ksReparto,Descrizione,QntDisponibile,PrezzoIvato,PrezzoConsigliato,Lunghezza,Altezza,Profondita,Volume,Peso) VALUES(2,1,"KitKat White Wafer",4,0.22,0.49,17,9,3,Altezza*Profondita*Lunghezza,41);
-INSERT INTO Articolo(ksIva,ksReparto,Descrizione,QntDisponibile,PrezzoIvato,PrezzoConsigliato,Lunghezza,Altezza,Profondita,Volume,Peso,Tag) VALUES(2,1,"Kinder Happy Hippo",4,1.39,2.49,17,10,3,Altezza*Profondita*Lunghezza,136,"Ippopotamo:Raffaele");
-INSERT INTO Articolo(ksIva,ksReparto,Descrizione,QntDisponibile,PrezzoIvato,PrezzoConsigliato,Lunghezza,Altezza,Profondita,Volume,Peso) VALUES(2,1,"Lindt Bar Latte",4,0.99,1.99,8,16,1.1,Altezza*Profondita*Lunghezza,100);
-INSERT INTO Articolo(ksIva,ksReparto,Descrizione,QntDisponibile,PrezzoIvato,PrezzoConsigliato,PrezzoPreOrder,Lunghezza,Altezza,Profondita,Volume,Peso) VALUES(3,5,"Ace Detersivo Lavatrice 25 Lavaggi Colorati",3,1.99,2.99,1.89,20,10,10,Altezza*Profondita*Lunghezza,1400);
-INSERT INTO Articolo(ksIva,ksReparto,Descrizione,QntDisponibile,PrezzoIvato,PrezzoConsigliato,PrezzoPreOrder,Lunghezza,Altezza,Profondita,Volume,Peso) VALUES(3,5,"Ace Detersivo Lavatrice 25 Lavaggi Classico",3,1.99,2.99,1.89,20,10,10,Altezza*Profondita*Lunghezza,1400);
-INSERT INTO Articolo(ksIva,ksReparto,Descrizione,QntDisponibile,PrezzoIvato,PrezzoConsigliato,PrezzoPreOrder,Lunghezza,Altezza,Profondita,Volume,Peso) VALUES(3,5,"Ace Detersivo Lavatrice 25 Lavaggi Energy",3,1.99,2.99,1.89,20,10,10,Altezza*Profondita*Lunghezza,1400);
-INSERT INTO Articolo(ksIva,ksReparto,Descrizione,QntDisponibile,PrezzoIvato,PrezzoConsigliato,Lunghezza,Altezza,Profondita,Volume,Peso) VALUES(3,5,"Svelto Detersivo 1L Limone",3,0.99,1.49,9.5,28.5,5.7,Altezza*Profondita*Lunghezza,1000);
-INSERT INTO Articolo(ksIva,ksReparto,Descrizione,QntDisponibile,PrezzoIvato,PrezzoConsigliato,Lunghezza,Altezza,Profondita,Volume,Peso) VALUES(3,5,"Svelto Detersivo 1L Antibatterico",3,0.99,1.49,9.5,28.5,5.7,Altezza*Profondita*Lunghezza,1000);
-INSERT INTO Articolo(ksIva,ksReparto,Descrizione,QntDisponibile,PrezzoIvato,PrezzoConsigliato,Lunghezza,Altezza,Profondita,Volume,Peso) VALUES(3,5,"Svelto Detersivo 1L Aceto",3,0.99,1.49,9.5,28.5,5.7,Altezza*Profondita*Lunghezza,1000);
-INSERT INTO Articolo(ksIva,ksReparto,Descrizione,QntDisponibile,PrezzoIvato,PrezzoConsigliato,Lunghezza,Altezza,Profondita,Volume,Peso) VALUES(3,6,"Piscina Rotonda 3 Anelli 86x25",3,6.99,11.99,19.3,18.8,6.6,Altezza*Profondita*Lunghezza,610);
-INSERT INTO Articolo(ksIva,ksReparto,Descrizione,QntDisponibile,PrezzoIvato,PrezzoConsigliato,Lunghezza,Altezza,Profondita,Volume,Peso) VALUES(3,4,"Gillette Fusion 5 Power Con 2 Lamette",3,6.99,11.99,10.4,20,4.5,Altezza*Profondita*Lunghezza,60);
-INSERT INTO Articolo(ksIva,ksReparto,Descrizione,QntDisponibile,PrezzoIvato,PrezzoConsigliato,Lunghezza,Altezza,Profondita,Volume,Peso) VALUES(3,6,"Piscina Gonfiabile 180x135x60",3,34.99,49.99,42.2,32.2,13.7,Altezza*Profondita*Lunghezza,3700);
-INSERT INTO Articolo(ksIva,ksReparto,Descrizione,QntDisponibile,PrezzoIvato,PrezzoConsigliato,Lunghezza,Altezza,Profondita,Volume,Peso) VALUES(3,4,"Gillette Blue 3 Usa e Getta (4+2)",3,1.99,2.49,8,21,4,Altezza*Profondita*Lunghezza,10);
-INSERT INTO Articolo(ksIva,ksReparto,Descrizione,QntDisponibile,PrezzoIvato,PrezzoConsigliato,Lunghezza,Altezza,Profondita,Volume,Peso) VALUES(3,4,"Davidoff Profumo Cool Water 100ML",3,24.99,44.99,6,15,4,Altezza*Profondita*Lunghezza,190);
-INSERT INTO Articolo(ksIva,ksReparto,Descrizione,QntDisponibile,PrezzoIvato,PrezzoConsigliato,Lunghezza,Altezza,Profondita,Volume,Peso) VALUES(3,4,"Katy Perry Profumo Killer Queen 100ML",3,17.99,24.99,12.7,22.9,17.8,Altezza*Profondita*Lunghezza,300);
-INSERT INTO Articolo(ksIva,ksReparto,Descrizione,QntDisponibile,PrezzoIvato,PrezzoConsigliato,Lunghezza,Altezza,Profondita,Volume,Peso) VALUES(3,7,"Gioco E Se Fossi Mimo?",3,9.99,14.99,27,27,5,Altezza*Profondita*Lunghezza,500);
-INSERT INTO Articolo(ksIva,ksReparto,Descrizione,QntDisponibile,PrezzoIvato,PrezzoConsigliato,PrezzoPreOrder,Lunghezza,Altezza,Profondita,Volume,Peso) VALUES(3,7,"Carte UNO",3,2.99,5.99,2.59,9.2,14.6,2,Altezza*Profondita*Lunghezza,115);
-INSERT INTO Articolo(ksIva,ksReparto,Descrizione,QntDisponibile,PrezzoIvato,PrezzoConsigliato,Lunghezza,Altezza,Profondita,Volume,Peso) VALUES(3,7,"Gioco Non Svegliare Papà",3,17.99,29.99,27,27,8,Altezza*Profondita*Lunghezza,500);
+INSERT INTO Articolo(ksIva,ksReparto,Descrizione,QntDisponibile,PrezzoIvato,PrezzoConsigliato,Lunghezza,Altezza,Profondita,Volume,Peso,QntConfezione) VALUES(1,3,"Mascherine Chirurgiche 100 Pezzi",16,9.99,14.99,25,22,12,Altezza*Profondita*Lunghezza,400,10);
+INSERT INTO Articolo(ksIva,ksReparto,Descrizione,QntDisponibile,PrezzoIvato,PrezzoConsigliato,Lunghezza,Altezza,Profondita,Volume,Peso,QntConfezione) VALUES(2,1,"Milka Bar Tuc",96,0.60,0.99,16,8,1.1,Altezza*Profondita*Lunghezza,87,24);
+INSERT INTO Articolo(ksIva,ksReparto,Descrizione,QntDisponibile,PrezzoIvato,PrezzoConsigliato,Lunghezza,Altezza,Profondita,Volume,Peso,QntConfezione) VALUES(2,1,"KitKat White Wafer",24,0.22,0.49,17,9,3,Altezza*Profondita*Lunghezza,41,24);
+INSERT INTO Articolo(ksIva,ksReparto,Descrizione,QntDisponibile,PrezzoIvato,PrezzoConsigliato,Lunghezza,Altezza,Profondita,Volume,Peso,QntConfezione,Tag) VALUES(2,1,"Kinder Happy Hippo",40,1.39,2.49,17,10,3,Altezza*Profondita*Lunghezza,136,10,"Ippopotamo:Raffaele");
+INSERT INTO Articolo(ksIva,ksReparto,Descrizione,QntDisponibile,PrezzoIvato,PrezzoConsigliato,Lunghezza,Altezza,Profondita,Volume,Peso,QntConfezione) VALUES(2,1,"Lindt Bar Latte",48,0.99,1.99,8,16,1.1,Altezza*Profondita*Lunghezza,100,24);
+INSERT INTO Articolo(ksIva,ksReparto,Descrizione,QntDisponibile,PrezzoIvato,PrezzoConsigliato,PrezzoPreOrder,Lunghezza,Altezza,Profondita,Volume,Peso,QntConfezione) VALUES(3,5,"Ace Detersivo Lavatrice 25 Lavaggi Colorati",6,1.99,2.99,1.89,20,10,10,Altezza*Profondita*Lunghezza,1400,12);
+INSERT INTO Articolo(ksIva,ksReparto,Descrizione,QntDisponibile,PrezzoIvato,PrezzoConsigliato,PrezzoPreOrder,Lunghezza,Altezza,Profondita,Volume,Peso,QntConfezione) VALUES(3,5,"Ace Detersivo Lavatrice 25 Lavaggi Classico",6,1.99,2.99,1.89,20,10,10,Altezza*Profondita*Lunghezza,1400,12);
+INSERT INTO Articolo(ksIva,ksReparto,Descrizione,QntDisponibile,PrezzoIvato,PrezzoConsigliato,PrezzoPreOrder,Lunghezza,Altezza,Profondita,Volume,Peso,QntConfezione) VALUES(3,5,"Ace Detersivo Lavatrice 25 Lavaggi Energy",6,1.99,2.99,1.89,20,10,10,Altezza*Profondita*Lunghezza,1400,12);
+INSERT INTO Articolo(ksIva,ksReparto,Descrizione,QntDisponibile,PrezzoIvato,PrezzoConsigliato,Lunghezza,Altezza,Profondita,Volume,Peso,QntConfezione) VALUES(3,5,"Svelto Detersivo 1L Limone",3,0.99,1.49,9.5,28.5,5.7,Altezza*Profondita*Lunghezza,1000,12);
+INSERT INTO Articolo(ksIva,ksReparto,Descrizione,QntDisponibile,PrezzoIvato,PrezzoConsigliato,Lunghezza,Altezza,Profondita,Volume,Peso,QntConfezione) VALUES(3,5,"Svelto Detersivo 1L Antibatterico",3,0.99,1.49,9.5,28.5,5.7,Altezza*Profondita*Lunghezza,1000,12);
+INSERT INTO Articolo(ksIva,ksReparto,Descrizione,QntDisponibile,PrezzoIvato,PrezzoConsigliato,Lunghezza,Altezza,Profondita,Volume,Peso,QntConfezione) VALUES(3,5,"Svelto Detersivo 1L Aceto",3,0.99,1.49,9.5,28.5,5.7,Altezza*Profondita*Lunghezza,1000,12);
+INSERT INTO Articolo(ksIva,ksReparto,Descrizione,QntDisponibile,PrezzoIvato,PrezzoConsigliato,Lunghezza,Altezza,Profondita,Volume,Peso,QntConfezione) VALUES(3,6,"Piscina Rotonda 3 Anelli 86x25",3,6.99,11.99,19.3,18.8,6.6,Altezza*Profondita*Lunghezza,610,12);
+INSERT INTO Articolo(ksIva,ksReparto,Descrizione,QntDisponibile,PrezzoIvato,PrezzoConsigliato,Lunghezza,Altezza,Profondita,Volume,Peso,QntConfezione) VALUES(3,4,"Gillette Fusion 5 Power Con 2 Lamette",3,6.99,11.99,10.4,20,4.5,Altezza*Profondita*Lunghezza,60,6);
+INSERT INTO Articolo(ksIva,ksReparto,Descrizione,QntDisponibile,PrezzoIvato,PrezzoConsigliato,Lunghezza,Altezza,Profondita,Volume,Peso,QntConfezione) VALUES(3,6,"Piscina Gonfiabile 180x135x60",3,34.99,49.99,42.2,32.2,13.7,Altezza*Profondita*Lunghezza,3700,4);
+INSERT INTO Articolo(ksIva,ksReparto,Descrizione,QntDisponibile,PrezzoIvato,PrezzoConsigliato,Lunghezza,Altezza,Profondita,Volume,Peso,QntConfezione) VALUES(3,4,"Gillette Blue 3 Usa e Getta (4+2)",3,1.99,2.49,8,21,4,Altezza*Profondita*Lunghezza,10,6);
+INSERT INTO Articolo(ksIva,ksReparto,Descrizione,QntDisponibile,PrezzoIvato,PrezzoConsigliato,Lunghezza,Altezza,Profondita,Volume,Peso,QntConfezione) VALUES(3,4,"Davidoff Profumo Cool Water 100ML",3,24.99,44.99,6,15,4,Altezza*Profondita*Lunghezza,190,6);
+INSERT INTO Articolo(ksIva,ksReparto,Descrizione,QntDisponibile,PrezzoIvato,PrezzoConsigliato,Lunghezza,Altezza,Profondita,Volume,Peso,QntConfezione) VALUES(3,4,"Katy Perry Profumo Killer Queen 100ML",3,17.99,24.99,12.7,22.9,17.8,Altezza*Profondita*Lunghezza,300,6);
+INSERT INTO Articolo(ksIva,ksReparto,Descrizione,QntDisponibile,PrezzoIvato,PrezzoConsigliato,Lunghezza,Altezza,Profondita,Volume,Peso,QntConfezione) VALUES(3,7,"Gioco E Se Fossi Mimo?",3,9.99,14.99,27,27,5,Altezza*Profondita*Lunghezza,500,4);
+INSERT INTO Articolo(ksIva,ksReparto,Descrizione,QntDisponibile,PrezzoIvato,PrezzoConsigliato,PrezzoPreOrder,Lunghezza,Altezza,Profondita,Volume,Peso,QntConfezione) VALUES(3,7,"Carte UNO",3,2.99,5.99,2.59,9.2,14.6,2,Altezza*Profondita*Lunghezza,115,12);
+INSERT INTO Articolo(ksIva,ksReparto,Descrizione,QntDisponibile,PrezzoIvato,PrezzoConsigliato,Lunghezza,Altezza,Profondita,Volume,Peso,QntConfezione) VALUES(3,7,"Gioco Non Svegliare Papà",3,17.99,29.99,27,27,8,Altezza*Profondita*Lunghezza,500,4);
 
 -- Inserimento EAN
 INSERT INTO EAN(EAN,ksArticolo,QntConfezione) VALUES("8058647840001",1,1);
@@ -162,15 +162,16 @@ INSERT INTO EventoLettura(ksEvento,ksArticolo,ksOperatore,Data) VALUES(1,7,3,"20
 INSERT INTO EventoLettura(ksEvento,ksArticolo,ksOperatore,Data) VALUES(1,10,3,"2022-04-18 15:03:37");
 
 -- Inserimento Posto Scaffale
-INSERT INTO PostoScaffale(ksReparto,ksArticolo,Posto,PesoMax,Altezza,Lunghezza,Profondita,Volume,Qnt) VALUES(8,1,1,300000,60,60,100,Altezza*Profondita*Lunghezza,2);
-INSERT INTO PostoScaffale(ksReparto,ksArticolo,Posto,PesoMax,Altezza,Lunghezza,Profondita,Volume,Qnt) VALUES(8,1,2,300000,60,60,100,Altezza*Profondita*Lunghezza,2);
-INSERT INTO PostoScaffale(ksReparto,ksArticolo,Posto,PesoMax,Altezza,Lunghezza,Profondita,Volume,Qnt) VALUES(1,2,2,300000,60,60,100,Altezza*Profondita*Lunghezza,4);
-INSERT INTO PostoScaffale(ksReparto,ksArticolo,Posto,PesoMax,Altezza,Lunghezza,Profondita,Volume,Qnt) VALUES(1,3,1,300000,60,60,100,Altezza*Profondita*Lunghezza,4);
-INSERT INTO PostoScaffale(ksReparto,ksArticolo,Posto,PesoMax,Altezza,Lunghezza,Profondita,Volume,Qnt) VALUES(1,4,2,300000,60,60,100,Altezza*Profondita*Lunghezza,4);
-INSERT INTO PostoScaffale(ksReparto,ksArticolo,Posto,PesoMax,Altezza,Lunghezza,Profondita,Volume,Qnt) VALUES(1,5,1,300,30,30,30,Altezza*Profondita*Lunghezza,4);
-INSERT INTO PostoScaffale(ksReparto,ksArticolo,Posto,PesoMax,Altezza,Lunghezza,Profondita,Volume,Qnt) VALUES(2,6,2,300,30,30,30,Altezza*Profondita*Lunghezza,3);
-INSERT INTO PostoScaffale(ksReparto,ksArticolo,Posto,PesoMax,Altezza,Lunghezza,Profondita,Volume,Qnt) VALUES(2,7,1,300000,60,60,100,Altezza*Profondita*Lunghezza,3);
-INSERT INTO PostoScaffale(ksReparto,ksArticolo,Posto,PesoMax,Altezza,Lunghezza,Profondita,Volume,Qnt) VALUES(2,8,2,300000,60,60,100,Altezza*Profondita*Lunghezza,3);
+INSERT INTO PostoScaffale(ksReparto,ksArticolo,Posto,PesoMax,Altezza,Lunghezza,Profondita,Volume,Qnt) VALUES(8,1,1,300000,60,60,100,Altezza*Profondita*Lunghezza,8);
+INSERT INTO PostoScaffale(ksReparto,ksArticolo,Posto,PesoMax,Altezza,Lunghezza,Profondita,Volume,Qnt) VALUES(8,1,2,300000,60,60,100,Altezza*Profondita*Lunghezza,8);
+INSERT INTO PostoScaffale(ksReparto,ksArticolo,Posto,PesoMax,Altezza,Lunghezza,Profondita,Volume,Qnt) VALUES(1,2,2,300000,60,60,100,Altezza*Profondita*Lunghezza,48);
+INSERT INTO PostoScaffale(ksReparto,ksArticolo,Posto,PesoMax,Altezza,Lunghezza,Profondita,Volume,Qnt) VALUES(1,2,2,300000,60,60,100,Altezza*Profondita*Lunghezza,48);
+INSERT INTO PostoScaffale(ksReparto,ksArticolo,Posto,PesoMax,Altezza,Lunghezza,Profondita,Volume,Qnt) VALUES(1,3,1,300000,60,60,100,Altezza*Profondita*Lunghezza,24);
+INSERT INTO PostoScaffale(ksReparto,ksArticolo,Posto,PesoMax,Altezza,Lunghezza,Profondita,Volume,Qnt) VALUES(1,4,2,300000,60,60,100,Altezza*Profondita*Lunghezza,40);
+INSERT INTO PostoScaffale(ksReparto,ksArticolo,Posto,PesoMax,Altezza,Lunghezza,Profondita,Volume,Qnt) VALUES(1,5,1,300,30,30,30,Altezza*Profondita*Lunghezza,48);
+INSERT INTO PostoScaffale(ksReparto,ksArticolo,Posto,PesoMax,Altezza,Lunghezza,Profondita,Volume,Qnt) VALUES(2,6,2,300,30,30,30,Altezza*Profondita*Lunghezza,6);
+INSERT INTO PostoScaffale(ksReparto,ksArticolo,Posto,PesoMax,Altezza,Lunghezza,Profondita,Volume,Qnt) VALUES(2,7,1,300000,60,60,100,Altezza*Profondita*Lunghezza,6);
+INSERT INTO PostoScaffale(ksReparto,ksArticolo,Posto,PesoMax,Altezza,Lunghezza,Profondita,Volume,Qnt) VALUES(2,8,2,300000,60,60,100,Altezza*Profondita*Lunghezza,6);
 INSERT INTO PostoScaffale(ksReparto,ksArticolo,Posto,PesoMax,Altezza,Lunghezza,Profondita,Volume,Qnt) VALUES(2,9,1,300000,60,60,100,Altezza*Profondita*Lunghezza,3);
 INSERT INTO PostoScaffale(ksReparto,ksArticolo,Posto,PesoMax,Altezza,Lunghezza,Profondita,Volume,Qnt) VALUES(2,10,2,300000,60,60,100,Altezza*Profondita*Lunghezza,3);
 INSERT INTO PostoScaffale(ksReparto,ksArticolo,Posto,PesoMax,Altezza,Lunghezza,Profondita,Volume,Qnt) VALUES(2,11,1,300000,60,60,100,Altezza*Profondita*Lunghezza,3);

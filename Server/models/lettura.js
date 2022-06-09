@@ -1,3 +1,4 @@
+const { NULL } = require("mysql/lib/protocol/constants/types");
 const sql=require("./database.js");
 
 const Lettura=new Object();
@@ -241,17 +242,21 @@ Lettura.updateLettura=(idOperatore,eventiLetture,result)=>{
                 let vettUpdate=new Array();
                 eventiLetture.map(x=>{
                     let obj=new Array();
-                    obj.push(x.TipoEvento);
+                    obj.push(x.tipoEvento);
                     if(x.TipoEvento==6)
                         letturaTerminata=true;
-                    obj.push(x.ksArticolo);
-                    if(x.ksArticolo !== null)
+                    if(x.ksArticolo != -1)
                     {
+                        obj.push(x.ksArticolo);
                         let upTmp=new Array();
                         upTmp.push(x.Qnt);
                         upTmp.push(x.idRigaOrdine);
                         upTmp.push(idOrdine);
                         vettUpdate.push(upTmp);
+                    }
+                    else
+                    {
+                        obj.push(null);
                     }
                     obj.push(idOperatore);
                     obj.push(x.Note);

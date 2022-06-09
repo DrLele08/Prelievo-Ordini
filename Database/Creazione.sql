@@ -3,7 +3,7 @@ CREATE DATABASE PrelieviOrdini;
 
 USE PrelieviOrdini;
 
-CREATE TABLE tipoutente(
+CREATE TABLE TipoUtente(
 	idTipo INT PRIMARY KEY AUTO_INCREMENT,
 	Tipo VARCHAR(48) NOT NULL
 );
@@ -55,6 +55,7 @@ CREATE TABLE Articolo(
 	Profondita FLOAT NOT NULL,
 	Volume FLOAT NOT NULL,
 	Peso INT NOT NULL,
+	QntConfezione INT NOT NULL,
 	Tag VARCHAR(300),
 	FOREIGN KEY (ksIva) REFERENCES CodiceIva(idCodiceIva),
 	FOREIGN KEY (ksReparto) REFERENCES Categoria(idCategoria)
