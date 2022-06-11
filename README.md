@@ -7,7 +7,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <img src="./Server/public/img/logo.png">
+  <img src="https://github.com/DrLele08/Prelievo-Ordini/blob/main/Server/public/logo.png">
   <h3 align="center">Prelievo Ordini</h3>
 
   <p align="center">
