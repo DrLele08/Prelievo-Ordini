@@ -45,7 +45,7 @@
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
+    <li><a href="#Ringraziamenti">Ringraziamenti</a></li>
   </ol>
 </details>
 
@@ -72,7 +72,7 @@ Prelievi Ordini è un app che cerca di avvicinarsi alla tecnologia moderna e di 
 Sono presenti tutti i linguaggi e tutte le librerie utilizzate per il progetto:
 
 * [Node JS](https://nodejs.org/it/)
-
+* [Kotlin](https://kotlinlang.org/)
 
 Librerie utilizzate con <b>Node JS:</b>
 * [WhatsApp Bot](https://github.com/open-wa/wa-automate-nodejs)
@@ -80,6 +80,18 @@ Librerie utilizzate con <b>Node JS:</b>
 * [Express](https://expressjs.com/)
 * [MySQL](https://www.npmjs.com/package/mysql)
 * [Random String](https://www.npmjs.com/package/randomstring)
+
+
+Librerie utilizzate con <b>Kotlin:</b>
+* [Toast](https://github.com/Spikeysanju/MotionToast)
+* [Dialog](https://github.com/afollestad/material-dialogs)
+* [Animazioni](https://github.com/airbnb/lottie-android)
+* [Image Downloader](https://github.com/bumptech/glide)
+* [Image Picker](https://github.com/Drjacky/ImagePicker)
+* [Text Recognition](https://developers.google.com/ml-kit/vision/text-recognition/android)
+* [Barcode Scanner](https://developers.google.com/ml-kit/vision/barcode-scanning/android)
+* [Stepper Input](https://github.com/kojofosu/Quantitizer)
+* [JSON Util](https://github.com/google/gson)
 
 <p align="right">(<a href="#top">Torna in alto</a>)</p>
 
@@ -186,18 +198,15 @@ Sais Raffaele - [@DrLele08](https://twitter.com/drlele08) - saisraffaele08@gmail
 
 
 <!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
+## Ringraziamenti
 
-Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
+Qui di seguito sono elencati alcuni contribuenti (Passivi e Attivi) alla realizzazione del progetto
 
-* [Choose an Open Source License](https://choosealicense.com)
-* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-* [Malven's Flexbox Cheatsheet](https://flexbox.malven.co/)
-* [Malven's Grid Cheatsheet](https://grid.malven.co/)
-* [Img Shields](https://shields.io)
-* [GitHub Pages](https://pages.github.com)
-* [Font Awesome](https://fontawesome.com)
-* [React Icons](https://react-icons.github.io/react-icons/search)
+* [FreePick](https://it.freepik.com/)
+* [FlatIcon](https://www.flaticon.com/)
+* [PixelPerfect User](https://it.freepik.com/)
+* [JuicyFish User](https://it.freepik.com/)
+* [Srip User](https://it.freepik.com/)
 
 <p align="right">(<a href="#top">Torna in alto</a>)</p>
 
