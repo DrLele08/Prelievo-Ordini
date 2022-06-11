@@ -1,29 +1,33 @@
 package it.drlele08.prelievoordini.view.lettura
 
 import android.annotation.SuppressLint
+import android.content.Context.MODE_PRIVATE
+import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Bundle
 import android.os.SystemClock
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.core.content.res.ResourcesCompat
+import androidx.fragment.app.Fragment
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.input.getInputField
 import com.afollestad.materialdialogs.input.input
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.Volley
 import com.bumptech.glide.Glide
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import it.drlele08.prelievoordini.R
 import it.drlele08.prelievoordini.Utilita
 import it.drlele08.prelievoordini.controller.lettura.LetturaController
-import it.drlele08.prelievoordini.model.lettura.DetailLettura
 import it.drlele08.prelievoordini.model.lettura.Lettura
 import it.drlele08.prelievoordini.model.lettura.LetturaProdotto
 import www.sanju.motiontoast.MotionToast
 import www.sanju.motiontoast.MotionToastStyle
+import java.lang.reflect.Type
 
 
 class LetturaSceltaFragment : Fragment()
@@ -96,9 +100,21 @@ class LetturaSceltaFragment : Fragment()
 
     }
 
+    private fun saveDatiOffline()
+    {
+        val json: String = Gson().toJson(detailArretrati)
+        Utilita.saveDato(requireContext(),keyLettureRecover,json)
+    }
+
+    private fun resetDatiOffline()
+    {
+        Utilita.removeDato(requireContext(),keyLettureRecover)
+    }
+
     private fun sendLetture(showAlert:Boolean)
     {
         LetturaController().updateLettura(Utilita.user!!.getIdUtente(),Utilita.user!!.getTokenAuth(),lettura.getIdOperatore(),detailArretrati,queue,{
+            resetDatiOffline()
             if(showAlert)
             {
                 MotionToast.darkToast(requireActivity(),"Fatto","Operazione effettuata",
@@ -106,8 +122,10 @@ class LetturaSceltaFragment : Fragment()
                     MotionToast.GRAVITY_BOTTOM,
                     MotionToast.LONG_DURATION,
                     ResourcesCompat.getFont(requireContext(), www.sanju.motiontoast.R.font.helvetica_regular))
+                requireActivity().onBackPressed()
             }
         },{mess ->
+            saveDatiOffline()
             if(showAlert)
             {
                 MotionToast.darkToast(requireActivity(),"Errore",mess,
@@ -137,6 +155,7 @@ class LetturaSceltaFragment : Fragment()
     private lateinit var queue: RequestQueue
     private var currentProd=0
     private var currentQnt=0
+    private val keyLettureRecover="LETTURA_RECOVERY"
     override fun onViewCreated(view: View, savedInstanceState: Bundle?)
     {
         super.onViewCreated(view, savedInstanceState)
@@ -154,7 +173,18 @@ class LetturaSceltaFragment : Fragment()
         btnAdd=view.findViewById(R.id.btnDetailLetturaAdd)
         textReparto=view.findViewById(R.id.textDetailLetturaReparto)
         textScaffale=view.findViewById(R.id.textDetailLetturaScaffale)
-        detailArretrati=ArrayList()
+        val sharedPreferences: SharedPreferences =
+            requireContext().getSharedPreferences(Utilita.saveKey,MODE_PRIVATE)
+        val jsonRecover=sharedPreferences.getString(keyLettureRecover,null)
+        detailArretrati=if(jsonRecover==null)
+        {
+            ArrayList()
+        }
+        else
+        {
+            val type: Type = object : TypeToken<ArrayList<LetturaProdotto?>?>() {}.type
+            Gson().fromJson(jsonRecover, type)
+        }
         detailArretrati.add(LetturaProdotto(tipoEvento = LetturaProdotto.DISPOSITIVO_COLLEGATO))
         updateProd()
         textTimer.base=SystemClock.elapsedRealtime()
@@ -170,13 +200,4 @@ class LetturaSceltaFragment : Fragment()
         }
     }
 
-    override fun onDetach()
-    {
-        if(detailArretrati[detailArretrati.size-1].getTipoEvento()!=LetturaProdotto.DISPOSTIVO_SCOLLEGATO)
-        {
-            detailArretrati.add(LetturaProdotto(tipoEvento = LetturaProdotto.DISPOSTIVO_SCOLLEGATO, note = "Chiusa sessione"))
-            sendLetture(false)
-        }
-        super.onDetach()
-    }
 }

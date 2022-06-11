@@ -259,7 +259,7 @@ Lettura.updateLettura=(idOperatore,eventiLetture,result)=>{
                         obj.push(null);
                     }
                     obj.push(idOperatore);
-                    obj.push(x.Note);
+                    obj.push(x.note);
                     vettSql.push(obj);
                 });
                 sql.beginTransaction((errT)=>{

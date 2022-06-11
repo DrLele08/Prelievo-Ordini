@@ -7,20 +7,18 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-
+  <img src="./Server/public/img/logo.png">
   <h3 align="center">Prelievo Ordini</h3>
 
   <p align="center">
-    An awesome README template to jumpstart your projects!
+    Applicazione sviluppata per la tesi triennale in Informatica
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/"><strong>Scarica l'app</strong></a>
     <br />
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
+    <a href="https://github.com/DrLele08/Prelievo-Ordini/issues">Segnala Bug</a>
     ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a>
+    <a href="https://github.com/DrLele08/Prelievo-Ordini/issues">Consiglia Funzionalità</a>
   </p>
 </div>
 
@@ -28,12 +26,12 @@
 
 <!-- TABLE OF CONTENTS -->
 <details>
-  <summary>Table of Contents</summary>
+  <summary>Indice</summary>
   <ol>
     <li>
-      <a href="#about-the-project">About The Project</a>
+      <a href="#Il-Progetto">Il Progetto</a>
       <ul>
-        <li><a href="#built-with">Built With</a></li>
+        <li><a href="#Realizzato-Con">Realizzato Con</a></li>
       </ul>
     </li>
     <li>
@@ -54,37 +52,34 @@
 
 
 <!-- ABOUT THE PROJECT -->
-## About The Project
+## Il Progetto
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-There are many great README templates available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
+L'applicazione (commissionata da un azienda) ha come obiettivo quello di semplificare e migliorare il mondo del B2B con l'aiuto dell'informatica, non solo l'azienda, ma anche clienti e dipendenti, il nostro obiettivo è quello di avvicinare il mondo del B2B a quello del B2C
 
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should implement DRY principles to the rest of your life :smile:
+Alcuni dei motivi:
+* Negli ultimi anni la clientela diventa sempre più esigente, ma mentre il mondo del B2C tenta di rimanere al passo coi tempi...il mondo del B2B è indietro di almeno 10 anni.
+* Il mercato del B2B diventà sempre più difficile e pericoloso.
+* La maggior parte delle aziende B2B non possiede un Sito/E-Commerce (O ne possiede uno datato)
 
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have contributed to expanding this template!
-
-Use the `BLANK_README.md` to get started.
-
+Prelievi Ordini è un app che cerca di avvicinarsi alla tecnologia moderna e di stare al passo con la tecnologia usata nel mondo del B2C
 <p align="right">(<a href="#top">Torna in alto</a>)</p>
 
 
 
-### Built With
+### Realizzato Con
 
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
+Sono presenti tutti i linguaggi e tutte le librerie utilizzate per il progetto:
 
-* [Next.js](https://nextjs.org/)
-* [React.js](https://reactjs.org/)
-* [Vue.js](https://vuejs.org/)
-* [Angular](https://angular.io/)
-* [Svelte](https://svelte.dev/)
-* [Laravel](https://laravel.com)
-* [Bootstrap](https://getbootstrap.com)
-* [JQuery](https://jquery.com)
+* [Node JS](https://nodejs.org/it/)
+
+
+Librerie utilizzate con <b>Node JS:</b>
+* [WhatsApp Bot](https://github.com/open-wa/wa-automate-nodejs)
+* [Crypt Password](https://www.npmjs.com/package/bcrypt)
+* [Express](https://expressjs.com/)
+* [MySQL](https://www.npmjs.com/package/mysql)
+* [Random String](https://www.npmjs.com/package/randomstring)
 
 <p align="right">(<a href="#top">Torna in alto</a>)</p>
 

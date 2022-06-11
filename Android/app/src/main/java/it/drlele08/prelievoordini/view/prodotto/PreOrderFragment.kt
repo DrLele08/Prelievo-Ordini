@@ -133,10 +133,11 @@ class PreOrderFragment : Fragment(),ProdottoDelegate
         viewProdotti.addOnScrollListener(object : RecyclerView.OnScrollListener(){
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 val pastVisibleItem = layoutManager.findFirstCompletelyVisibleItemPosition()
+                val maxVisible=layoutManager.findLastVisibleItemPosition()
                 val total = adapter.itemCount
                 if(total>5)
                 {
-                    if (pastVisibleItem>(total-8) && !maxPagina)
+                    if ((pastVisibleItem>(total-8) || (total-maxVisible)<3) && !maxPagina)
                     {
                         pagina++
                         getProdotti()

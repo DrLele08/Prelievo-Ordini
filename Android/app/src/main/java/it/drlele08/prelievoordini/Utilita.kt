@@ -32,18 +32,27 @@ class Utilita
         const val token="123456"
         const val oneSignalKey = "2fef20cf-7fae-43f0-b50e-3c52f309dbfa"
         var user: Utente? = null
+        const val saveKey="APP_PRELIEVI"
 
         fun saveDato(context:Context,key:String,value:String)
         {
-            val sharedPreference=context.getSharedPreferences("APP_PRELIEVI",Context.MODE_PRIVATE)
+            val sharedPreference=context.getSharedPreferences(saveKey,Context.MODE_PRIVATE)
             val editor = sharedPreference.edit()
             editor.putString(key,value)
             editor.apply()
         }
 
+        fun removeDato(context:Context,key:String)
+        {
+            val sharedPreference=context.getSharedPreferences(saveKey,Context.MODE_PRIVATE)
+            val editor = sharedPreference.edit()
+            editor.remove(key)
+            editor.apply()
+        }
+
         fun getDato(context:Context,key:String):String
         {
-            val sharedPreference=context.getSharedPreferences("APP_PRELIEVI",Context.MODE_PRIVATE)
+            val sharedPreference=context.getSharedPreferences(saveKey,Context.MODE_PRIVATE)
             return sharedPreference.getString(key,"")!!
         }
 
