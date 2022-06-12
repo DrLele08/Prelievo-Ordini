@@ -13,7 +13,7 @@
   <p align="center">
     Applicazione sviluppata per la tesi triennale in Informatica
     <br />
-    <a href="https://github.com/"><strong>Scarica l'app</strong></a>
+    <a href="https://github.com/DrLele08/Prelievo-Ordini/releases"><strong>Scarica l'app</strong></a>
     <br />
     <br />
     <a href="https://github.com/DrLele08/Prelievo-Ordini/issues">Segnala Bug</a>
@@ -99,30 +99,30 @@ Librerie utilizzate con <b>Kotlin:</b>
 <!-- GETTING STARTED -->
 ## Scaricare Il Progetto
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+Qui è presente una guida per scaricare il progetto e utilizzarlo localmente
 
 ### Requisiti
 
-This is an example of how to list things you need to use the software and how to install them.
 * npm
   ```sh
   npm install npm@latest -g
   ```
+* Android Studio
+* Kotlin
+* MySQL Server
 
 ### Installazione
-
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
 
 1. Scarica il progetto
    ```sh
    git clone https://github.com/DrLele08/Prelievo-Ordini
    ```
-2. Installa le librerie
+2. Configura il database
+3. Installa le librerie
    ```sh
    npm install
    ```
-3. Variabili nascoste in `.env`
+4. Inserisci le variabili in `.env`
    ```
 	DB_HOST=<IP Database>
 	DB_USER=<User Database>
@@ -133,6 +133,9 @@ _Below is an example of how you can instruct your audience on installing and set
 	WA_AUTH=<WhatsApp Random Session Key>
 	ORDINE_PAGINA=<Numero Ordini Pagina>
 	PROD_PAGINA=<Numero Prodotti Pagina>
+5. Avvia il server
+   ```
+   node index
    ```
 
 <p align="right">(<a href="#top">Torna in alto</a>)</p>
