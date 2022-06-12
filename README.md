@@ -161,8 +161,8 @@ Per informazioni sul funzionamento delle API controllare la [Documentazione](htt
     - [x] Italiano
     - [x] Inglese
     - [ ] Cinese
-- [ ] Gestione DueIn
-- [ ] Gestione PreOrder
+- [ ] Gestione Due In
+- [ ] Gestione Pre Order
 - [ ] Payment Integrazione
     - [ ] PayPal
     - [ ] Stripe
