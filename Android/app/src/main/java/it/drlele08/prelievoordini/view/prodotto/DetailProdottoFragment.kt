@@ -43,8 +43,7 @@ class DetailProdottoFragment : Fragment()
         }
         val quadagno=(prodotto.getPrezzoConsigliato()-prodotto.getPrezzoIvato())*qntScelta
         val percQuad=(((prodotto.getPrezzoConsigliato()-prodotto.getPrezzoIvato())/prodotto.getPrezzoIvato())*100).roundToInt()
-        textROI.text="$percQuad% ($quadagno€)"
-        textInfoQnt.text="Quantità selezionata: $qntScelta pz"
+        textROI.text="$percQuad% (${String.format("%.2f",quadagno)}€)"
         textPrezzo.text="${String.format("%.2f",prezzo)}€"
     }
     private fun loadInfo()
@@ -63,7 +62,7 @@ class DetailProdottoFragment : Fragment()
             }
         }
         Glide.with(requireContext()).load("${Utilita.host}/img/articoli/${prodotto.getIdArticolo()}.jpg").circleCrop().into(imageProd)
-        textSpecifiche.setOnClickListener{
+        imageInfo.setOnClickListener{
             loadSpecifiche()
         }
         if(Utilita.user!!.getTipoUtente() == 3)
@@ -72,7 +71,6 @@ class DetailProdottoFragment : Fragment()
                 addToCart()
             }
             stepperQnt.visibility=View.VISIBLE
-            textInfoQnt.visibility=View.VISIBLE
             btnAddCart.visibility=View.VISIBLE
             stepperQnt.setQuantitizerListener(object: QuantitizerListener {
                 override fun onIncrease() {}
@@ -137,10 +135,9 @@ class DetailProdottoFragment : Fragment()
     private lateinit var stepperQnt:HorizontalQuantitizer
     private lateinit var textQntCartone:TextView
     private lateinit var textQntDisponibile:TextView
-    private lateinit var textInfoQnt:TextView
-    private lateinit var textSpecifiche:TextView
     private lateinit var btnTipoQnt:ToggleButton
     private lateinit var textPrezzo:TextView
+    private lateinit var imageInfo:ImageView
     private lateinit var textROI:TextView
     private var qntScelta=1
     override fun onViewCreated(view: View, savedInstanceState: Bundle?)
@@ -151,11 +148,10 @@ class DetailProdottoFragment : Fragment()
         textNome=view.findViewById(R.id.textDetailNome)
         btnAddCart=view.findViewById(R.id.btnDetailAddCart)
         stepperQnt=view.findViewById(R.id.stepperQnt)
-        textInfoQnt=view.findViewById(R.id.textDetailInfoQnt)
+        imageInfo=view.findViewById(R.id.imageInfoDetailProd)
         textQntDisponibile=view.findViewById(R.id.textDetailQntDisp)
         btnTipoQnt=view.findViewById(R.id.toggleButton)
         textQntCartone=view.findViewById(R.id.textDetailQntCartone)
-        textSpecifiche=view.findViewById(R.id.textDetailSpecifiche)
         textPrezzo=view.findViewById(R.id.textDetailPrezzo)
         textROI=view.findViewById(R.id.textViewDetailROI)
         stepperQnt.setValueBackgroundColor(R.color.white)

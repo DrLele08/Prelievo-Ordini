@@ -35,16 +35,15 @@
       </ul>
     </li>
     <li>
-      <a href="#getting-started">Getting Started</a>
+      <a href="#Scaricare-Il-Progetto">Scaricare Il Progetto</a>
       <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
+        <li><a href="#Requisiti">Requisiti</a></li>
+        <li><a href="#Installazione">Installazione</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
+    <li><a href="#Utilizzo">Utilizzo</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#Contatti">Contatti</a></li>
     <li><a href="#Ringraziamenti">Ringraziamenti</a></li>
   </ol>
 </details>
@@ -98,12 +97,12 @@ Librerie utilizzate con <b>Kotlin:</b>
 
 
 <!-- GETTING STARTED -->
-## Getting Started
+## Scaricare Il Progetto
 
 This is an example of how you may give instructions on setting up your project locally.
 To get a local copy up and running follow these simple example steps.
 
-### Prerequisites
+### Requisiti
 
 This is an example of how to list things you need to use the software and how to install them.
 * npm
@@ -111,7 +110,7 @@ This is an example of how to list things you need to use the software and how to
   npm install npm@latest -g
   ```
 
-### Installation
+### Installazione
 
 _Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
 
@@ -124,7 +123,7 @@ _Below is an example of how you can instruct your audience on installing and set
    npm install
    ```
 3. Variabili nascoste in `.env`
-   ```js
+   ```
 	DB_HOST=<IP Database>
 	DB_USER=<User Database>
 	DB_PWD=<Password Database>
@@ -141,11 +140,11 @@ _Below is an example of how you can instruct your audience on installing and set
 
 
 <!-- USAGE EXAMPLES -->
-## Usage
+## Utilizzo
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+Il server RESTFUL API e l'app sono ready to use, basterà seguire i procedimenti sopra elencati
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+Per informazioni sul funzionamento delle API controllare la [Documentazione](https://documenter.getpostman.com/view/5321024/Uz5Knad3)
 
 <p align="right">(<a href="#top">Torna in alto</a>)</p>
 
@@ -154,33 +153,21 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <!-- ROADMAP -->
 ## Roadmap
 
-- [x] Add Changelog
-- [x] Add Torna in alto links
-- [ ] Add Additional Templates w/ Examples
-- [ ] Add "components" document to easily copy & paste sections of the readme
-- [ ] Multi-language Support
-    - [ ] Chinese
-    - [ ] Spanish
+- [x] Documentazione API
+- [x] Suppurto Multi lingua
+    - [x] Italiano
+    - [x] Inglese
+    - [ ] Cinese
+- [ ] Gestione DueIn
+- [ ] Gestione PreOrder
+- [ ] Payment Integrazione
+    - [ ] PayPal
+    - [ ] Stripe
+    - [ ] SEPA Transfer
+- [ ] Applicazione iOS
+- [ ] E-Commerce
 
-See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a full list of proposed features (and known issues).
-
-<p align="right">(<a href="#top">Torna in alto</a>)</p>
-
-
-
-<!-- CONTRIBUTING -->
-## Contributing
-
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+Controlla [Trello](https://trello.com/b/ztV1FzTM/tesi-triennale) per le nuove funzionalità in arrivo e i bug individuati.
 
 <p align="right">(<a href="#top">Torna in alto</a>)</p>
 
@@ -188,7 +175,7 @@ Don't forget to give the project a star! Thanks again!
 
 
 <!-- CONTACT -->
-## Contact
+## Contatti
 
 Sais Raffaele - [@DrLele08](https://twitter.com/drlele08) - saisraffaele08@gmail.com
 

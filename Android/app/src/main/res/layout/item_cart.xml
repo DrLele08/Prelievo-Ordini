@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="84dp"
+    android:layout_height="90dp"
     android:layout_marginBottom="10dp"
-    android:background="#1F222A">
+    android:background="@drawable/round_back">
 
     <TextView
         android:id="@+id/textCartQnt"

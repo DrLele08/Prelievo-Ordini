@@ -111,9 +111,10 @@ class PreOrderFragment : Fragment(),ProdottoDelegate
         viewGlo=view
         textNome=view.findViewById(R.id.inputDescProdPreOrder)
         queue= Volley.newRequestQueue(requireContext())
+        pagina=0
         layoutManager= LinearLayoutManager(requireContext())
         viewProdotti.layoutManager = layoutManager
-        listProdotti= ArrayList()
+        listProdotti=ArrayList()
         adapter= ProdottoAdapter(listProdotti,this,requireContext())
         viewProdotti.adapter=adapter
         btnFilter.setOnClickListener{
@@ -121,13 +122,16 @@ class PreOrderFragment : Fragment(),ProdottoDelegate
         }
         getProdotti()
         textNome.doOnTextChanged { text, _, _, _ ->
-            pagina=0
-            listProdotti.clear()
-            desc = if(text.toString().length>2)
-                text.toString()
-            else
-                ""
-            getProdotti()
+            if(text.toString()!=desc)
+            {
+                pagina=0
+                listProdotti.clear()
+                desc = if(text.toString().length>2)
+                    text.toString()
+                else
+                    ""
+                getProdotti()
+            }
         }
 
         viewProdotti.addOnScrollListener(object : RecyclerView.OnScrollListener(){
@@ -147,9 +151,14 @@ class PreOrderFragment : Fragment(),ProdottoDelegate
             }
         })
     }
-
     override fun onProductClick(prodotto: Prodotto)
     {
-
+        if(Utilita.user != null)
+        {
+            listProdotti.clear()
+            val b=Bundle()
+            b.putInt("idArticolo",prodotto.getIdArticolo())
+            Navigation.findNavController(viewGlo).navigate(R.id.detailProdottoFragment,b)
+        }
     }
 }

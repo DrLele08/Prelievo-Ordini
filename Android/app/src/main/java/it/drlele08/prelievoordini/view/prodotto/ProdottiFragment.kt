@@ -260,13 +260,16 @@ class ProdottiFragment : Fragment(),ProdottoDelegate
 
         getProdotti()
         textNome.doOnTextChanged { text, _, _, _ ->
-            pagina=0
-            listProdotti.clear()
-            desc = if(text.toString().length>2)
-                text.toString()
-            else
-                ""
-            getProdotti()
+            if(text.toString()!=desc)
+            {
+                pagina=0
+                listProdotti.clear()
+                desc = if(text.toString().length>2)
+                    text.toString()
+                else
+                    ""
+                getProdotti()
+            }
         }
 
         viewProdotti.addOnScrollListener(object : RecyclerView.OnScrollListener(){
@@ -286,7 +289,6 @@ class ProdottiFragment : Fragment(),ProdottoDelegate
             }
         })
     }
-
     override fun onProductClick(prodotto: Prodotto)
     {
         if(Utilita.user != null)
