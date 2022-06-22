@@ -29,22 +29,22 @@ class LettureFragment : Fragment(), LetturaDelegate
     private fun scegliLettura(idOrdine:Int)
     {
         MaterialDialog(requireContext()).show {
-            title(text = "Conferma ordine")
-            message(text = "Vuoi confermare la presa in carico per l'ordine #$idOrdine")
+            title(R.string.conferma_ordine)
+            message(text = getString(R.string.conferma_ordine_detail,idOrdine))
             positiveButton(R.string.si) {
                 LetturaController().scegliLettura(Utilita.user!!.getIdUtente(),Utilita.user!!.getTokenAuth(),idOrdine,queue,{lett ->
                     val b=Bundle()
                     b.putSerializable("lettura",lett)
                     Navigation.findNavController(viewFrag).navigate(R.id.letturaSceltaFragment,b)
                 },{mess ->
-                    MotionToast.darkToast(requireActivity(),"Errore",mess,
+                    MotionToast.darkToast(requireActivity(),getString(R.string.errore),mess,
                         MotionToastStyle.ERROR,
                         MotionToast.GRAVITY_BOTTOM,
                         MotionToast.LONG_DURATION,
                         ResourcesCompat.getFont(requireContext(), www.sanju.motiontoast.R.font.helvetica_regular))
                 })
             }
-            negativeButton(text = "Annulla")
+            negativeButton(R.string.annulla)
         }
     }
 
@@ -54,8 +54,8 @@ class LettureFragment : Fragment(), LetturaDelegate
             if(lett.getIdOperatore() != -1)
             {
                 MaterialDialog(requireContext()).show {
-                    title(text = "Lettura in corso")
-                    message(text = "Hai una lettura di un ordine in sospeso\nVuoi continuare?")
+                    title(R.string.lettura_in_corso)
+                    message(R.string.lettura_sospesa)
                     positiveButton(R.string.si) {
                         val b=Bundle()
                         b.putSerializable("lettura",lett)
@@ -66,7 +66,7 @@ class LettureFragment : Fragment(), LetturaDelegate
             }
             loadLetture()
         },{mess ->
-            MotionToast.darkToast(requireActivity(),"Errore",mess,
+            MotionToast.darkToast(requireActivity(),getString(R.string.errore),mess,
                 MotionToastStyle.ERROR,
                 MotionToast.GRAVITY_BOTTOM,
                 MotionToast.LONG_DURATION,
@@ -93,7 +93,7 @@ class LettureFragment : Fragment(), LetturaDelegate
                 textAnimazione.visibility=View.VISIBLE
             }
         },{mess ->
-            MotionToast.darkToast(requireActivity(),"Errore",mess,
+            MotionToast.darkToast(requireActivity(),getString(R.string.errore),mess,
                 MotionToastStyle.ERROR,
                 MotionToast.GRAVITY_BOTTOM,
                 MotionToast.LONG_DURATION,

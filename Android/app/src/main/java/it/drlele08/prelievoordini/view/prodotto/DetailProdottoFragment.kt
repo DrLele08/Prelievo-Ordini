@@ -89,13 +89,13 @@ class DetailProdottoFragment : Fragment()
     {
         MaterialDialog(requireContext()).show {
             var mess=""
-            mess+="<b>Prezzo consigliato:</b> ${prodotto.getPrezzoConsigliato()}€<br>"
-            mess+="<b>Lunghezza:</b> ${prodotto.getLunghezza()}cm<br>"
-            mess+="<b>Altezza:</b> ${prodotto.getAltezza()}cm<br>"
-            mess+="<b>Larghezza:</b> ${prodotto.getProfondita()}cm<br>"
-            mess+="<b>Volume:</b> ${prodotto.getVolume()}<br>"
-            mess+="<b>Peso:</b> ${prodotto.getPesoGrammi()} grammi"
-            title(text = "Specifiche prodotto")
+            mess+="<b>"+getString(R.string.prezzo_cons)+":</b> ${prodotto.getPrezzoConsigliato()}€<br>"
+            mess+="<b>"+getString(R.string.lunghezza)+":</b> ${prodotto.getLunghezza()}cm<br>"
+            mess+="<b>"+getString(R.string.altezza)+":</b> ${prodotto.getAltezza()}cm<br>"
+            mess+="<b>"+getString(R.string.larghezza)+":</b> ${prodotto.getProfondita()}cm<br>"
+            mess+="<b>"+getString(R.string.volume)+":</b> ${prodotto.getVolume()}<br>"
+            mess+="<b>"+getString(R.string.peso)+":</b> ${prodotto.getPesoGrammi()} "+getString(R.string.grammi)
+            title(R.string.specifiche_prodotto)
             message(text = mess){
                 html()
             }
@@ -109,14 +109,14 @@ class DetailProdottoFragment : Fragment()
         btnAddCart.isEnabled=false
         CarrelloController().addToCart(idUtente,tokenAuth,prodotto.getIdArticolo(),qntScelta,queue,{
             btnAddCart.isEnabled=true
-            MotionToast.darkToast(requireActivity(),"Fatto","Prodotto aggiunto al carrello",
+            MotionToast.darkToast(requireActivity(),getString(R.string.fatto),getString(R.string.aggiunto_al_carrello),
                 MotionToastStyle.SUCCESS,
                 MotionToast.GRAVITY_BOTTOM,
                 MotionToast.LONG_DURATION,
                 ResourcesCompat.getFont(requireContext(), www.sanju.motiontoast.R.font.helvetica_regular))
         },{mess ->
             btnAddCart.isEnabled=true
-            MotionToast.darkToast(requireActivity(),"Errore",mess,
+            MotionToast.darkToast(requireActivity(),getString(R.string.errore),mess,
                 MotionToastStyle.ERROR,
                 MotionToast.GRAVITY_BOTTOM,
                 MotionToast.LONG_DURATION,
@@ -162,7 +162,7 @@ class DetailProdottoFragment : Fragment()
             prodotto=prod
             loadInfo()
         },{mess->
-            MotionToast.darkToast(requireActivity(),"Errore",mess,
+            MotionToast.darkToast(requireActivity(),getString(R.string.errore),mess,
                 MotionToastStyle.ERROR,
                 MotionToast.GRAVITY_BOTTOM,
                 MotionToast.LONG_DURATION,

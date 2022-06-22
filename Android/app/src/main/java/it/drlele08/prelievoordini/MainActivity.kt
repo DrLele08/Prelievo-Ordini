@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity()
         val tokenAuth=Utilita.getDato(this,Utente.keyTokenUtente)
         if(idUtente.isNotEmpty())
         {
-            val dialog=Utilita.setProgressDialog(this,"Recupero utente...")
+            val dialog=Utilita.setProgressDialog(this,getString(R.string.recupera_utente))
             dialog.show()
             val intId=Integer.parseInt(idUtente)
             UtenteController().doLoginByToken(intId,tokenAuth,Volley.newRequestQueue(this),{utente ->
@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity()
                 completeSetup()
             },{err->
                 dialog.hide()
-                MotionToast.darkToast(this,"Errore",err,
+                MotionToast.darkToast(this,getString(R.string.errore),err,
                     MotionToastStyle.ERROR,
                     MotionToast.GRAVITY_BOTTOM,
                     MotionToast.LONG_DURATION,

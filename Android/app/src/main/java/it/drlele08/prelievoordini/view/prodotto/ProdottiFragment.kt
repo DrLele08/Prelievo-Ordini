@@ -68,7 +68,7 @@ class ProdottiFragment : Fragment(),ProdottoDelegate
                     }
                     else
                     {
-                        MotionToast.darkToast(requireActivity(),"Errore","Nessuna corrispondenza con l'immagine",
+                        MotionToast.darkToast(requireActivity(),getString(R.string.errore),getString(R.string.no_corr_imm),
                             MotionToastStyle.ERROR,
                             MotionToast.GRAVITY_BOTTOM,
                             MotionToast.LONG_DURATION,
@@ -76,7 +76,7 @@ class ProdottiFragment : Fragment(),ProdottoDelegate
                     }
                 }
                 .addOnFailureListener { e ->
-                    MotionToast.darkToast(requireActivity(),"Errore",e.toString(),
+                    MotionToast.darkToast(requireActivity(),getString(R.string.errore),e.toString(),
                         MotionToastStyle.ERROR,
                         MotionToast.GRAVITY_BOTTOM,
                         MotionToast.LONG_DURATION,
@@ -98,7 +98,7 @@ class ProdottiFragment : Fragment(),ProdottoDelegate
                             b.putInt("idArticolo",prodotto.getIdArticolo())
                             Navigation.findNavController(viewGlo).navigate(R.id.detailProdottoFragment,b)
                         },{err ->
-                            MotionToast.darkToast(requireActivity(),"Errore",err,
+                            MotionToast.darkToast(requireActivity(),getString(R.string.errore),err,
                                 MotionToastStyle.ERROR,
                                 MotionToast.GRAVITY_BOTTOM,
                                 MotionToast.LONG_DURATION,
@@ -107,7 +107,7 @@ class ProdottiFragment : Fragment(),ProdottoDelegate
                     }
                     else
                     {
-                        MotionToast.darkToast(requireActivity(),"Errore","Nessun EAN trovato",
+                        MotionToast.darkToast(requireActivity(),getString(R.string.errore),getString(R.string.no_ean_trovato),
                             MotionToastStyle.ERROR,
                             MotionToast.GRAVITY_BOTTOM,
                             MotionToast.LONG_DURATION,
@@ -115,7 +115,7 @@ class ProdottiFragment : Fragment(),ProdottoDelegate
                     }
                 }
                 .addOnFailureListener {
-                    MotionToast.darkToast(requireActivity(),"Errore",it.toString(),
+                    MotionToast.darkToast(requireActivity(),getString(R.string.errore),it.toString(),
                         MotionToastStyle.ERROR,
                         MotionToast.GRAVITY_BOTTOM,
                         MotionToast.LONG_DURATION,
@@ -131,7 +131,7 @@ class ProdottiFragment : Fragment(),ProdottoDelegate
             listProdotti=vettProd
             adapter.updateVett(listProdotti)
         },{mess->
-            MotionToast.darkToast(requireActivity(),"Errore",mess,
+            MotionToast.darkToast(requireActivity(),getString(R.string.errore),mess,
                 MotionToastStyle.ERROR,
                 MotionToast.GRAVITY_BOTTOM,
                 MotionToast.LONG_DURATION,
@@ -141,9 +141,9 @@ class ProdottiFragment : Fragment(),ProdottoDelegate
     private fun showFilter()
     {
         MaterialDialog(requireContext(), BottomSheet()).show {
-            title(text = "Filtri")
+            title(R.string.filtri)
             customView(R.layout.filter_modal, scrollable = true, horizontalPadding = true)
-            positiveButton(text = "Applica") { dialog ->
+            positiveButton(R.string.applica) { dialog ->
                 val spinnerCategoria:Spinner=dialog.getCustomView().findViewById(R.id.spinnerFilterCategoria)
                 val spinnerOrdina:Spinner=dialog.getCustomView().findViewById(R.id.spinnerFilterOrdinamento)
                 val selectedCategoria=spinnerCategoria.selectedItemId.toInt()
@@ -154,7 +154,7 @@ class ProdottiFragment : Fragment(),ProdottoDelegate
                 listProdotti.clear()
                 getProdotti()
             }
-            negativeButton(text = "Annulla")
+            negativeButton(R.string.annulla)
         }
     }
 
@@ -175,7 +175,7 @@ class ProdottiFragment : Fragment(),ProdottoDelegate
             }
             adapter.updateVett(listProdotti)
         },{mess->
-            MotionToast.darkToast(requireActivity(),"Errore",mess,
+            MotionToast.darkToast(requireActivity(),getString(R.string.errore),mess,
                 MotionToastStyle.ERROR,
                 MotionToast.GRAVITY_BOTTOM,
                 MotionToast.LONG_DURATION,

@@ -36,37 +36,36 @@ class LetturaSceltaFragment : Fragment()
     private fun uscitaMotivata()
     {
         val dialog=MaterialDialog(requireContext()).show {
-            title(text = "Conferma chiusura")
+            title(R.string.conferma_chiusura)
             input{ _, text ->
                 val motivo=text.toString()
-                detailArretrati.add(LetturaProdotto(tipoEvento = LetturaProdotto.DISPOSTIVO_SCOLLEGATO, note = motivo))
+                detailArretrati.add(LetturaProdotto(tipoEvento = LetturaProdotto.CHIUSURA_MOTIVATA, note = motivo))
                 sendLetture(true)
             }
             positiveButton(R.string.continua)
-            negativeButton(text = "Annulla")
+            negativeButton(R.string.annulla)
         }
         val text=dialog.getInputField()
-        text.hint="Inserisci il motivo della chiusura"
+        text.hint=getString(R.string.motivo_chiusura_inp)
         text.setBackgroundColor(Color.WHITE)
         text.setTextColor(Color.BLACK)
     }
 
-    private fun continua()
+    private fun aggiungiQnt()
     {
-        if(currentProd<(lettura.getProdotti().size-1))
+        val actualProd=lettura.getProdotti()[currentProd]
+        detailArretrati.add(LetturaProdotto(actualProd.getIdRigaOrdine(),actualProd.getIdArticolo(),LetturaProdotto.LETTURA_CONFERMATA,currentQnt))
+        currentProd++
+        if(lettura.getProdotti().size==currentProd)
         {
-            currentProd++
-            updateProd()
+            detailArretrati.add(LetturaProdotto(tipoEvento = LetturaProdotto.LETTURA_TERMINATA))
+            sendLetture(false)
         }
         else
         {
-            //Finito
+            sendLetture(false)
+            updateProd()
         }
-    }
-
-    private fun aggiungiQnt()
-    {
-
     }
     private fun updateProd()
     {
@@ -95,9 +94,18 @@ class LetturaSceltaFragment : Fragment()
             qntRimanente-=actualPos.getQnt()
             i++
         }
-        textScaffale.text="Scaffale: $posScaf"
-        textReparto.text="Reparto: ${listPosizioni[0].getIdReparto()}"
-
+        textScaffale.text=getString(R.string.scaffale,posScaf)
+        textReparto.text=getString(R.string.reparto,listPosizioni[0].getIdReparto())
+        if(lettura.getProdotti().size==(currentProd+1))
+        {
+            btnEsci.visibility=View.GONE
+            btnContinua.text=getString(R.string.termina)
+        }
+        else
+        {
+            btnEsci.visibility=View.VISIBLE
+            btnContinua.text=getText(R.string.continua)
+        }
     }
 
     private fun saveDatiOffline()
@@ -117,7 +125,7 @@ class LetturaSceltaFragment : Fragment()
             resetDatiOffline()
             if(showAlert)
             {
-                MotionToast.darkToast(requireActivity(),"Fatto","Operazione effettuata",
+                MotionToast.darkToast(requireActivity(),getString(R.string.fatto),getString(R.string.operazione_completata),
                     MotionToastStyle.SUCCESS,
                     MotionToast.GRAVITY_BOTTOM,
                     MotionToast.LONG_DURATION,
@@ -128,7 +136,7 @@ class LetturaSceltaFragment : Fragment()
             saveDatiOffline()
             if(showAlert)
             {
-                MotionToast.darkToast(requireActivity(),"Errore",mess,
+                MotionToast.darkToast(requireActivity(),getString(R.string.errore),mess,
                     MotionToastStyle.ERROR,
                     MotionToast.GRAVITY_BOTTOM,
                     MotionToast.LONG_DURATION,
@@ -190,10 +198,18 @@ class LetturaSceltaFragment : Fragment()
         textTimer.base=SystemClock.elapsedRealtime()
         textTimer.start()
         btnAdd.setOnClickListener{
-            aggiungiQnt()
+
         }
         btnContinua.setOnClickListener{
-            continua()
+            val actualProd=lettura.getProdotti()[currentProd]
+            MaterialDialog(requireContext()).show {
+                title(R.string.conferma_lettura)
+                message(text = getString(R.string.conferma_lettura_detail,currentQnt,actualProd.getQntOrdinata()))
+                positiveButton(R.string.si){
+                    aggiungiQnt()
+                }
+                negativeButton(R.string.annulla)
+            }
         }
         btnEsci.setOnClickListener{
             uscitaMotivata()

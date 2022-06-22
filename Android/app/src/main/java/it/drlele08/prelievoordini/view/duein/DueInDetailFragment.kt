@@ -41,7 +41,7 @@ class DueInDetailFragment : Fragment()
                 viewDetailDue.layoutManager = LinearLayoutManager(requireContext())
                 viewDetailDue.adapter=adapter
             },{mess ->
-                MotionToast.darkToast(requireActivity(),"Errore",mess,
+                MotionToast.darkToast(requireActivity(),getString(R.string.errore),mess,
                     MotionToastStyle.ERROR,
                     MotionToast.GRAVITY_BOTTOM,
                     MotionToast.LONG_DURATION,

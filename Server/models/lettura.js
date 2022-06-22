@@ -238,13 +238,21 @@ Lettura.updateLettura=(idOperatore,eventiLetture,result)=>{
             if(idOrdine != -1)
             {
                 let letturaTerminata=false;
+                let statoOrd=1;
                 let vettSql=new Array();
                 let vettUpdate=new Array();
                 eventiLetture.map(x=>{
                     let obj=new Array();
                     obj.push(x.tipoEvento);
-                    if(x.TipoEvento==6)
+                    if(x.tipoEvento==6)
+                    {
+                        statoOrd=3;
                         letturaTerminata=true;
+                    }
+                    if(x.tipoEvento==3)
+                    {
+                        letturaTerminata=true;
+                    }
                     if(x.ksArticolo != -1)
                     {
                         obj.push(x.ksArticolo);
@@ -299,28 +307,28 @@ Lettura.updateLettura=(idOperatore,eventiLetture,result)=>{
                                                     }
                                                     else
                                                     {
-                                                        let queryOrdine="UPDATE Ordine SET ksStato=3 WHERE idOrdine=?";
-                                                        sql.query(queryOrdine,[idOrdine],(errOrd,risOrd)=>{
-                                                            if(errOrd)
-                                                            {
-                                                                sql.rollback();
-                                                                result(errOrd,null);
-                                                            }
-                                                            else
-                                                            {
-                                                                sql.commit((errComm)=>{
-                                                                    if(errComm)
-                                                                    {
-                                                                        sql.rollback();
-                                                                        result(errComm,null);
-                                                                    }
-                                                                    else
-                                                                    {
-                                                                        result(null,true);
-                                                                    }
-                                                                });
-                                                            }
-                                                        });
+                                                            let queryOrdine="UPDATE Ordine SET ksStato=? WHERE idOrdine=?";
+                                                            sql.query(queryOrdine,[statoOrd,idOrdine],(errOrd,risOrd)=>{
+                                                                if(errOrd)
+                                                                {
+                                                                    sql.rollback();
+                                                                    result(errOrd,null);
+                                                                }
+                                                                else
+                                                                {
+                                                                    sql.commit((errComm)=>{
+                                                                        if(errComm)
+                                                                        {
+                                                                            sql.rollback();
+                                                                            result(errComm,null);
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            result(null,true);
+                                                                        }
+                                                                    });
+                                                                }
+                                                            });
                                                     }
                                                 });
                                             }
@@ -343,17 +351,56 @@ Lettura.updateLettura=(idOperatore,eventiLetture,result)=>{
                                 }
                                 else
                                 {
-                                    sql.commit((errComm)=>{
-                                        if(errComm)
-                                        {
-                                            sql.rollback();
-                                            result(errComm,null);
-                                        }
-                                        else
-                                        {
-                                            result(null,true);
-                                        }
-                                    });
+                                    if(letturaTerminata)
+                                    {
+                                        let queryUpOp="UPDATE OperatoriLettura SET DataFine=NOW() WHERE idOperatoriLettura=?";
+                                        sql.query(queryUpOp,[idOperatore],(errOp,risOp)=>{
+                                            if(errOp)
+                                            {
+                                                sql.rollback();
+                                                result(errOp,null);
+                                            }
+                                            else
+                                            {
+                                                    let queryOrdine="UPDATE Ordine SET ksStato=? WHERE idOrdine=?";
+                                                    sql.query(queryOrdine,[statoOrd,idOrdine],(errOrd,risOrd)=>{
+                                                        if(errOrd)
+                                                        {
+                                                            sql.rollback();
+                                                            result(errOrd,null);
+                                                        }
+                                                        else
+                                                        {
+                                                            sql.commit((errComm)=>{
+                                                                if(errComm)
+                                                                {
+                                                                    sql.rollback();
+                                                                    result(errComm,null);
+                                                                }
+                                                                else
+                                                                {
+                                                                    result(null,true);
+                                                                }
+                                                            });
+                                                        }
+                                                    });
+                                            }
+                                        });
+                                    }
+                                    else
+                                    {
+                                        sql.commit((errComm)=>{
+                                            if(errComm)
+                                            {
+                                                sql.rollback();
+                                                result(errComm,null);
+                                            }
+                                            else
+                                            {
+                                                result(null,true);
+                                            }
+                                        });
+                                    }
                                 }
                             }
                         });

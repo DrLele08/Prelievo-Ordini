@@ -31,7 +31,7 @@ class LoginFragment : Fragment()
 
     private fun doLogin(email:String, pwd:String)
     {
-        val dialog=Utilita.setProgressDialog(requireContext(),"Login in corso...")
+        val dialog=Utilita.setProgressDialog(requireContext(),getString(R.string.login_in_corso))
         dialog.show()
         val userControl=UtenteController()
         userControl.doLoginByEmail(email,pwd,queue,{utente ->
@@ -48,7 +48,7 @@ class LoginFragment : Fragment()
             startActivity(intent)
         },{err ->
             dialog.hide()
-            MotionToast.darkToast(requireActivity(),"Errore",err,
+            MotionToast.darkToast(requireActivity(),getString(R.string.errore),err,
                 MotionToastStyle.ERROR,
                 MotionToast.GRAVITY_BOTTOM,
                 MotionToast.LONG_DURATION,
@@ -77,7 +77,7 @@ class LoginFragment : Fragment()
                 doLogin(email,pwd)
             else
             {
-                MotionToast.darkToast(requireActivity(),"Errore","Completa tutti i campi",
+                MotionToast.darkToast(requireActivity(),getString(R.string.errore),getString(R.string.ins_tut_camp),
                     MotionToastStyle.ERROR,
                     MotionToast.GRAVITY_BOTTOM,
                     MotionToast.LONG_DURATION,

@@ -48,7 +48,7 @@ class RegistrazioneFragment : Fragment()
             }
             else
             {
-                MotionToast.darkToast(requireActivity(),"Attenzione","Inserisci tutti i campi",
+                MotionToast.darkToast(requireActivity(),getString(R.string.attenzione),getString(R.string.ins_tut_camp),
                     MotionToastStyle.WARNING,
                     MotionToast.GRAVITY_BOTTOM,
                     MotionToast.LONG_DURATION,

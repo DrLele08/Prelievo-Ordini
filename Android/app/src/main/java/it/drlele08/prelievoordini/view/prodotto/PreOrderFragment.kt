@@ -1,8 +1,5 @@
 package it.drlele08.prelievoordini.view.prodotto
 
-import android.app.Activity
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Spinner
-import android.widget.Toast
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.widget.doOnTextChanged
 import androidx.navigation.Navigation
@@ -23,11 +19,6 @@ import com.afollestad.materialdialogs.customview.customView
 import com.afollestad.materialdialogs.customview.getCustomView
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.Volley
-import com.github.dhaval2404.imagepicker.ImagePicker
-import com.google.mlkit.vision.barcode.BarcodeScanning
-import com.google.mlkit.vision.common.InputImage
-import com.google.mlkit.vision.text.TextRecognition
-import com.google.mlkit.vision.text.latin.TextRecognizerOptions
 import it.drlele08.prelievoordini.R
 import it.drlele08.prelievoordini.Utilita
 import it.drlele08.prelievoordini.controller.prodotto.ProdottoAdapter
@@ -43,9 +34,9 @@ class PreOrderFragment : Fragment(),ProdottoDelegate
     private fun showFilter()
     {
         MaterialDialog(requireContext(), BottomSheet()).show {
-            title(text = "Filtri")
+            title(R.string.filtri)
             customView(R.layout.filter_modal, scrollable = true, horizontalPadding = true)
-            positiveButton(text = "Applica") { dialog ->
+            positiveButton(R.string.applica) { dialog ->
                 val spinnerCategoria: Spinner =dialog.getCustomView().findViewById(R.id.spinnerFilterCategoria)
                 val spinnerOrdina: Spinner =dialog.getCustomView().findViewById(R.id.spinnerFilterOrdinamento)
                 val selectedCategoria=spinnerCategoria.selectedItemId.toInt()
@@ -56,7 +47,7 @@ class PreOrderFragment : Fragment(),ProdottoDelegate
                 listProdotti.clear()
                 getProdotti()
             }
-            negativeButton(text = "Annulla")
+            negativeButton(R.string.annulla)
         }
     }
 
@@ -77,7 +68,7 @@ class PreOrderFragment : Fragment(),ProdottoDelegate
             }
             adapter.updateVett(listProdotti)
         },{mess->
-            MotionToast.darkToast(requireActivity(),"Errore",mess,
+            MotionToast.darkToast(requireActivity(),getString(R.string.errore),mess,
                 MotionToastStyle.ERROR,
                 MotionToast.GRAVITY_BOTTOM,
                 MotionToast.LONG_DURATION,

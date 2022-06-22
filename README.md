@@ -168,6 +168,7 @@ Per informazioni sul funzionamento delle API controllare la [Documentazione](htt
     - [ ] Stripe
     - [ ] SEPA Transfer
 - [ ] Applicazione iOS
+- [ ] Gestione Valute
 - [ ] E-Commerce
 
 Controlla [Trello](https://trello.com/b/ztV1FzTM/tesi-triennale) per le nuove funzionalità in arrivo e i bug individuati.

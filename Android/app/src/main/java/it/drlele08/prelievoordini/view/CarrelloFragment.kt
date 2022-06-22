@@ -59,7 +59,7 @@ class CarrelloFragment : Fragment(),CarrelloDelegate
                 textAvviso.visibility=View.VISIBLE
             }
         },{mess ->
-            MotionToast.darkToast(requireActivity(),"Errore",mess,
+            MotionToast.darkToast(requireActivity(),getString(R.string.errore),mess,
                 MotionToastStyle.ERROR,
                 MotionToast.GRAVITY_BOTTOM,
                 MotionToast.LONG_DURATION,
@@ -70,14 +70,14 @@ class CarrelloFragment : Fragment(),CarrelloDelegate
     private fun deleteItemCart(idArticolo:Int)
     {
         CarrelloController().removeToCart(Utilita.user!!.getIdUtente(),Utilita.user!!.getTokenAuth(),idArticolo,queue,{
-            MotionToast.darkToast(requireActivity(),"Fatto","Articolo eliminato",
+            MotionToast.darkToast(requireActivity(),getString(R.string.fatto),getString(R.string.art_el),
                 MotionToastStyle.SUCCESS,
                 MotionToast.GRAVITY_BOTTOM,
                 MotionToast.LONG_DURATION,
                 ResourcesCompat.getFont(requireContext(), www.sanju.motiontoast.R.font.helvetica_regular))
             loadCart()
         },{mess ->
-            MotionToast.darkToast(requireActivity(),"Errore",mess,
+            MotionToast.darkToast(requireActivity(),getString(R.string.errore),mess,
                 MotionToastStyle.ERROR,
                 MotionToast.GRAVITY_BOTTOM,
                 MotionToast.LONG_DURATION,
@@ -87,19 +87,19 @@ class CarrelloFragment : Fragment(),CarrelloDelegate
 
     private fun doAcquisto()
     {
-        val dialog=Utilita.setProgressDialog(requireContext(),"Attendere...")
+        val dialog=Utilita.setProgressDialog(requireContext(),getString(R.string.attendere))
         dialog.show()
         OrdineController().doOrdine(Utilita.user!!.getIdUtente(),Utilita.user!!.getTokenAuth(),"",queue,{
             dialog.hide()
             loadCart()
-            MotionToast.darkToast(requireActivity(),"Fatto","Ordine effettuato",
+            MotionToast.darkToast(requireActivity(),getString(R.string.fatto),getString(R.string.ordine_effettuato),
                 MotionToastStyle.SUCCESS,
                 MotionToast.GRAVITY_BOTTOM,
                 MotionToast.LONG_DURATION,
                 ResourcesCompat.getFont(requireContext(), www.sanju.motiontoast.R.font.helvetica_regular))
         },{mess ->
             dialog.hide()
-            MotionToast.darkToast(requireActivity(),"Errore",mess,
+            MotionToast.darkToast(requireActivity(),getString(R.string.errore),mess,
                 MotionToastStyle.ERROR,
                 MotionToast.GRAVITY_BOTTOM,
                 MotionToast.LONG_DURATION,
@@ -109,14 +109,14 @@ class CarrelloFragment : Fragment(),CarrelloDelegate
 
     private fun clearCart()
     {
-        val dialog=Utilita.setProgressDialog(requireContext(),"Attendere...")
+        val dialog=Utilita.setProgressDialog(requireContext(),getString(R.string.attendere))
         dialog.show()
         CarrelloController().clearCart(Utilita.user!!.getIdUtente(),Utilita.user!!.getTokenAuth(),queue,{
             dialog.hide()
             loadCart()
         },{mess ->
             dialog.hide()
-            MotionToast.darkToast(requireActivity(),"Errore",mess,
+            MotionToast.darkToast(requireActivity(),getString(R.string.errore),mess,
                 MotionToastStyle.ERROR,
                 MotionToast.GRAVITY_BOTTOM,
                 MotionToast.LONG_DURATION,
@@ -157,8 +157,8 @@ class CarrelloFragment : Fragment(),CarrelloDelegate
         loadCart()
         btnAcquista.setOnClickListener{
             MaterialDialog(requireContext()).show {
-                title(text = "Conferma ordine")
-                message(text = "Vuoi confermare il tuo ordine?")
+                title(R.string.conferma_ordine)
+                message(R.string.conferma_ordine_quest)
                 positiveButton(R.string.si) {
                     doAcquisto()
                 }
@@ -168,8 +168,8 @@ class CarrelloFragment : Fragment(),CarrelloDelegate
 
         btnSvuota.setOnClickListener{
             MaterialDialog(requireContext()).show {
-                title(text = "Conferma eliminazione")
-                message(text = "Vuoi eliminare il tuo carrello?")
+                title(R.string.conferma_eliminazione)
+                message(R.string.conferma_eliminazione_quest)
                 positiveButton(R.string.si) {
                     clearCart()
                 }
@@ -181,9 +181,9 @@ class CarrelloFragment : Fragment(),CarrelloDelegate
     @SuppressLint("CheckResult")
     override fun onItemClick(idProdotto: Int)
     {
-        val item=listOf("Visualizza prodotto","Elimina dal carrello","Annulla")
+        val item=listOf(getString(R.string.visualizza_prodotto),getString(R.string.elimina_dal_carre),getString(R.string.annulla))
         MaterialDialog(requireContext()).show {
-            title(text = "Scegli l'operazione")
+            title(R.string.scegli_operazione)
             listItems(items = item) { _, index, _ ->
                 if(index==0)
                 {

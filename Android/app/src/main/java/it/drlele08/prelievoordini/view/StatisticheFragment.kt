@@ -32,7 +32,7 @@ class StatisticheFragment : Fragment(),StatisticheDelegate
             recyclerUtente.layoutManager = LinearLayoutManager(requireContext())
             recyclerUtente.adapter=adapter
         },{mess ->
-            MotionToast.darkToast(requireActivity(),"Errore",mess,
+            MotionToast.darkToast(requireActivity(),getString(R.string.errore),mess,
                 MotionToastStyle.ERROR,
                 MotionToast.GRAVITY_BOTTOM,
                 MotionToast.LONG_DURATION,
@@ -59,12 +59,12 @@ class StatisticheFragment : Fragment(),StatisticheDelegate
             { messLett, mostErr ->
                 val nomeMostLett=messLett.getJSONObject(0).getString("Nome")
                 val numMostLett=messLett.getJSONObject(0).getInt("Letture")
-                textMostLetture.text="Dipendente con più letture: $nomeMostLett ($numMostLett)"
+                textMostLetture.text=getString(R.string.dippiulett,nomeMostLett,numMostLett)
                 val nomeMostErr=mostErr.getString("Nome")
                 val numMostErr=mostErr.getInt("Letture")
-                textMostError.text="Dipendente con più errori: $nomeMostErr ($numMostErr)"
-        },{ mess ->
-                MotionToast.darkToast(requireActivity(),"Errore",mess,
+                textMostError.text=getString(R.string.dippiuerr,nomeMostErr,numMostErr)
+            },{ mess ->
+                MotionToast.darkToast(requireActivity(),getString(R.string.errore),mess,
                     MotionToastStyle.ERROR,
                     MotionToast.GRAVITY_BOTTOM,
                     MotionToast.LONG_DURATION,
@@ -76,24 +76,24 @@ class StatisticheFragment : Fragment(),StatisticheDelegate
     {
         StatisticheController().getStatUtente(Utilita.user!!.getIdUtente(),Utilita.user!!.getTokenAuth(),utenteMini.getIdUtente(),queue,
             {generiche, dettagli ->
-                var messaggio="Generiche:\n"
+                var messaggio=getString(R.string.generiche)
                 val objOrdiniEffettuati=generiche.getJSONObject(0)
                 val objLettureTotali=generiche.getJSONObject(1)
-                messaggio+="Ordini gestiti: ${objOrdiniEffettuati.getInt("Valore")}\n"
-                messaggio+="Operazioni effettuate: ${objLettureTotali.getInt("Valore")}\n\n"
-                messaggio+="Dettagli:\n"
+                messaggio+=getString(R.string.ordini_gest,objOrdiniEffettuati.getInt("Valore"))
+                messaggio+=getString(R.string.operazioni_gest,objLettureTotali.getInt("Valore"))
+                messaggio+=getString(R.string.dettagli)
                 for(i in 0 until dettagli.length())
                 {
                     val obj=dettagli.getJSONObject(i)
                     messaggio+="${obj.getString("Evento")}: ${obj.getInt("Valore")}\n"
                 }
                 MaterialDialog(requireContext()).show {
-                    title(text = "Statistiche ${utenteMini.getNome()}")
+                    title(text = getString(R.string.nomestat,utenteMini.getNome()))
                     message(text = messaggio)
                     positiveButton(text = "Ok")
                 }
             },{mess ->
-                MotionToast.darkToast(requireActivity(),"Errore",mess,
+                MotionToast.darkToast(requireActivity(),getString(R.string.errore),mess,
                     MotionToastStyle.ERROR,
                     MotionToast.GRAVITY_BOTTOM,
                     MotionToast.LONG_DURATION,

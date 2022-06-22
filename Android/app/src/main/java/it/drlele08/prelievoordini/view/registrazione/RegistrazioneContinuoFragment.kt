@@ -24,7 +24,7 @@ class RegistrazioneContinuoFragment : Fragment()
 {
     private fun doSignUp(nome:String,email:String,pwd:String,identificativo:String,cell:String)
     {
-        val progress=Utilita.setProgressDialog(requireContext(),"Registrazione in corso...")
+        val progress=Utilita.setProgressDialog(requireContext(),getString(R.string.reg_in_corso))
         progress.show()
         UtenteController().doRegistrazione(nome,email,pwd,identificativo,cell,queue, { u ->
             progress.hide()
@@ -37,7 +37,7 @@ class RegistrazioneContinuoFragment : Fragment()
             startActivity(intent)
         },{mess ->
             progress.hide()
-            MotionToast.darkToast(requireActivity(),"Attenzione",mess,
+            MotionToast.darkToast(requireActivity(),getString(R.string.attenzione),mess,
                 MotionToastStyle.ERROR,
                 MotionToast.GRAVITY_BOTTOM,
                 MotionToast.LONG_DURATION,
@@ -77,7 +77,7 @@ class RegistrazioneContinuoFragment : Fragment()
                 }
                 else
                 {
-                    MotionToast.darkToast(requireActivity(),"Attenzione","Le password non coincidono",
+                    MotionToast.darkToast(requireActivity(),getString(R.string.attenzione),getString(R.string.pwd_not_match),
                         MotionToastStyle.WARNING,
                         MotionToast.GRAVITY_BOTTOM,
                         MotionToast.LONG_DURATION,
@@ -86,7 +86,7 @@ class RegistrazioneContinuoFragment : Fragment()
             }
             else
             {
-                MotionToast.darkToast(requireActivity(),"Attenzione","Inserisci tutti i campi",
+                MotionToast.darkToast(requireActivity(),getString(R.string.attenzione),getString(R.string.ins_tut_camp),
                     MotionToastStyle.WARNING,
                     MotionToast.GRAVITY_BOTTOM,
                     MotionToast.LONG_DURATION,
