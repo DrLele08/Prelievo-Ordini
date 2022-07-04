@@ -26,11 +26,10 @@ class DetailProdottoFragment : Fragment()
 {
     private fun updateQnt(value:Int)
     {
-        var prezzo=prodotto.getPrezzoIvato()
+        val prezzo=prodotto.getPrezzoIvato()
         if(btnTipoQnt.isChecked)
         {
             qntScelta=value*prodotto.getQntConfezione()
-            prezzo=prodotto.getPrezzoIvato()*prodotto.getQntConfezione()
             val qntDisp=prodotto.getQntDisp()/prodotto.getQntConfezione()
             textQntDisponibile.text="$qntDisp pz"
             stepperQnt.maxValue=qntDisp
@@ -41,10 +40,10 @@ class DetailProdottoFragment : Fragment()
             stepperQnt.maxValue=prodotto.getQntDisp()
             textQntDisponibile.text="${prodotto.getQntDisp()} pz"
         }
-        val quadagno=(prodotto.getPrezzoConsigliato()-prodotto.getPrezzoIvato())*qntScelta
         val percQuad=(((prodotto.getPrezzoConsigliato()-prodotto.getPrezzoIvato())/prodotto.getPrezzoIvato())*100).roundToInt()
-        textROI.text="$percQuad% (${String.format("%.2f",quadagno)}€)"
+        textROI.text=getString(R.string.roi_detail,percQuad,String.format("%.2f",prodotto.getPrezzoConsigliato()))
         textPrezzo.text="${String.format("%.2f",prezzo)}€"
+        textTotale.text="${String.format("%.2f",prezzo*qntScelta)}€"
     }
     private fun loadInfo()
     {
@@ -70,6 +69,8 @@ class DetailProdottoFragment : Fragment()
             btnAddCart.setOnClickListener{
                 addToCart()
             }
+            textTotale.visibility=View.VISIBLE
+            textTotale.text="${String.format("%.2f",prodotto.getPrezzoIvato())}€"
             stepperQnt.visibility=View.VISIBLE
             btnAddCart.visibility=View.VISIBLE
             stepperQnt.setQuantitizerListener(object: QuantitizerListener {
@@ -139,6 +140,7 @@ class DetailProdottoFragment : Fragment()
     private lateinit var textPrezzo:TextView
     private lateinit var imageInfo:ImageView
     private lateinit var textROI:TextView
+    private lateinit var textTotale:TextView
     private var qntScelta=1
     override fun onViewCreated(view: View, savedInstanceState: Bundle?)
     {
@@ -154,6 +156,7 @@ class DetailProdottoFragment : Fragment()
         textQntCartone=view.findViewById(R.id.textDetailQntCartone)
         textPrezzo=view.findViewById(R.id.textDetailPrezzo)
         textROI=view.findViewById(R.id.textViewDetailROI)
+        textTotale=view.findViewById(R.id.textDetailTotale)
         stepperQnt.setValueBackgroundColor(R.color.white)
         stepperQnt.minValue=1
         val idArticolo=requireArguments().getInt("idArticolo",-1)

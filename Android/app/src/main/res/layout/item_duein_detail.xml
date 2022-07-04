@@ -12,9 +12,11 @@
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:layout_marginEnd="16dp"
+        android:contentDescription="@string/foto_prodotto"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ImageContrastCheck"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
@@ -24,13 +26,13 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="8dp"
-        android:text="{Nome Prodotto}"
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/imageDetailDue"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="{Nome Prodotto}" />
 
     <TextView
         android:id="@+id/textDetailDueInfo"
@@ -39,10 +41,10 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:text="{Info Extra}"
         android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/imageDetailDue"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textDetailDueNome" />
+        app:layout_constraintTop_toBottomOf="@+id/textDetailDueNome"
+        tools:text="{Info Extra}" />
 </androidx.constraintlayout.widget.ConstraintLayout>

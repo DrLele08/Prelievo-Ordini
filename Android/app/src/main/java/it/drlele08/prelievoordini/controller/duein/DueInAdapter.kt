@@ -1,6 +1,7 @@
 package it.drlele08.prelievoordini.controller.duein
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +11,7 @@ import it.drlele08.prelievoordini.R
 import it.drlele08.prelievoordini.model.duein.DueIn
 import java.util.ArrayList
 
-class DueInAdapter(private var list: ArrayList<DueIn>, private val delegate: DueInDelegate): RecyclerView.Adapter<DueInAdapter.ViewHolder>()
+class DueInAdapter(private var list: ArrayList<DueIn>, private val delegate: DueInDelegate,private val context: Context): RecyclerView.Adapter<DueInAdapter.ViewHolder>()
 {
     class ViewHolder(ItemView: View): RecyclerView.ViewHolder(ItemView)
     {
@@ -30,10 +31,10 @@ class DueInAdapter(private var list: ArrayList<DueIn>, private val delegate: Due
     override fun onBindViewHolder(holder: ViewHolder, position: Int)
     {
         val item=list[position]
-        holder.textId.text="Ordine #${item.getIdDue()}"
-        holder.textData.text="Data arrivo: ${item.getDataArrivo()}"
+        holder.textId.text=context.getString(R.string.ordine_num,item.getIdDue())
+        holder.textData.text=context.getString(R.string.data_arrivo,item.getDataArrivo())
         holder.textDesc.text=item.getDescrizione()
-        holder.textNum.text="${item.getNumProdotti()} prodotti"
+        holder.textNum.text=context.getString(R.string.qnt_prod_due,item.getNumProdotti())
         holder.itemView.setOnClickListener{
             delegate.onItemClick(item)
         }

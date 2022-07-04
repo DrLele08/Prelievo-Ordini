@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="84dp"
+    android:layout_height="94dp"
     android:layout_marginBottom="10dp"
     android:background="@drawable/round_back">
 
@@ -14,14 +14,14 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="16dp"
-        android:text="{Nome Prod}"
         android:textAlignment="textEnd"
         android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageProdItem"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="{Nome Prod}" />
 
     <ImageView
         android:id="@+id/imageProdItem"
@@ -43,11 +43,11 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="12dp"
-        android:text="{Qnt} Pz"
         android:textAlignment="textEnd"
         android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageProdItem" />
+        app:layout_constraintStart_toEndOf="@+id/imageProdItem"
+        tools:text="{Qnt} Pz" />
 </androidx.constraintlayout.widget.ConstraintLayout>

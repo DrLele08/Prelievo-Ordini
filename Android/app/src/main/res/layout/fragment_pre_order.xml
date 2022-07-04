@@ -29,7 +29,7 @@
         android:layout_marginEnd="20dp"
         android:background="@drawable/corner_input"
         android:ems="10"
-        android:hint="Cerca prodotto"
+        android:hint="@string/cerca_prodotto"
         android:inputType="textPersonName"
         android:paddingStart="46sp"
         android:paddingTop="8sp"

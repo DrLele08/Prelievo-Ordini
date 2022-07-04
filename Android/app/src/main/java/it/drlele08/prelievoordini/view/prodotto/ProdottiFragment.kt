@@ -7,23 +7,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.Spinner
-import android.widget.Toast
+import android.widget.*
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.afollestad.materialdialogs.MaterialDialog
-import com.afollestad.materialdialogs.bottomsheets.BottomSheet
-import com.afollestad.materialdialogs.customview.customView
-import com.afollestad.materialdialogs.customview.getCustomView
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.Volley
 import com.github.dhaval2404.imagepicker.ImagePicker
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.mlkit.vision.barcode.BarcodeScanning
 import com.google.mlkit.vision.common.InputImage
 import com.google.mlkit.vision.text.TextRecognition
@@ -36,8 +30,6 @@ import it.drlele08.prelievoordini.controller.prodotto.ProdottoDelegate
 import it.drlele08.prelievoordini.model.Prodotto
 import www.sanju.motiontoast.MotionToast
 import www.sanju.motiontoast.MotionToastStyle
-import javax.crypto.Cipher
-import kotlin.math.max
 
 
 class ProdottiFragment : Fragment(),ProdottoDelegate
@@ -140,22 +132,28 @@ class ProdottiFragment : Fragment(),ProdottoDelegate
     }
     private fun showFilter()
     {
-        MaterialDialog(requireContext(), BottomSheet()).show {
-            title(R.string.filtri)
-            customView(R.layout.filter_modal, scrollable = true, horizontalPadding = true)
-            positiveButton(R.string.applica) { dialog ->
-                val spinnerCategoria:Spinner=dialog.getCustomView().findViewById(R.id.spinnerFilterCategoria)
-                val spinnerOrdina:Spinner=dialog.getCustomView().findViewById(R.id.spinnerFilterOrdinamento)
-                val selectedCategoria=spinnerCategoria.selectedItemId.toInt()
-                val selectedOrdina=spinnerOrdina.selectedItemId.toInt()
-                categoria=selectedCategoria
-                filtro=selectedOrdina+1
-                pagina=0
-                listProdotti.clear()
-                getProdotti()
-            }
-            negativeButton(R.string.annulla)
+        val dialog= BottomSheetDialog(requireContext())
+        dialog.setContentView(R.layout.item_filtri_prod)
+        val btnAnnulla=dialog.findViewById<Button>(R.id.btnFiltriProdAnnulla)
+        val btnConferma=dialog.findViewById<Button>(R.id.btnFiltriProdConferma)
+        val spinnerCategoria=dialog.findViewById<Spinner>(R.id.spinnerFilterCategoria)
+        val spinnerOrdina=dialog.findViewById<Spinner>(R.id.spinnerFilterOrdinamento)
+        spinnerCategoria!!.setSelection(categoria)
+        spinnerOrdina!!.setSelection(filtro-1)
+        btnAnnulla!!.setOnClickListener{
+            dialog.hide()
         }
+        btnConferma!!.setOnClickListener{
+            val selectedCategoria=spinnerCategoria.selectedItemId.toInt()
+            val selectedOrdina=spinnerOrdina.selectedItemId.toInt()
+            categoria=selectedCategoria
+            filtro=selectedOrdina+1
+            pagina=0
+            dialog.hide()
+            listProdotti.clear()
+            getProdotti()
+        }
+        dialog.show()
     }
 
     private fun getProdotti()

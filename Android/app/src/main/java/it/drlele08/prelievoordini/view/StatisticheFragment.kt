@@ -82,7 +82,7 @@ class StatisticheFragment : Fragment(),StatisticheDelegate
                 messaggio+=getString(R.string.ordini_gest,objOrdiniEffettuati.getInt("Valore"))
                 messaggio+=getString(R.string.operazioni_gest,objLettureTotali.getInt("Valore"))
                 messaggio+=getString(R.string.dettagli)
-                for(i in 0 until dettagli.length())
+                for(i in 1 until dettagli.length())
                 {
                     val obj=dettagli.getJSONObject(i)
                     messaggio+="${obj.getString("Evento")}: ${obj.getInt("Valore")}\n"

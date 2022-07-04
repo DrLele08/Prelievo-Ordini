@@ -44,7 +44,7 @@ class ProdottoAdapter(private var list: ArrayList<Prodotto>,private val delegate
         if(Utilita.user != null)
             holder.textDetail.text="${item.getPrezzoIvato()}€"
         else
-            holder.textDetail.text="Accedi per visualizzare i prezzi"
+            holder.textDetail.text=context.getString(R.string.accedi_per_prezzi)
         holder.itemView.setOnClickListener{
             delegate.onProductClick(item)
         }

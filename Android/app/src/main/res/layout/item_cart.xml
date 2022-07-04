@@ -13,11 +13,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:text="{Qnt} Pz"
         android:textColor="@color/bottom_nav_color"
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/imageDelItem"
-        app:layout_constraintTop_toBottomOf="@+id/textCartNome" />
+        app:layout_constraintTop_toBottomOf="@+id/textCartNome"
+        tools:text="{Qnt} Pz" />
 
     <ImageView
         android:id="@+id/imageCartProd"
@@ -38,13 +38,13 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        android:text="{Nome Prodotto}"
         android:textAlignment="textEnd"
         android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/imageDelItem"
         app:layout_constraintStart_toEndOf="@+id/imageCartProd"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="{Nome Prodotto}" />
 
     <ImageView
         android:id="@+id/imageDelItem"

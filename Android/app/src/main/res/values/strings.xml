@@ -2,8 +2,10 @@
     <string name="app_name">Prelievo Ordini</string>
     <string name="title_home">Home</string>
     <string name="title_prodotti">Prodotti</string>
-    <string name="title_duein">Due In</string>
+    <string name="title_duein">Pre Vendita</string>
+    <string name="dettaglio_duein">Dettaglio PreVendita</string>
     <string name="title_accedi">Accedi</string>
+    <string name="login">Login</string>
     <string name="recupera_utente">Recupero utente…</string>
     <string name="title_registrazione">Registrazione</string>
     <string name="errore">Errore</string>
@@ -21,6 +23,11 @@
     <string name="grammi">grammi</string>
     <string name="specifiche_prodotto">Specifiche prodotto</string>
     <string name="fatto">Fatto</string>
+    <string name="accedi_per_prezzi">Accedi per visualizzare i prezzi</string>
+    <string name="ordine_num">Ordine #%1$d</string>
+    <string name="data_arrivo">Data arrivo: %1$s</string>
+    <string name="qnt_prod_due">%1$d prodotti</string>
+    <string name="esci_lettura_motivo">Esci</string>
     <string name="info_accedi">Accedi al tuo account</string>
     <string name="attendere">Attendere…</string>
     <string name="attenzione">Attenzione</string>
@@ -35,24 +42,27 @@
     <string name="right_notAccount">Registrati</string>
     <string name="nome">Nome</string>
     <string name="identificatico">Identificativo (P.Iva/CF)</string>
-    <string name="email">Email</string>
+    <string name="email" translatable="false">Email</string>
     <string name="cellulare">Cellulare</string>
-    <string name="password">Password</string>
+    <string name="password" translatable="false">Password</string>
     <string name="password_repeat">Ripeti la password</string>
+    <string name="title_lettura">Lettura</string>
     <string name="title_letture">Letture</string>
-    <string name="scegli_operazione">Scegli l'operazione</string>
+    <string name="scegli_operazione">Scegli l\'operazione</string>
     <string name="title_gestione">Statistiche</string>
     <string name="generiche">Generiche \n</string>
     <string name="ordini_gest">Ordini gestiti: %1$d \n</string>
     <string name="operazioni_gest">Operazioni effettuate: %1$d \n\n</string>
     <string name="dettagli">Dettagli: \n</string>
     <string name="title_areapersonale">Area Utente</string>
+    <string name="apri">Apri</string>
     <string name="title_impostazioni">Impostazioni</string>
-    <string name="title_preorder">Pre Order</string>
-    <string name="logout">Logout</string>
+    <string name="title_preorder">Quotazioni</string>
+    <string name="logout" translatable="false">Logout</string>
     <string name="logoutmess">Vuoi davvero uscire dall\'account?</string>
     <string name="si">Si</string>
     <string name="title_cart">Carrello</string>
+    <string name="cart_vuoto">Carrello vuoto</string>
     <string name="acquista">Acquista</string>
     <string name="art_el">Articolo eliminato</string>
     <string name="visualizza_prodotto">Visualizza prodotto</string>
@@ -60,9 +70,18 @@
     <string name="no_corr_imm">Nessuna corrispondenza con l\'immagine</string>
     <string name="elimina_dal_carre">Elimina dal carrello</string>
     <string name="elimina_carrello">Svuota carrello</string>
+    <string name="generali">Generali</string>
+    <string name="per_utente">Per utente</string>
+    <string name="no_ordine_letture">Nessun ordine da gestire\!</string>
     <string name="conferma_ordine">Conferma ordine</string>
+    <string name="conferma">Conferma</string>
+    <string name="ean_prodotto">EAN prodotto</string>
+    <string name="altenativa_manuale_qnt_lettura">Oppure inserisci manualmente quantità</string>
+    <string name="reset_qnt_lettura">Reset Qnt</string>
     <string name="conferma_ordine_detail">Vuoi confermare la presa in carico per l\'ordine #%1$d</string>
     <string name="conferma_eliminazione">Conferma eliminazione</string>
+    <string name="add_to_cart">Aggiungi al carrello</string>
+    <string name="aggiungi_item_lettura">Aggiungi</string>
     <string name="aggiunto_al_carrello">Prodotto aggiunto al carrello</string>
     <string name="conferma_ordine_quest">Vuoi confermare il tuo ordine\?</string>
     <string name="conferma_eliminazione_quest">Vuoi eliminare il tuo carrello\?</string>
@@ -72,14 +91,28 @@
     <string name="dippiuerr">Dipendente con più errori: %1$s (%2$d)</string>
     <string name="nomestat">Statistiche %1$s</string>
     <string name="conferma_lettura">Conferma lettura prodotto</string>
+    <string name="prodotto">Prodotto</string>
     <string name="conferma_lettura_detail">Vuoi confermare di aver prelevato %1$d/%2$d pezzi\?</string>
     <string name="lettura_in_corso">Lettura in corso</string>
     <string name="termina">Termina</string>
-    <string name="scaffale">Scaffale: %1$s</string>
+    <string name="scaffale">Scaffale:\n %1$s</string>
     <string name="reparto">Reparto: %1$d</string>
-    <string name="lettura_sospesa">Hai una lettura di un ordine in sospeso\nVuoi continuare\?</string>
+    <string name="esci">Esci</string>
+    <string name="lettura_sospesa">Hai una lettura di un ordine in sospeso\nVuoi continuare?</string>
     <string name="conferma_chiusura">Conferma chiusura</string>
     <string name="motivo_chiusura_inp">Inserisci il motivo della chiusura</string>
+    <string name="categoria">Categoria</string>
+    <string name="ordinamento">Ordinamento</string>
+    <string name="cerca_prodotto">Cerca prodotto</string>
+    <string name="foto_prodotto">Foto prodotto</string>
+    <string name="qnt_cartone">Quantità cartone</string>
+    <string name="qnt_disp">Quantità disponibile</string>
+    <string name="singolo">Singolo</string>
+    <string name="cartone">Cartone</string>
+    <string name="avviso_qnt_lettura_not_find">E\' stata selezionata una quantità minore di quella disponibile, non è stato possibile trovare gli altri prodotti?</string>
+    <string name="roi_detail">%1$d%% (Prezzo vendita:%2$s€)</string>
+    <string name="roi">Guadagno</string>
+    <string name="um">Unità di misura</string>
     <string-array name="vett_categorie">
         <item>Tutte</item>
         <item>Alimentari</item>
@@ -97,6 +130,6 @@
         <item>Quantità crescente</item>
         <item>Quantità descrescente</item>
         <item>Prezzo crescente</item>
-        <item>Prezzo descrescente-</item>
+        <item>Prezzo descrescente</item>
     </string-array>
 </resources>

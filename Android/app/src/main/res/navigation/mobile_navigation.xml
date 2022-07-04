@@ -39,8 +39,8 @@
     <fragment
         android:id="@+id/viewLogin"
         android:name="it.drlele08.prelievoordini.view.LoginFragment"
-        android:label="Login"
-        tools:layout="@layout/fragment_login" >
+        android:label="@string/login"
+        tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_viewLogin_to_registrazioneFragment"
             app:destination="@id/viewRegistrazione" />
@@ -108,7 +108,7 @@
     <fragment
         android:id="@+id/detailProdottoFragment"
         android:name="it.drlele08.prelievoordini.view.prodotto.DetailProdottoFragment"
-        android:label="Prodotto"
+        android:label="@string/prodotto"
         tools:layout="@layout/fragment_detail_prodotto">
         <argument
             android:name="idArticolo"
@@ -118,7 +118,7 @@
     <fragment
         android:id="@+id/dueInDetailFragment"
         android:name="it.drlele08.prelievoordini.view.duein.DueInDetailFragment"
-        android:label="Dettaglio Due In"
+        android:label="@string/dettaglio_duein"
         tools:layout="@layout/fragment_due_in_detail">
         <argument
             android:name="idDue"
@@ -128,7 +128,7 @@
     <fragment
         android:id="@+id/letturaSceltaFragment"
         android:name="it.drlele08.prelievoordini.view.lettura.LetturaSceltaFragment"
-        android:label="Lettura"
+        android:label="@string/title_lettura"
         tools:layout="@layout/fragment_lettura_scelta">
         <argument
             android:name="lettura"

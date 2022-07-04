@@ -5,12 +5,129 @@
     <string name="title_prodotti">Products</string>
     <string name="title_duein">Due In</string>
     <string name="title_accedi">Login</string>
-    <string name="title_registrazione">Signup</string>
+    <string name="title_registrazione">SignUp</string>
     <string name="info_accedi">Log in you account</string>
     <string name="text_ricordami">Remember me</string>
-    <string name="left_notAccount">Are you new?</string>
     <string name="right_notAccount">Signup</string>
     <string name="title_gestione">Stats</string>
     <string name="title_impostazioni">Settings</string>
     <string name="title_preorder">Pre Order</string>
+    <string name="dettaglio_duein">Due In Detail</string>
+    <string name="recupera_utente">Loading user...</string>
+    <string name="errore">Error</string>
+    <string name="applica">Apply</string>
+    <string name="grammi">grams</string>
+    <string name="fatto">Done</string>
+    <string name="accedi_per_prezzi">Login to see prices</string>
+    <string name="esci_lettura_motivo">Exit</string>
+    <string name="attendere">Please wait...</string>
+    <string name="nome">Name</string>
+    <string name="identificatico">Identifier</string>
+    <string name="cellulare">Mobile number</string>
+    <string name="password_repeat">Repeat password</string>
+    <string name="apri">See</string>
+    <string name="si">Yes</string>
+    <string name="title_cart">Cart</string>
+    <string name="cart_vuoto">Empty Cart</string>
+    <string name="no_ean_trovato">No EAN found</string>
+    <string name="generali">Generics</string>
+    <string name="per_utente">By User</string>
+    <string name="conferma">Confirm</string>
+    <string name="ean_prodotto">EAN product</string>
+    <string name="add_to_cart" translatable="false">Add To Cart</string>
+    <string name="filtri">Filter</string>
+    <string name="prodotto">Product</string>
+    <string name="peso">Weight</string>
+    <string name="specifiche_prodotto">Product details</string>
+    <string name="volume">Volume</string>
+    <string name="altezza">Height</string>
+    <string name="larghezza">Depth</string>
+    <string name="lunghezza">Length</string>
+    <string name="prezzo_cons">RRP</string>
+    <string name="annulla">Cancel</string>
+    <string name="title_registrazionecontinuo">We are almost there...</string>
+    <string name="login_in_corso">Please wait...</string>
+    <string name="login">Login</string>
+    <string name="continua">Continue</string>
+    <string name="roi">Revenue</string>
+    <string name="um">UM</string>
+    <string name="cartone">Box</string>
+    <string name="singolo">Single</string>
+    <string name="qnt_disp">"Quantity available     "</string>
+    <string name="qnt_cartone">Pcs in box</string>
+    <string name="foto_prodotto">Photo product</string>
+    <string name="cerca_prodotto">Find product</string>
+    <string name="ordinamento">Sort by</string>
+    <string name="categoria">Category</string>
+    <string name="ordine_num">Order #%1$d</string>
+    <string name="qnt_prod_due">%1$d products</string>
+    <string name="attenzione">Warning</string>
+    <string name="pwd_not_match">Password doesn\'t match</string>
+    <string name="info_guest">Welcome to PrelievoOrdini, You are currently not logged in.  You can still view our products and use some of our features.</string>
+    <string name="generiche">Generics</string>
+    <string name="dettagli">Details:</string>
+    <string name="logoutmess">Do you really want to sign out?</string>
+    <string name="roi_detail">%1$d%% (Retail price:%2$s€)</string>
+    <string name="data_arrivo">Arrival date: %1$s</string>
+    <string name="ins_tut_camp">Enter all the fields</string>
+    <string name="reg_in_corso">Registration in progress...</string>
+    <string name="ordine_effettuato">Order placed</string>
+    <string name="operazione_completata">Operation performed</string>
+    <string name="left_notAccount">Are you new?</string>
+    <string name="title_areapersonale">User Area</string>
+    <string name="esci">Exit</string>
+    <string name="lettura_sospesa">You have a pending order\nDo you want to continue?</string>
+    <string name="conferma_chiusura">Do you want to continue ?</string>
+    <string name="motivo_chiusura_inp">Enter the reason for closing</string>
+    <string name="lettura_in_corso">Unfinished Order</string>
+    <string name="title_lettura">Lecture</string>
+    <string name="title_letture">Lectures</string>
+    <string name="scegli_operazione">Choose the operation</string>
+    <string name="termina">Finish</string>
+    <string name="scaffale">Shelf: %1$s</string>
+    <string name="reparto">Department: %1$d</string>
+    <string name="conferma_lettura_detail">Do you want to confirm that you have withdrawn %1$d/%2$d pieces?</string>
+    <string name="conferma_lettura">Product read confirmation</string>
+    <string name="aggiungi_item_lettura">Add Qnt</string>
+    <string name="dippiulett">Employee with most lectures: %1$s (%2$d)</string>
+    <string name="dippiuerr">Employee with most errors: %1$s (%2$d)</string>
+    <string name="nomestat">Stats %1$s</string>
+    <string name="aggiunto_al_carrello">Item added to cart</string>
+    <string name="conferma_ordine_quest">Do you want to confirm your order ?</string>
+    <string name="conferma_eliminazione_quest">Do you want to clear your cart ?</string>
+    <string name="totale_cart">Total: %.2f€</string>
+    <string name="conferma_eliminazione">Confirm elimination</string>
+    <string name="conferma_ordine_detail">Do you want to confirm the acceptance for the order #%1$d</string>
+    <string name="reset_qnt_lettura">Reset Qnt</string>
+    <string name="altenativa_manuale_qnt_lettura">Or enter quantity manually</string>
+    <string name="conferma_ordine">Confirm order</string>
+    <string name="no_ordine_letture">No order to manage!</string>
+    <string name="elimina_carrello">Clear cart</string>
+    <string name="elimina_dal_carre">Delete to cart</string>
+    <string name="no_corr_imm">No match with the image</string>
+    <string name="acquista">Buy now</string>
+    <string name="art_el">Deleted article</string>
+    <string name="visualizza_prodotto">View product</string>
+    <string name="ordini_gest">"Managed orders: %1$d "</string>
+    <string name="operazioni_gest">"Transactions made: %1$d "</string>
+    <string name="avviso_qnt_lettura_not_find">It was selected a smaller amount than the one available, was it not possible to find the other products?</string>
+    <string-array name="vett_categorie">
+        <item>All</item>
+        <item>Food</item>
+        <item>Paper and Disposable</item>
+        <item>Domestic</item>
+        <item>Cosmetics</item>
+        <item>Detergents</item>
+        <item>Event</item>
+        <item>Games</item>
+        <item>School and Office</item>
+    </string-array>
+    <string-array name="vett_ordinamento">
+        <item>Description A-Z</item>
+        <item>Description Z-A</item>
+        <item>Increasing amount</item>
+        <item>Descending quantity</item>
+        <item>Increasing price</item>
+        <item>Descending price</item>
+    </string-array>
 </resources>

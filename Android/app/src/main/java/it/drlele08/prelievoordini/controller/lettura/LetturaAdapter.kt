@@ -1,6 +1,7 @@
 package it.drlele08.prelievoordini.controller.lettura
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +12,7 @@ import it.drlele08.prelievoordini.R
 import it.drlele08.prelievoordini.model.lettura.InfoLettura
 import java.util.ArrayList
 
-class LetturaAdapter(private val list:ArrayList<InfoLettura>,private val delegate: LetturaDelegate): RecyclerView.Adapter<LetturaAdapter.ViewHolder>()
+class LetturaAdapter(private val list:ArrayList<InfoLettura>,private val delegate: LetturaDelegate,private val context: Context): RecyclerView.Adapter<LetturaAdapter.ViewHolder>()
 {
     class ViewHolder(ItemView: View): RecyclerView.ViewHolder(ItemView)
     {
@@ -32,7 +33,7 @@ class LetturaAdapter(private val list:ArrayList<InfoLettura>,private val delegat
     override fun onBindViewHolder(holder: ViewHolder, position: Int)
     {
         val item= list[position]
-        holder.textOrdine.text="Ordine #${item.getIdOrdine()}"
+        holder.textOrdine.text=context.getString(R.string.ordine_num,item.getIdOrdine())
         holder.textCliente.text=item.getNomeCliente()
         holder.textQnt.text="${item.getPzEvasi()}/${item.getPzTotali()}"
         holder.textData.text="${item.getData()} ${item.getOrario()}"

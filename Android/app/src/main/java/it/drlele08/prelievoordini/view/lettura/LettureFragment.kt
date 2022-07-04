@@ -78,7 +78,7 @@ class LettureFragment : Fragment(), LetturaDelegate
     {
         LetturaController().getLettureInevase(Utilita.user!!.getIdUtente(),Utilita.user!!.getTokenAuth(),queue,{ list->
             listLetture=list
-            adapter=LetturaAdapter(listLetture,this)
+            adapter=LetturaAdapter(listLetture,this,requireContext())
             recyclerLetture.layoutManager=LinearLayoutManager(requireContext())
             recyclerLetture.adapter=adapter
             if(list.size>0)
