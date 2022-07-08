@@ -291,6 +291,7 @@ class ProdottiFragment : Fragment(),ProdottoDelegate
     {
         if(Utilita.user != null)
         {
+            textNome.setText("")
             val b=Bundle()
             b.putInt("idArticolo",prodotto.getIdArticolo())
             Navigation.findNavController(viewGlo).navigate(R.id.detailProdottoFragment,b)

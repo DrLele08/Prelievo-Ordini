@@ -135,12 +135,14 @@ class LetturaSceltaFragment : Fragment()
 
     private fun saveDatiOffline()
     {
+        detailArretrati.clear()
         val json: String = Gson().toJson(detailArretrati)
         Utilita.saveDato(requireContext(),keyLettureRecover,json)
     }
 
     private fun resetDatiOffline()
     {
+        detailArretrati.clear()
         Utilita.removeDato(requireContext(),keyLettureRecover)
     }
 
@@ -196,22 +198,25 @@ class LetturaSceltaFragment : Fragment()
                         val actualProd=lettura.getProdotti()[currentProd]
                         if(actualProd.getIdArticolo()==prodotto.getIdArticolo())
                         {
-                            detailArretrati.add(LetturaProdotto(actualProd.getIdRigaOrdine(),actualProd.getIdArticolo(),LetturaProdotto.LETTURA_CONFERMATA,qntEan))
-                            //ToDo Continua
+                            currentQnt+=qntEan
+                            updateProd()
                         }
                         else
                         {
                             detailArretrati.add(LetturaProdotto(tipoEvento = LetturaProdotto.LETTURA_ERRATA))
-                            //ToDo Show Errore
+                            MotionToast.darkToast(requireActivity(),getString(R.string.errore),getString(R.string.err_lett),
+                                MotionToastStyle.ERROR,
+                                MotionToast.GRAVITY_BOTTOM,
+                                MotionToast.LONG_DURATION,
+                                ResourcesCompat.getFont(requireContext(), www.sanju.motiontoast.R.font.helvetica_regular))
                         }
                     },{mess ->
                         MotionToast.darkToast(requireActivity(),getString(R.string.errore),mess,
-                            MotionToastStyle.SUCCESS,
+                            MotionToastStyle.ERROR,
                             MotionToast.GRAVITY_BOTTOM,
                             MotionToast.LONG_DURATION,
                             ResourcesCompat.getFont(requireContext(), www.sanju.motiontoast.R.font.helvetica_regular))
                     })
-                    Toast.makeText(requireContext(),"EAN: $text",Toast.LENGTH_LONG).show()
                     dialog.hide()
                 }
             }

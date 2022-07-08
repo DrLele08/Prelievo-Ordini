@@ -257,7 +257,7 @@ Lettura.updateLettura=(idOperatore,eventiLetture,result)=>{
                     {
                         obj.push(x.ksArticolo);
                         let upTmp=new Array();
-                        upTmp.push(x.Qnt);
+                        upTmp.push(x.qnt);
                         upTmp.push(x.idRigaOrdine);
                         upTmp.push(idOrdine);
                         vettUpdate.push(upTmp);

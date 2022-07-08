@@ -113,6 +113,7 @@
     <string name="roi_detail">%1$d%% (Prezzo vendita:%2$s€)</string>
     <string name="roi">Guadagno</string>
     <string name="um">Unità di misura</string>
+    <string name="err_lett">L\'EAN non corrisponde con il prodotto da prelevare, riprova</string>
     <string-array name="vett_categorie">
         <item>Tutte</item>
         <item>Alimentari</item>

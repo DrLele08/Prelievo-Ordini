@@ -13,14 +13,14 @@
     <string name="title_impostazioni">Settings</string>
     <string name="title_preorder">Pre Order</string>
     <string name="dettaglio_duein">Due In Detail</string>
-    <string name="recupera_utente">Loading user...</string>
+    <string name="recupera_utente">Loading user…</string>
     <string name="errore">Error</string>
     <string name="applica">Apply</string>
     <string name="grammi">grams</string>
     <string name="fatto">Done</string>
     <string name="accedi_per_prezzi">Login to see prices</string>
     <string name="esci_lettura_motivo">Exit</string>
-    <string name="attendere">Please wait...</string>
+    <string name="attendere">Please wait…</string>
     <string name="nome">Name</string>
     <string name="identificatico">Identifier</string>
     <string name="cellulare">Mobile number</string>
@@ -34,7 +34,6 @@
     <string name="per_utente">By User</string>
     <string name="conferma">Confirm</string>
     <string name="ean_prodotto">EAN product</string>
-    <string name="add_to_cart" translatable="false">Add To Cart</string>
     <string name="filtri">Filter</string>
     <string name="prodotto">Product</string>
     <string name="peso">Weight</string>
@@ -45,15 +44,15 @@
     <string name="lunghezza">Length</string>
     <string name="prezzo_cons">RRP</string>
     <string name="annulla">Cancel</string>
-    <string name="title_registrazionecontinuo">We are almost there...</string>
-    <string name="login_in_corso">Please wait...</string>
+    <string name="title_registrazionecontinuo">We are almost there…</string>
+    <string name="login_in_corso">Please wait…</string>
     <string name="login">Login</string>
     <string name="continua">Continue</string>
     <string name="roi">Revenue</string>
     <string name="um">UM</string>
     <string name="cartone">Box</string>
     <string name="singolo">Single</string>
-    <string name="qnt_disp">"Quantity available     "</string>
+    <string name="qnt_disp">"Quantity available"</string>
     <string name="qnt_cartone">Pcs in box</string>
     <string name="foto_prodotto">Photo product</string>
     <string name="cerca_prodotto">Find product</string>
@@ -64,13 +63,13 @@
     <string name="attenzione">Warning</string>
     <string name="pwd_not_match">Password doesn\'t match</string>
     <string name="info_guest">Welcome to PrelievoOrdini, You are currently not logged in.  You can still view our products and use some of our features.</string>
-    <string name="generiche">Generics</string>
-    <string name="dettagli">Details:</string>
+    <string name="generiche">Generics:\n</string>
+    <string name="dettagli">Details:\n</string>
     <string name="logoutmess">Do you really want to sign out?</string>
     <string name="roi_detail">%1$d%% (Retail price:%2$s€)</string>
     <string name="data_arrivo">Arrival date: %1$s</string>
     <string name="ins_tut_camp">Enter all the fields</string>
-    <string name="reg_in_corso">Registration in progress...</string>
+    <string name="reg_in_corso">Registration in progress…</string>
     <string name="ordine_effettuato">Order placed</string>
     <string name="operazione_completata">Operation performed</string>
     <string name="left_notAccount">Are you new?</string>
@@ -108,9 +107,11 @@
     <string name="acquista">Buy now</string>
     <string name="art_el">Deleted article</string>
     <string name="visualizza_prodotto">View product</string>
-    <string name="ordini_gest">"Managed orders: %1$d "</string>
-    <string name="operazioni_gest">"Transactions made: %1$d "</string>
+    <string name="ordini_gest">"Managed orders: %1$d\n"</string>
+    <string name="operazioni_gest">"Transactions made: %1$d\n"</string>
     <string name="avviso_qnt_lettura_not_find">It was selected a smaller amount than the one available, was it not possible to find the other products?</string>
+    <string name="add_to_cart">Add to cart</string>
+    <string name="err_lett">The EAN does not match the product to be taken, please try again</string>
     <string-array name="vett_categorie">
         <item>All</item>
         <item>Food</item>

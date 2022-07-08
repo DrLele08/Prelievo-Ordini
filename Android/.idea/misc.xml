@@ -8,6 +8,12 @@
         <entry key="..\:/Users/saisr/Desktop/Tesi/Android/app/src/main/res/drawable/round.xml" value="0.2095" />
         <entry key="..\:/Users/saisr/Desktop/Tesi/Android/app/src/main/res/drawable/round_back.xml" value="0.1955" />
         <entry key="..\:/Users/saisr/Desktop/Tesi/Android/app/src/main/res/drawable/round_lett.xml" value="0.18" />
+        <entry key="..\:/Users/saisr/Desktop/Tesi/Android/app/src/main/res/layout-600x400/fragment_lettura_scelta.xml" value="0.29444444444444445" />
+        <entry key="..\:/Users/saisr/Desktop/Tesi/Android/app/src/main/res/layout-h400dp/fragment_lettura_scelta.xml" value="1.1" />
+        <entry key="..\:/Users/saisr/Desktop/Tesi/Android/app/src/main/res/layout-normal/fragment_lettura_scelta.xml" value="0.29444444444444445" />
+        <entry key="..\:/Users/saisr/Desktop/Tesi/Android/app/src/main/res/layout-small/fragment_lettura_scelta.xml" value="0.7004405286343612" />
+        <entry key="..\:/Users/saisr/Desktop/Tesi/Android/app/src/main/res/layout-sw400dp/fragment_lettura_scelta.xml" value="0.1945392491467577" />
+        <entry key="..\:/Users/saisr/Desktop/Tesi/Android/app/src/main/res/layout-sw480dp/fragment_lettura_scelta.xml" value="0.1986062717770035" />
         <entry key="..\:/Users/saisr/Desktop/Tesi/Android/app/src/main/res/layout/activity_admin.xml" value="0.18802083333333333" />
         <entry key="..\:/Users/saisr/Desktop/Tesi/Android/app/src/main/res/layout/activity_main.xml" value="0.5" />
         <entry key="..\:/Users/saisr/Desktop/Tesi/Android/app/src/main/res/layout/dialog_qnt_lettura.xml" value="0.275" />
@@ -23,9 +29,9 @@
         <entry key="..\:/Users/saisr/Desktop/Tesi/Android/app/src/main/res/layout/fragment_guest.xml" value="0.2802547770700637" />
         <entry key="..\:/Users/saisr/Desktop/Tesi/Android/app/src/main/res/layout/fragment_home.xml" value="0.2368659420289855" />
         <entry key="..\:/Users/saisr/Desktop/Tesi/Android/app/src/main/res/layout/fragment_impostazioni.xml" value="0.17395833333333333" />
-        <entry key="..\:/Users/saisr/Desktop/Tesi/Android/app/src/main/res/layout/fragment_lettura_scelta.xml" value="0.25" />
+        <entry key="..\:/Users/saisr/Desktop/Tesi/Android/app/src/main/res/layout/fragment_lettura_scelta.xml" value="0.33" />
         <entry key="..\:/Users/saisr/Desktop/Tesi/Android/app/src/main/res/layout/fragment_letture.xml" value="0.18802083333333333" />
-        <entry key="..\:/Users/saisr/Desktop/Tesi/Android/app/src/main/res/layout/fragment_login.xml" value="0.18152866242038215" />
+        <entry key="..\:/Users/saisr/Desktop/Tesi/Android/app/src/main/res/layout/fragment_login.xml" value="0.33" />
         <entry key="..\:/Users/saisr/Desktop/Tesi/Android/app/src/main/res/layout/fragment_notifications.xml" value="0.1403242147922999" />
         <entry key="..\:/Users/saisr/Desktop/Tesi/Android/app/src/main/res/layout/fragment_pre_order.xml" value="0.5" />
         <entry key="..\:/Users/saisr/Desktop/Tesi/Android/app/src/main/res/layout/fragment_prodotti.xml" value="0.6202964652223489" />
