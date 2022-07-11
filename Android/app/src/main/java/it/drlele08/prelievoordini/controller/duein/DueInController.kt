@@ -69,7 +69,8 @@ class DueInController
                         val nome=obj.getString("nome")
                         val qnt=obj.getInt("qntArrivo")
                         val prezzo=obj.getDouble("prezzo").toFloat()
-                        vett.add(DueInDetail(idProdotto,nome,qnt,prezzo))
+                        val delta=obj.getInt("delta")
+                        vett.add(DueInDetail(idProdotto,nome,qnt,prezzo,delta))
                     }
                     onSuccess(vett)
                 }

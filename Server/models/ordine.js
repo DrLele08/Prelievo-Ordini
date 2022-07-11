@@ -36,13 +36,15 @@ Ordine.showDue=(result)=>{
 };
 
 Ordine.showDetailDue=(idDue,result)=>{
+    let vettDelta=[10,25,40,50];
     let vett=new Array();
     let obj=new Object();
-
+    let randomIndex=Math.floor(Math.random() *((vettDelta.length-1)-0+1))+0;
     obj.idProdotto=2;
     obj.nome="Milka Bar TUC";
     obj.qntArrivo=108;
     obj.prezzo=0.6;
+    obj.delta=vettDelta[randomIndex];
     vett.push(obj);
 
     let obj1=new Object();
@@ -50,6 +52,7 @@ Ordine.showDetailDue=(idDue,result)=>{
     obj1.nome="KitKat White";
     obj1.qntArrivo=48;
     obj1.prezzo=0.22;
+    obj1.delta=vettDelta[randomIndex];
     vett.push(obj1);
 
     let obj2=new Object();
@@ -57,6 +60,7 @@ Ordine.showDetailDue=(idDue,result)=>{
     obj2.nome="Ace Detersivo Lavatrice 25 Lavaggi Colorati";
     obj2.qntArrivo=200;
     obj2.prezzo=1.99;
+    obj2.delta=vettDelta[randomIndex];
     vett.push(obj2);
 
     let obj3=new Object();
@@ -64,6 +68,7 @@ Ordine.showDetailDue=(idDue,result)=>{
     obj3.nome="Ace Detersivo Lavatrice 25 Lavaggi Classico";
     obj3.qntArrivo=200;
     obj3.prezzo=1.99;
+    obj3.delta=vettDelta[randomIndex];
     vett.push(obj3);
 
     let obj4=new Object();
@@ -71,6 +76,7 @@ Ordine.showDetailDue=(idDue,result)=>{
     obj4.nome="Svelto Detersivo 1L Limone";
     obj4.qntArrivo=408;
     obj4.prezzo=0.99;
+    obj4.delta=vettDelta[randomIndex];
     vett.push(obj4);
 
     let obj5=new Object();
@@ -78,6 +84,7 @@ Ordine.showDetailDue=(idDue,result)=>{
     obj5.nome="Svelto Detersivo 1L Antibatterico";
     obj5.qntArrivo=408;
     obj5.prezzo=0.99;
+    obj5.delta=vettDelta[randomIndex];
     vett.push(obj5);
 
     result(vett);

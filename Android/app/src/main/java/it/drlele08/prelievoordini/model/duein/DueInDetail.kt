@@ -1,6 +1,6 @@
 package it.drlele08.prelievoordini.model.duein
 
-class DueInDetail(private val idProdotto:Int,private val nome:String,private val qntArrivo:Int,private val prezzo:Float)
+class DueInDetail(private val idProdotto:Int,private val nome:String,private val qntArrivo:Int,private val prezzo:Float,private val delta:Int)
 {
     fun getIdProdotto():Int
     {
@@ -20,5 +20,10 @@ class DueInDetail(private val idProdotto:Int,private val nome:String,private val
     fun getPrezzo():Float
     {
         return prezzo
+    }
+
+    fun getDelta():Int
+    {
+        return delta
     }
 }

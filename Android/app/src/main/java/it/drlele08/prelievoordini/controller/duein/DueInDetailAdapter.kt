@@ -35,7 +35,14 @@ class DueInDetailAdapter(private var list: ArrayList<DueInDetail>,private val co
         val item=list[position]
         Glide.with(context).load("${Utilita.host}/img/articoli/${item.getIdProdotto()}.jpg").circleCrop().into(holder.imageProd)
         holder.textNome.text=item.getNome()
-        holder.textInfo.text="${item.getQntArrivo()}Pz - ${item.getPrezzo()}€"
+        if(Utilita.user != null)
+        {
+            holder.textInfo.text="${item.getQntArrivo()}Pz - ${item.getPrezzo()}€"
+        }
+        else
+        {
+            holder.textInfo.text="${item.getQntArrivo()}Pz -${item.getDelta()}%"
+        }
     }
 
     override fun getItemCount(): Int

@@ -148,6 +148,7 @@ class PreOrderFragment : Fragment(),ProdottoDelegate
     }
     override fun onProductClick(prodotto: Prodotto)
     {
+        /*
         if(Utilita.user != null)
         {
             listProdotti.clear()
@@ -155,5 +156,6 @@ class PreOrderFragment : Fragment(),ProdottoDelegate
             b.putInt("idArticolo",prodotto.getIdArticolo())
             Navigation.findNavController(viewGlo).navigate(R.id.detailProdottoFragment,b)
         }
+         */
     }
 }
