@@ -2,6 +2,7 @@ const whatsApp=new Object();
 
 const wa = require('@open-wa/wa-automate');
 const Ordine=require("./ordine.js");
+const Utente=require("./utente.js");
 
 wa.create({
   sessionId: process.env.WA_AUTH,
