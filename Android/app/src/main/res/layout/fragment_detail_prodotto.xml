@@ -13,7 +13,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="6dp"
         android:layout_marginEnd="16dp"
         android:textAlignment="center"
         android:textColor="@color/white"
@@ -27,7 +27,7 @@
 
     <TextView
         android:id="@+id/textView11"
-        android:layout_width="160dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="26dp"
@@ -39,7 +39,7 @@
 
     <TextView
         android:id="@+id/textView9"
-        android:layout_width="160dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="18dp"
@@ -55,7 +55,6 @@
         android:layout_height="60sp"
         android:layout_marginStart="56dp"
         android:layout_marginEnd="56dp"
-        android:layout_marginBottom="6dp"
         android:backgroundTint="@color/btnPrimary"
         android:text="@string/add_to_cart"
         android:textSize="16sp"
@@ -84,7 +83,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:layout_marginEnd="16dp"
         android:textAlignment="center"
         android:textColor="@color/white"
@@ -112,7 +111,7 @@
 
     <TextView
         android:id="@+id/textView8"
-        android:layout_width="140dp"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="26dp"
@@ -150,7 +149,7 @@
         android:id="@+id/stepperQnt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="4dp"
         android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/btnDetailAddCart"
         app:layout_constraintEnd_toEndOf="parent"
@@ -160,7 +159,7 @@
 
     <TextView
         android:id="@+id/textView10"
-        android:layout_width="160dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="26dp"

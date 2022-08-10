@@ -91,7 +91,7 @@ Ordine.showDetailDue=(idDue,result)=>{
 };
 
 Ordine.ordersByCell=(cell,result)=>{
-    let query="SELECT Ordine.idOrdine,StatoOrdine.Stato,Ordine.Data FROM Ordine,StatoOrdine,ArticoloOrdine,Utente WHERE Ordine.idOrdine=ArticoloOrdine.ksOrdine AND Ordine.ksUtente=Utente.idUtente AND Utente.Cellulare=? AND StatoOrdine.idStato=Ordine.ksStato GROUP BY idOrdine ORDER BY Ordine.Data DESC LIMIT 5;";
+    let query="SELECT Ordine.idOrdine,StatoOrdine.Stato,Ordine.Data FROM Ordine,StatoOrdine,RigaOrdine,Utente WHERE Ordine.idOrdine=RigaOrdine.ksOrdine AND Ordine.ksUtente=Utente.idUtente AND Utente.Cellulare=? AND StatoOrdine.idStato=Ordine.ksStato GROUP BY idOrdine ORDER BY Ordine.Data DESC LIMIT 5;";
     sql.query(query,[cell],(errQ,risQ)=>{
         if(errQ)
         {

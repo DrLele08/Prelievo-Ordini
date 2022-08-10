@@ -110,7 +110,7 @@
     <string name="singolo">Singolo</string>
     <string name="cartone">Cartone</string>
     <string name="avviso_qnt_lettura_not_find">E\' stata selezionata una quantità minore di quella disponibile, non è stato possibile trovare gli altri prodotti?</string>
-    <string name="roi_detail">%1$d%% (Prezzo vendita:%2$s€)</string>
+    <string name="roi_detail">%1$d%% (Consigliato:%2$s€)</string>
     <string name="roi">Guadagno</string>
     <string name="um">Unità di misura</string>
     <string name="err_lett">L\'EAN non corrisponde con il prodotto da prelevare, riprova</string>
