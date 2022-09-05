@@ -9,7 +9,7 @@
   "author": "DrLele08",
   "license": "ISC",
   "dependencies": {
-    "@open-wa/wa-automate": "^4.35.13",
+    "@open-wa/wa-automate": "^4.44.5",
     "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",

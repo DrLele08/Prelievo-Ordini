@@ -49,7 +49,7 @@ function start(client){
                         msg+="Data: "+ob.Data.toLocaleString()+"\n";
                         msg+="------\n";
                     }
-                    await client.sendText(message.from, 'Elenco ultimi 5 ordini:\n'+msg);
+                    await client.sendText(message.from, 'Elenco ultimi ordini:\n'+msg);
                 }
                 else
                 {
