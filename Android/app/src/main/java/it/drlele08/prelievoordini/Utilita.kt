@@ -27,7 +27,7 @@ class Utilita
      */
     companion object
     {
-        const val host="http://192.168.2.132:8000"
+        const val host="http://192.168.2.133:8000"
         //const val host="https://www.tesi.saisraffaele.it"
         const val token="123456"
         const val oneSignalKey = "2fef20cf-7fae-43f0-b50e-3c52f309dbfa"

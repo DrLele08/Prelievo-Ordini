@@ -34,7 +34,7 @@ Utente.findByEmailAndPwd=(Email,Pwd,result)=>{
                 {
                         json.Ris=0;
                         json.Mess="Password errata";
-                        result(null,json);
+                        result(json,null);
                 }
             });
         }
